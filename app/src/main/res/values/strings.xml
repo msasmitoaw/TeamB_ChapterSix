@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">BatuGuntingKertas</string>
+    <string name="app_name">Batu Gunting Kertas</string>
+    <string name="scissors">gunting</string>
+    <string name="rock">batu</string>
+    <string name="paper">kertas</string>
+    <string name="draw">Seri\n</string>
+    <string name="player_one_win">Pemain 1\nMenang</string>
+    <string name="player_two_win">Pemain 2\nMenang</string>
+    <string name="result">Hasil</string>
 </resources>
