@@ -16,4 +16,6 @@
     <string name="home">Home</string>
     <string name="_0">#0</string>
     <string name="close">Close</string>
+    <string name="play_again">Main lagi</string>
+    <string name="back_to_menu">Kembali ke menu</string>
 </resources>
