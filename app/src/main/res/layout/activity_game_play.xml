@@ -64,6 +64,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/llPlayerOne"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -73,6 +74,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/tvPlayerOne"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -81,6 +83,7 @@
             android:textStyle="bold" />
 
         <ImageButton
+            android:id="@+id/btnRockOne"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
@@ -95,6 +98,7 @@
             android:textSize="20sp" />
 
         <ImageButton
+            android:id="@+id/btnScissorsOne"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
@@ -109,6 +113,7 @@
             android:textSize="20sp" />
 
         <ImageButton
+            android:id="@+id/btnPaperOne"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
@@ -144,6 +149,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/tvPlayerTwo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -152,6 +158,7 @@
             android:textStyle="bold" />
 
         <ImageButton
+            android:id="@+id/btnRockTwo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
@@ -166,6 +173,7 @@
             android:textSize="20sp" />
 
         <ImageButton
+            android:id="@+id/btnScissorsTwo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
@@ -180,6 +188,7 @@
             android:textSize="20sp" />
 
         <ImageButton
+            android:id="@+id/btnPaperTwo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
