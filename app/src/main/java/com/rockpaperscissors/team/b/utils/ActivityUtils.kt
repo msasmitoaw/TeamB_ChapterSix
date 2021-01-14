@@ -1,5 +1,6 @@
 package com.rockpaperscissors.team.b.utils
 
+import android.app.Activity
 import android.content.Context
 import android.util.Log
 import android.widget.ImageButton
@@ -10,8 +11,10 @@ import com.rockpaperscissors.team.b.R
 
 fun setWord(context: Context, message: String) {
     makeText(context, message, Toast.LENGTH_SHORT).show()
-    println(message)
+    val activity = context as Activity
+    Log.d(activity.localClassName, message)
 }
 
-fun ImageButton.onSelected(context: Context) =
-    ContextCompat.getDrawable(context, R.drawable.ic_item_bg)
+fun ImageButton.onSelected(context: Context) {
+    background = ContextCompat.getDrawable(context, R.drawable.ic_item_bg)
+}

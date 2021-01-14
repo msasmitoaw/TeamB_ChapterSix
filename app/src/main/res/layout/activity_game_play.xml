@@ -143,6 +143,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/llPlayerTwo"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:gravity="center"
