@@ -68,7 +68,10 @@ class GamePlayActivity : AppCompatActivity(), GamePlayView {
                 playerTwo = string(R.string.player_two)
                 setWord(this, "$playerTwo ${string(R.string.choose)} ${btn.tag}")
                 btn.onSelected(this)
-                presenter?.setPlayerTwo(player)
+                when (playerTwo) {
+                    "CPU" -> presenter?.setPlayerTwo()
+                    else -> presenter?.setPlayerTwo(player)
+                }
                 presenter?.result()
             }
         }
