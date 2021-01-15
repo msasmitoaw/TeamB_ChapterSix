@@ -19,4 +19,17 @@
     <string name="close">Close</string>
     <string name="play_again">Main lagi</string>
     <string name="back_to_menu">Kembali ke menu</string>
+    <string name="cpu">CPU</string>
+    <string name="logo">logo</string>
+    <string name="player_one_rock">player one rock</string>
+    <string name="player_one_scissors">player one scissors</string>
+    <string name="player_one_paper">player one paper</string>
+    <string name="player_two_rock">player two rock</string>
+    <string name="player_two_scissors">player two scissors</string>
+    <string name="player_two_paper">player two paper</string>
+    <string name="pvp">pvp</string>
+    <string name="pvc">pvc</string>
+    <string name="score">score</string>
+    <string name="setting">setting</string>
+    <string name="about">about</string>
 </resources>

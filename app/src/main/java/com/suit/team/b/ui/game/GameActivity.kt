@@ -1,4 +1,4 @@
-package com.rockpaperscissors.team.b.ui.gameplay
+package com.suit.team.b.ui.game
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -9,15 +9,15 @@ import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.rockpaperscissors.team.b.R
-import com.rockpaperscissors.team.b.data.model.Player
-import com.rockpaperscissors.team.b.utils.onSelected
-import com.rockpaperscissors.team.b.utils.setWord
-import com.rockpaperscissors.team.b.utils.string
+import com.suit.team.b.R
+import com.suit.team.b.data.model.Player
+import com.suit.team.b.utils.onSelected
+import com.suit.team.b.utils.setWord
+import com.suit.team.b.utils.string
 import java.util.*
 
-class GamePlayActivity : AppCompatActivity(), GamePlayView {
-    private var presenter: GamePlayPresenter? = null
+class GameActivity : AppCompatActivity(), GameView {
+    private var presenter: GamePresenter? = null
     private lateinit var playerOne: String
     private lateinit var playerTwo: String
     private lateinit var llPlayerOne: LinearLayout
@@ -25,8 +25,8 @@ class GamePlayActivity : AppCompatActivity(), GamePlayView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_game_play)
-        presenter = GamePlayPresenterImp(this)
+        setContentView(R.layout.activity_game)
+        presenter = GamePresenterImp(this)
         mutableListOf(R.id.btnHome, R.id.btnClose).forEachIndexed { index, i ->
             findViewById<Button>(i).setOnClickListener {
                 if (index != 0) finish()

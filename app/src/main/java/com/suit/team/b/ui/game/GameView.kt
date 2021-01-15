@@ -1,6 +1,6 @@
-package com.rockpaperscissors.team.b.ui.gameplay
+package com.suit.team.b.ui.game
 
-interface GamePlayView {
+interface GameView {
     fun onPlayerOnePick()
     fun onPlayerTwoPick()
     fun onComputerPick()

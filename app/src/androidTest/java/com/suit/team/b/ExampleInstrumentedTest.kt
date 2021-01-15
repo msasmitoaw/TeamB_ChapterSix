@@ -1,4 +1,4 @@
-package com.rockpaperscissors.team.b
+package com.suit.team.b
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.rockpaperscissors.team.b", appContext.packageName)
+        assertEquals("com.suit.team.b", appContext.packageName)
     }
 }
