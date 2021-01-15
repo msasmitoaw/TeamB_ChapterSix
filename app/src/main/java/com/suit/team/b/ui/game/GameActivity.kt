@@ -27,6 +27,8 @@ class GameActivity : AppCompatActivity(), GameView {
     private val llPlayerTwo: LinearLayout by lazy(LazyThreadSafetyMode.NONE) { findViewById(R.id.llPlayerTwo) }
     private val tvPlayerOne: TextView by lazy(LazyThreadSafetyMode.NONE) { findViewById(R.id.tvPlayerOne) }
     private val tvPlayerTwo: TextView by lazy(LazyThreadSafetyMode.NONE) { findViewById(R.id.tvPlayerTwo) }
+    private val tvPlayerOneScore: TextView by lazy(LazyThreadSafetyMode.NONE) { findViewById(R.id.tvPlayerOneScore) }
+    private val tvPlayerTwoScore: TextView by lazy(LazyThreadSafetyMode.NONE) { findViewById(R.id.tvPlayerTwoScore) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -100,9 +102,17 @@ class GameActivity : AppCompatActivity(), GameView {
         llPlayerOne.visibility = View.VISIBLE
 
         val gameEnd = when (result) {
-            string(player_one_win) -> string(player_one_win)
-            string(player_two_win) -> if (playerTwo == string(cpu)) string(cpu_win)
-            else string(player_two_win)
+            string(player_one_win) -> {
+                var count = tvPlayerOneScore.text.toString().replace("#", "").toInt()
+                count++; tvPlayerOneScore.text = "#$count"
+                "$playerOne${string(wins)}"
+            }
+            string(player_two_win) -> {
+                var count = tvPlayerTwoScore.text.toString().replace("#", "").toInt()
+                count++; tvPlayerTwoScore.text = "#$count"
+                if (playerTwo == string(cpu)) string(cpu_win)
+                else string(player_two_win)
+            }
             else -> result
         }
         setWord(this, gameEnd)

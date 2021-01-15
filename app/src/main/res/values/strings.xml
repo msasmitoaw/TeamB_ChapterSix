@@ -30,4 +30,5 @@
     <string name="score">score</string>
     <string name="setting">setting</string>
     <string name="about">about</string>
+    <string name="wins">\nMenang!</string>
 </resources>
