@@ -20,7 +20,8 @@
         android:textAlignment="viewStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:visibility="invisible"
-        tools:text="@tools:sample/full_names" />
+        tools:text="@tools:sample/full_names"
+        android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/tvScore"

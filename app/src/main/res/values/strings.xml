@@ -24,7 +24,6 @@
     <string name="profile_del_confirmation">Yakin akunnya mau dihapus?</string>
     <string name="delete">Yakin dong!</string>
     <string name="profile_del_success">Hapus data berhasil!</string>
-    <string name="profile_del_failed">Hapus data gagal! silakan coba lagi</string>
 
     <string name="player1">Player 1</string>
     <string name="player2">Player 2</string>

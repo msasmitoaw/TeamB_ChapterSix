@@ -24,8 +24,8 @@ class UpdateDialogFragment(private val profileView: ProfileView) : DialogFragmen
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btSave = view.findViewById<Button>(R.id.btDelete)
-        btCancel = view.findViewById<Button>(R.id.btCancel)
+        btSave = view.findViewById(R.id.btDelete)
+        btCancel = view.findViewById(R.id.btCancel)
 
         btSave?.setOnClickListener {
             // SHARED PREFERENCE PASSWORD HERE!!!!!

@@ -21,16 +21,11 @@ class DeleteDialogFragment(private val profileView: ProfileView) : DialogFragmen
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btDelete = view.findViewById<Button>(R.id.btDelete)
-        btCancel = view.findViewById<Button>(R.id.btCancel)
+        btDelete = view.findViewById(R.id.btDelete)
+        btCancel = view.findViewById(R.id.btCancel)
 
         btDelete?.setOnClickListener {
-            if (true /*PROCESS DELETE HERE*/) {
-                profileView.onSuccess(resources.getString(R.string.profile_del_success))
-                //startActivity(Intent(context?.applicationContext, ScoreActivity::class.java))
-            } else {
-                profileView.onSuccess(resources.getString(R.string.profile_del_failed))
-            }
+            profileView.onSuccess(resources.getString(R.string.profile_del_success))
         }
 
         btCancel?.setOnClickListener {

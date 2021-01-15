@@ -8,5 +8,4 @@ data class Score(
     val playerType: PlayerType? = null,
     val scoreValue: Int? = null,
     val gameType: GameType? = null
-) {
-}
+)

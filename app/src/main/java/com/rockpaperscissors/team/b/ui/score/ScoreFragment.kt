@@ -14,7 +14,7 @@ import com.rockpaperscissors.team.b.utils.GameType
 
 class ScoreFragment(private val gameType: GameType) : Fragment(), ScoreView {
 
-    private var recyclerView : RecyclerView? = null
+    private var recyclerView: RecyclerView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,

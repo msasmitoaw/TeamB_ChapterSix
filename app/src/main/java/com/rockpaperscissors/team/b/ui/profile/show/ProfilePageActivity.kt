@@ -12,7 +12,6 @@ import com.rockpaperscissors.team.b.ui.profile.update.ProfileUpdateActivity
 
 class ProfilePageActivity : AppCompatActivity(), ProfileView {
 
-    private val presenter: ProfilePresenter? = null
     private var tvName: TextView? = null
     private var tvUsername: TextView? = null
     private var tvEmail: TextView? = null
