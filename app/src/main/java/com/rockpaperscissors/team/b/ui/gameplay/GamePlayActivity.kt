@@ -105,8 +105,8 @@ class GamePlayActivity : AppCompatActivity(), GamePlayView {
         }
 
         val gameEnd = when (result) {
-            getString(R.string.player_one_win) -> "${getString(R.string.player_one)}\nMENANG!"
-            getString(R.string.player_two_win) -> "${getString(R.string.player_two)}\nMENANG!"
+            getString(R.string.player_one_win) -> getString(R.string.player_one_win)
+            getString(R.string.player_two_win) -> getString(R.string.player_two_win)
             else -> result
         }
         tvDialogResult.text = gameEnd

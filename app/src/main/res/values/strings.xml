@@ -7,8 +7,8 @@
     <string name="rock_caps">Batu</string>
     <string name="paper_caps">Kertas</string>
     <string name="draw">Seri\n</string>
-    <string name="player_one_win">Pemain 1\nMenang</string>
-    <string name="player_two_win">Pemain 2\nMenang</string>
+    <string name="player_one_win">Pemain 1\nMenang!</string>
+    <string name="player_two_win">Pemain 2\nMenang!</string>
     <string name="result">Hasil</string>
     <string name="player_one">Putut</string>
     <string name="player_two">Pemain 2</string>
