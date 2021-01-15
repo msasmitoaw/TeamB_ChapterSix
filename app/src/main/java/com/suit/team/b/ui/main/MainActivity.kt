@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         ivPlayerVsPlayer.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
-            intent.putExtra("mode", string(R.string.player_one))
+            intent.putExtra("mode", string(R.string.player_two))
             startActivity(intent)
             finish()
         }

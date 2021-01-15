@@ -13,10 +13,14 @@ class GamePresenterImp(
     private val context = view as Context
     private var weakness =
         mapOf(
-            context.string(R.string.scissors) to context.string(R.string.rock),
-            context.string(R.string.paper) to context.string(R.string.scissors),
-            context.string(R.string.rock) to context.string(R.string.paper)
+            context.string(R.string.scissors_caps) to context.string(R.string.rock_caps),
+            context.string(R.string.paper_caps) to context.string(R.string.scissors_caps),
+            context.string(R.string.rock_caps) to context.string(R.string.paper_caps)
         )
+
+    override fun getPlayerTwo(): Player {
+        return this.playerTwo
+    }
 
     override fun setPlayer(player: Player) {
         this.player = player

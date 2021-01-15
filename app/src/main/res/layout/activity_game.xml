@@ -24,10 +24,11 @@
             android:text="@string/home" />
 
         <TextView
+            android:id="@+id/tvPlayerOneScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/_0"
-            android:textSize="30sp" />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <ImageView
@@ -58,10 +59,11 @@
             android:text="@string/close" />
 
         <TextView
+            android:id="@+id/tvPlayerTwoScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/_0"
-            android:textSize="30sp" />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -75,11 +77,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/tvPlayerOne"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="@string/player_one"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <ImageButton
@@ -156,11 +159,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/tvPlayerTwo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="@string/player_two"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <ImageButton
