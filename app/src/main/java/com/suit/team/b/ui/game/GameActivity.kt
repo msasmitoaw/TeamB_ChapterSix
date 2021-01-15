@@ -77,10 +77,6 @@ class GameActivity : AppCompatActivity(), GameView {
         }
     }
 
-    override fun onComputerPick() {
-        TODO("Not yet implemented")
-    }
-
     override fun onResult(result: String) {
         llPlayerOne.visibility = View.VISIBLE
         setWord(this, result)
