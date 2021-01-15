@@ -1,6 +1,7 @@
 package com.suit.team.b.ui.game
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.suit.team.b.R
 import com.suit.team.b.data.model.Player
+import com.suit.team.b.ui.main.MainActivity
 import com.suit.team.b.utils.onSelected
 import com.suit.team.b.utils.setWord
 import com.suit.team.b.utils.string
@@ -29,8 +31,13 @@ class GameActivity : AppCompatActivity(), GameView {
         presenter = GamePresenterImp(this)
         mutableListOf(R.id.btnHome, R.id.btnClose).forEachIndexed { index, i ->
             findViewById<Button>(i).setOnClickListener {
-                if (index != 0) finish()
-                else TODO("Back To Main Menu")
+                when (index) {
+                    1 -> finish()
+                    else -> {
+                        startActivity(Intent(this, MainActivity::class.java))
+                        finish()
+                    }
+                }
             }
         }
 

@@ -37,12 +37,14 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, GameActivity::class.java)
             intent.putExtra("mode", string(R.string.player_one))
             startActivity(intent)
+            finish()
         }
 
         ivPlayerVsComputer.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
             intent.putExtra("mode", string(R.string.cpu))
             startActivity(intent)
+            finish()
         }
 
         ivScore.setOnClickListener {
