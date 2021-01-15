@@ -1,4 +1,4 @@
-package com.rockpaperscissors.team.b.utils
+package com.suit.team.b.utils
 
 import android.app.Activity
 import android.content.Context
@@ -7,12 +7,12 @@ import android.widget.ImageButton
 import android.widget.Toast
 import android.widget.Toast.makeText
 import androidx.core.content.ContextCompat
-import com.rockpaperscissors.team.b.R
+import com.suit.team.b.R
 
 fun setWord(context: Context, message: String) {
-    makeText(context, message, Toast.LENGTH_SHORT).show()
+    makeText(context, message.replace("\n", " "), Toast.LENGTH_SHORT).show()
     val activity = context as Activity
-    Log.d(activity.localClassName, message)
+    Log.d(activity.localClassName, message.replace("\n", " "))
 }
 
 fun ImageButton.onSelected(context: Context) {

@@ -1,22 +1,26 @@
-package com.rockpaperscissors.team.b.ui.gameplay
+package com.suit.team.b.ui.game
 
 import android.content.Context
-import com.rockpaperscissors.team.b.R
-import com.rockpaperscissors.team.b.data.model.Player
-import com.rockpaperscissors.team.b.utils.string
+import com.suit.team.b.R
+import com.suit.team.b.data.model.Player
+import com.suit.team.b.utils.string
 
-class GamePlayPresenterImp(
-    private val view: GamePlayView
-) : GamePlayPresenter {
+class GamePresenterImp(
+    private val view: GameView
+) : GamePresenter {
     private lateinit var player: Player
     private lateinit var playerTwo: Player
     private val context = view as Context
     private var weakness =
         mapOf(
-            context.string(R.string.scissors) to context.string(R.string.rock),
-            context.string(R.string.paper) to context.string(R.string.scissors),
-            context.string(R.string.rock) to context.string(R.string.paper)
+            context.string(R.string.scissors_caps) to context.string(R.string.rock_caps),
+            context.string(R.string.paper_caps) to context.string(R.string.scissors_caps),
+            context.string(R.string.rock_caps) to context.string(R.string.paper_caps)
         )
+
+    override fun getPlayerTwo(): Player {
+        return this.playerTwo
+    }
 
     override fun setPlayer(player: Player) {
         this.player = player

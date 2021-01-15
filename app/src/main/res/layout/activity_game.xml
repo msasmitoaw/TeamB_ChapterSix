@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.game.GameActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -24,16 +24,18 @@
             android:text="@string/home" />
 
         <TextView
+            android:id="@+id/tvPlayerOneScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/_0"
-            android:textSize="30sp" />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
+        android:contentDescription="@string/logo"
         android:src="@drawable/ic_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,10 +59,11 @@
             android:text="@string/close" />
 
         <TextView
+            android:id="@+id/tvPlayerTwoScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/_0"
-            android:textSize="30sp" />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -79,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="@string/player_one"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <ImageButton
@@ -87,8 +90,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/player_one_rock"
             android:padding="8dp"
-            android:src="@drawable/ic_batu"
+            android:src="@drawable/ic_rock"
             android:tag="@string/rock_caps" />
 
         <TextView
@@ -103,8 +107,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/player_one_scissors"
             android:padding="8dp"
-            android:src="@drawable/ic_gunting"
+            android:src="@drawable/ic_scissors"
             android:tag="@string/scissors_caps" />
 
         <TextView
@@ -119,8 +124,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/player_one_paper"
             android:padding="8dp"
-            android:src="@drawable/ic_kertas"
+            android:src="@drawable/ic_paper"
             android:tag="@string/paper_caps" />
 
         <TextView
@@ -158,7 +164,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="@string/player_two"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <ImageButton
@@ -166,8 +172,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/player_two_rock"
             android:padding="8dp"
-            android:src="@drawable/ic_batu"
+            android:src="@drawable/ic_rock"
             android:tag="@string/rock_caps" />
 
         <TextView
@@ -182,9 +189,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/player_two_scissors"
             android:padding="8dp"
-            android:src="@drawable/ic_gunting"
-            android:tag="@string/scissors_caps" />
+            android:src="@drawable/ic_scissors"
+            android:tag="@string/scissors_caps"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -198,8 +207,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/player_two_paper"
             android:padding="8dp"
-            android:src="@drawable/ic_kertas"
+            android:src="@drawable/ic_paper"
             android:tag="@string/paper_caps" />
 
         <TextView

@@ -1,4 +1,4 @@
-package com.rockpaperscissors.team.b.utils
+package com.suit.team.b.utils
 
 import android.content.Context
 
