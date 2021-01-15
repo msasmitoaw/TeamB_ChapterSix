@@ -17,14 +17,16 @@ import com.suit.team.b.ui.main.MainActivity
 import com.suit.team.b.utils.onSelected
 import com.suit.team.b.utils.setWord
 import com.suit.team.b.utils.string
-import java.util.*
 
 class GameActivity : AppCompatActivity(), GameView {
     private lateinit var presenter: GamePresenter
     private lateinit var playerOne: String
     private lateinit var playerTwo: String
-    private lateinit var llPlayerOne: LinearLayout
-    private lateinit var llPlayerTwo: LinearLayout
+
+    private val llPlayerOne: LinearLayout by lazy(LazyThreadSafetyMode.NONE) { findViewById(R.id.llPlayerOne) }
+    private val llPlayerTwo: LinearLayout by lazy(LazyThreadSafetyMode.NONE) { findViewById(R.id.llPlayerTwo) }
+    private val tvPlayerOne: TextView by lazy(LazyThreadSafetyMode.NONE) { findViewById(R.id.tvPlayerOne) }
+    private val tvPlayerTwo: TextView by lazy(LazyThreadSafetyMode.NONE) { findViewById(R.id.tvPlayerTwo) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,12 +35,8 @@ class GameActivity : AppCompatActivity(), GameView {
         mutableListOf(R.id.btnHome, R.id.btnClose).forEachIndexed { index, i ->
             findViewById<Button>(i).setOnClickListener { if (index == 1) finish() else backToMenu() }
         }
-        llPlayerOne = findViewById(R.id.llPlayerOne)
-        llPlayerTwo = findViewById(R.id.llPlayerTwo)
         playerOne = string(player_one)
         playerTwo = intent.getStringExtra("mode").toString()
-        val tvPlayerOne = findViewById<TextView>(R.id.tvPlayerOne)
-        val tvPlayerTwo = findViewById<TextView>(R.id.tvPlayerTwo)
         tvPlayerOne.text = playerOne
         tvPlayerTwo.text = playerTwo
         onPlayerOnePick()
