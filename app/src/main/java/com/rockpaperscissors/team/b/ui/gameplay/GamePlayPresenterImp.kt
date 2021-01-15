@@ -6,11 +6,11 @@ import com.rockpaperscissors.team.b.data.model.Player
 import com.rockpaperscissors.team.b.utils.string
 
 class GamePlayPresenterImp(
-    private val view: GamePlayView,
-    private val context: Context
+    private val view: GamePlayView
 ) : GamePlayPresenter {
     private lateinit var player: Player
     private lateinit var playerTwo: Player
+    private val context = view as Context
     private var weakness =
         mapOf(
             context.string(R.string.scissors) to context.string(R.string.rock),
@@ -31,7 +31,6 @@ class GamePlayPresenterImp(
     }
 
     override fun result() {
-        println(player.bet)
         view.onResult(
             when (player.bet) {
                 playerTwo.bet -> context.string(R.string.draw)
