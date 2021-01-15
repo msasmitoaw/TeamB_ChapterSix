@@ -111,7 +111,7 @@ class GameActivity : AppCompatActivity(), GameView {
             .inflate(R.layout.custom_dialog, null, false)
         val dialogBuilder = AlertDialog.Builder(this)
         dialogBuilder.setView(view)
-        var dialog = dialogBuilder.create()
+        val dialog = dialogBuilder.create()
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
         dialog.setCanceledOnTouchOutside(false)
         dialog.show()
