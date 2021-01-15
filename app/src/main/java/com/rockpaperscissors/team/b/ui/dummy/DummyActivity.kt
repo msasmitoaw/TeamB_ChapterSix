@@ -48,7 +48,7 @@ class DummyActivity : AppCompatActivity() {
         }
 
         scoreShow.setOnClickListener {
-            startActivity(Intent(this,ScoreActivity::class.java))
+            startActivity(Intent(this, ScoreActivity::class.java))
         }
 
         submit.setOnClickListener {
@@ -63,10 +63,12 @@ class DummyActivity : AppCompatActivity() {
                                 gameType = GameType.VSP
                             )
                         ) else {
-                        Score(
-                            playerType = PlayerType.P1,
-                            scoreValue = etScore.text.toString().toInt(),
-                            gameType = GameType.VSCPU
+                        SharedPref.scoreToPref(
+                            Score(
+                                playerType = PlayerType.P1,
+                                scoreValue = etScore.text.toString().toInt(),
+                                gameType = GameType.VSCPU
+                            )
                         )
                     }
                 }

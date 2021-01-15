@@ -27,8 +27,8 @@ class ScoreFragment(private val gameType: GameType) : Fragment(), ScoreView {
 
         val presenter = ScorePresenterImp(this)
         when (gameType) {
-            GameType.VSP -> presenter.getDataRankVsP()
-            GameType.VSCPU -> presenter.getDataRankVsCPU()
+            GameType.VSP -> presenter.getRankVsP()
+            GameType.VSCPU -> presenter.getRankVsCPU()
         }
     }
 

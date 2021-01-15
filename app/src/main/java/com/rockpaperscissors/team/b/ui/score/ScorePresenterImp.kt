@@ -4,15 +4,13 @@ import com.rockpaperscissors.team.b.data.local.SharedPref
 
 class ScorePresenterImp(private val view: ScoreView) : ScorePresenter {
 
-    override fun getDataRankVsP() {
-        val dataScoreVsP = SharedPref.getDataScoreVsP()
-        dataScoreVsP.sortByDescending { it.scoreValue }
+    override fun getRankVsP() {
+        val dataScoreVsP = SharedPref.getRankedScoreVsP()
         view.onSuccess(dataScoreVsP)
     }
 
-    override fun getDataRankVsCPU() {
-        val dataScoreVsCom = SharedPref.getDataScoreVsCPU()
-        dataScoreVsCom.sortByDescending { it.scoreValue }
+    override fun getRankVsCPU() {
+        val dataScoreVsCom = SharedPref.getRankedScoreVsCPU()
         view.onSuccess(dataScoreVsCom)
     }
 

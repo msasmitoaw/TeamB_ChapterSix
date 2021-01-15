@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/window_background"
     android:orientation="vertical"
     tools:context=".ui.score.ScoreActivity">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:tabBackground="@color/window_background"
+        app:tabIconTint="@color/selector_tabscore_icon"
+        app:tabIndicatorAnimationDuration="1400"
+        app:tabIndicatorColor="@android:color/holo_orange_dark"
+        app:tabIndicatorGravity="bottom"
+        app:tabSelectedTextColor="@android:color/holo_orange_dark"
+        app:tabTextColor="@color/black" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vpScore"

@@ -2,7 +2,10 @@ package com.rockpaperscissors.team.b.ui.score
 
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rockpaperscissors.team.b.R
@@ -15,9 +18,14 @@ class ScoreRVAdapter(private val data: MutableList<Score>) :
         LayoutInflater.from(parent.context).inflate(R.layout.score_item_view, parent, false)
     )
 
-    override fun onBindViewHolder(holder: ScoreViewHolder, position: Int) {
-        val model = data[position]
+    override fun onBindViewHolder(holder: ScoreViewHolder, pos: Int) {
+        val model = data[pos]
         holder.bind(model)
+
+        val ivWinner = holder.itemView.findViewById<ImageView>(R.id.ivWinner)
+        if (pos == 0 && (data[0].scoreValue != data[1].scoreValue)) {
+            ivWinner.visibility = VISIBLE
+        } else ivWinner.visibility = INVISIBLE
     }
 
     override fun getItemCount() = data.size

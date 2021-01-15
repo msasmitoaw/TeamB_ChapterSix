@@ -9,5 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue_btn">#99BFE5</color>
     <color name="red_btn">#FB9B9B</color>
-    <color name="lemonchiffon_bg"></color>
+    <color name="window_background">#FEFADB</color>
 </resources>
