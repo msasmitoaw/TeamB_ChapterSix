@@ -3,8 +3,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="app_bg">#FEFADB</color>
-    <color name="blue_btn">#99BFE5</color>
-    <color name="red_btn">#FB9B9B</color>
     <color name="window_background">#FEFADB</color>
-    <color name="dialog_bg">#F0EFEF</color>
 </resources>
