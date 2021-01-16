@@ -1,6 +1,11 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
     <style name="Style1" parent="Theme.MaterialComponents.Light">
         <item name="android:windowBackground">@color/window_background</item>
         <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="Theme.WithActionBar" parent="Theme.MaterialComponents.Light">
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
     </style>
 </resources>

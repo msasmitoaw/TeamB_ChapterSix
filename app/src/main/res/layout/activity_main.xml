@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    tools:ignore="Overdraw">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_player_vs_player"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:contentDescription="@string/pvp"
+            android:src="@drawable/pvp" />
+
+        <ImageView
+            android:id="@+id/iv_player_vs_computer"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:contentDescription="@string/pvc"
+            android:src="@drawable/pvc" />
+
+        <ImageView
+            android:id="@+id/iv_score"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
+            android:contentDescription="@string/score"
+            android:src="@drawable/score" />
+
+        <ImageView
+            android:id="@+id/iv_setting"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
+            android:contentDescription="@string/setting"
+            android:src="@drawable/setting" />
+
+        <ImageView
+            android:id="@+id/iv_about"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
+            android:contentDescription="@string/about"
+            android:src="@drawable/about" />
+    </LinearLayout>
+</ScrollView>

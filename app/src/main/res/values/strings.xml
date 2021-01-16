@@ -1,10 +1,40 @@
 <resources>
-    <!-- Score -->
-    <string name="app_name">BatuGuntingKertas</string>
+    <string name="app_name">Batu Gunting Kertas</string>
+    <string name="scissors_caps">Gunting</string>
+    <string name="rock_caps">Batu</string>
+    <string name="paper_caps">Kertas</string>
+    <string name="draw">Seri\n</string>
+    <string name="player_one_win">Pemain 1\nMenang!</string>
+    <string name="player_two_win">Pemain 2\nMenang!</string>
+    <string name="cpu_win">CPU\nMenang!</string>
+    <string name="result">Hasil</string>
+    <string name="player_one">Putut</string>
+    <string name="player_two">Pemain 2</string>
+    <string name="vs">VS</string>
+    <string name="home">Home</string>
+    <string name="_0">#0</string>
+    <string name="choose">memilih</string>
+    <string name="close">Close</string>
+    <string name="play_again">Main lagi</string>
+    <string name="back_to_menu">Kembali ke menu</string>
+    <string name="cpu">CPU</string>
+    <string name="logo">logo</string>
+    <string name="player_one_rock">player one rock</string>
+    <string name="player_one_scissors">player one scissors</string>
+    <string name="player_one_paper">player one paper</string>
+    <string name="player_two_rock">player two rock</string>
+    <string name="player_two_scissors">player two scissors</string>
+    <string name="player_two_paper">player two paper</string>
+    <string name="pvp">pvp</string>
+    <string name="pvc">pvc</string>
+    <string name="score">score</string>
+    <string name="setting">setting</string>
+    <string name="about">about</string>
+    <string name="wins">\nMenang!</string>
+
     <string name="score_header">Ranking</string>
     <string name="vs_Player">vs Player</string>
     <string name="vs_CPU">vs CPU</string>
-    <!-- Profile page -->
     <string name="profile_header">Akun Pemain</string>
     <string name="name">Nama</string>
     <string name="username">Username</string>
@@ -13,20 +43,18 @@
     <string name="profile_btEdit">Ubah Data</string>
     <string name="profile_btDelete">Hapus Akun</string>
     <string name="profile_btLogout">Logout</string>
-    <!-- Update akun -->
     <string name="profile_update_header">Ubah Data Pemain</string>
     <string name="password_request">Masukkan password terlebih dahulu!</string>
     <string name="save">Simpan</string>
     <string name="cancel">Batal</string>
     <string name="update_success">Ubah data berhasil!</string>
     <string name="update_failed">Password salah! periksa kembali password anda</string>
-    <!-- Hapus akun -->
     <string name="profile_del_confirmation">Yakin akunnya mau dihapus?</string>
     <string name="delete">Yakin dong!</string>
     <string name="profile_del_success">Hapus data berhasil!</string>
-
     <string name="player1">Player 1</string>
     <string name="player2">Player 2</string>
+    <string name="profile_del_failed">Hapus data gagal! silakan coba lagi</string>
     <string name="CPU">CPU</string>
 
 </resources>
