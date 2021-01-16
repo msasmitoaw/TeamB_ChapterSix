@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:orientation="vertical"
-    tools:context=".ui.score.ScoreActivity">
+    tools:context="com.suit.team.b.ui.score.ScoreActivity">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"

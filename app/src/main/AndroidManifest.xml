@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.rockpaperscissors.team.b">
+    package="com.suit.team.b">
 
     <application
-        android:name=".App"
+        android:name="com.suit.team.b.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BatuGuntingKertas">
-
-        <activity android:name=".ui.profile.show.ProfilePageActivity" />
-        <activity android:name=".ui.profile.update.ProfileUpdateActivity" />
-        <activity android:name=".ui.score.ScoreActivity"/>
-        <activity android:name=".ui.dummy.DummyActivity">
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name="com.suit.team.b.ui.profile.show.ProfilePageActivity" />
+        <activity android:name="com.suit.team.b.ui.profile.update.ProfileUpdateActivity" />
+        <activity android:name="com.suit.team.b.ui.score.ScoreActivity"
+            android:theme="@style/Style1"
+            />
+        <activity android:name="com.suit.team.b.ui.dummy.DummyActivity"
+            android:theme="@style/Style1"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

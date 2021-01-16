@@ -1,4 +1,4 @@
-package com.rockpaperscissors.team.b
+package com.suit.team.b
 
 import org.junit.Test
 
