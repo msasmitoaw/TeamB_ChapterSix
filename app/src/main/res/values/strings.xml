@@ -31,4 +31,12 @@
     <string name="setting">setting</string>
     <string name="about">about</string>
     <string name="wins">\nMenang!</string>
+
+    <string name="score_header">Ranking</string>
+    <string name="vs_Player">vs Player</string>
+    <string name="vs_CPU">vs CPU</string>
+    <string name="player1">Player 1</string>
+    <string name="player2">Player 2</string>
+    <string name="CPU">CPU</string>
+
 </resources>
