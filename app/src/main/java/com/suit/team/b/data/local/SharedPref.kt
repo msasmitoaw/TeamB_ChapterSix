@@ -14,7 +14,8 @@ object SharedPref {
     private const val KEY_SCORE_P2 = "KEY_SCORE_P2"
     private const val KEY_SCORE_CPU = "KEY_SCORE_CPU"
 
-    private const val KEY_USERNAME = "USERNAME"
+    private const val KEY_ID = "KEY_ID"
+    private const val KEY_USERNAME = "KEY_USERNAME"
 
     private val pref = App.context?.getSharedPreferences("pref", Context.MODE_PRIVATE)
 
@@ -70,22 +71,11 @@ object SharedPref {
         return scoreRank
     }
 
-    //FOR DUMMY
-    fun getScore(playerType: PlayerType, gameType: GameType? = null): String {
-        return when (playerType) {
-            PlayerType.P1 -> {
-                if (gameType == GameType.VSP) {
-                    pref?.getInt(KEY_SCORE_USER_VSP2, 0).toString()
-                } else {
-                    pref?.getInt(KEY_SCORE_USER_VSCPU, 0).toString()
-                }
-            }
-            PlayerType.P2 -> {
-                pref?.getInt(KEY_SCORE_P2, 0).toString()
-            }
-            PlayerType.CPU -> {
-                pref?.getInt(KEY_SCORE_CPU, 0).toString()
-            }
-        }
+    fun getLoginUserId() : Int? {
+        return pref?.getInt(KEY_ID, 0)
+    }
+
+    fun logout() {
+        pref?.all?.clear()
     }
 }
