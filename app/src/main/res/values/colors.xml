@@ -4,4 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="app_bg">#FEFADB</color>
     <color name="window_background">#FEFADB</color>
+    <color name="dialog_bg">#FEFADB</color>
+    <color name="blue_btn">#9FC1F3</color>
+    <color name="red_btn">#F98383</color>
 </resources>

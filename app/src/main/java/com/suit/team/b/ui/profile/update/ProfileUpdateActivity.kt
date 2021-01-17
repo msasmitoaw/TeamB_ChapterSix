@@ -1,5 +1,8 @@
 package com.suit.team.b.ui.profile.update
 
+import android.annotation.SuppressLint
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
@@ -19,6 +22,7 @@ class ProfileUpdateActivity : AppCompatActivity(), ProfileView {
     private var btSave: Button? = null
     private var btCancel: Button? = null
 
+    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -32,6 +36,7 @@ class ProfileUpdateActivity : AppCompatActivity(), ProfileView {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setTitle(R.string.profile_update_header)
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor(getString(R.color.app_bg))))
 
         btCancel?.setOnClickListener {
             super.onBackPressed()
