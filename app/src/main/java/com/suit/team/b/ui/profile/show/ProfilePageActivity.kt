@@ -10,12 +10,14 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import com.suit.team.b.R
+import com.suit.team.b.data.model.User
 import com.suit.team.b.ui.profile.update.ProfileUpdateActivity
 
 class ProfilePageActivity : AppCompatActivity(), ProfileView {
 
-    private val presenter: ProfilePresenter? = null
+    private var presenter: ProfilePresenter? = null
     private var tvName: TextView? = null
     private var tvUsername: TextView? = null
     private var tvEmail: TextView? = null
@@ -29,6 +31,8 @@ class ProfilePageActivity : AppCompatActivity(), ProfileView {
 
         setContentView(R.layout.profilepage_activity)
 
+        presenter = ProfilePresenterImp(this)
+
         tvName = findViewById(R.id.etName)
         tvUsername = findViewById(R.id.etUsername)
         tvEmail = findViewById(R.id.etEmail)
@@ -40,15 +44,27 @@ class ProfilePageActivity : AppCompatActivity(), ProfileView {
         supportActionBar?.setTitle(R.string.profile_header)
         supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor(getString(R.color.app_bg))))
 
-
         btUpdate?.setOnClickListener {
             startActivity(Intent(this, ProfileUpdateActivity::class.java))
         }
 
+        btLogout?.setOnClickListener {
+            presenter?.logout()
+            this.startActivity(
+                Intent(this, ProfileUpdateActivity::class.java)
+            )
+            finish()
+        }
+
         btDelete?.setOnClickListener {
-            val deleteDialog = DeleteDialogFragment(this)
+            val deleteDialog = DialogFragmentDelete(this)
             deleteDialog.show(supportFragmentManager, null)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        presenter?.showProfile()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -58,11 +74,25 @@ class ProfilePageActivity : AppCompatActivity(), ProfileView {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onSuccess(toastString: String) {
+    override fun onShowSuccess(user: User) {
+        tvName?.text = user.name
+        tvEmail?.text = user.email
+        tvUsername?.text = user.username
+    }
+
+    override fun onShowFailed(toastString: String) {
         Toast.makeText(this, toastString, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onFailed(toastString: String) {
+    override fun onDeleteSuccess(toastString: String) {
+        this.startActivity(
+            Intent(this, ProfileUpdateActivity::class.java),
+            bundleOf(getString(R.string.del_message) to toastString)
+        )
+        finish()
+    }
+
+    override fun onDeleteFailed(toastString: String) {
         Toast.makeText(this, toastString, Toast.LENGTH_SHORT).show()
     }
 }
