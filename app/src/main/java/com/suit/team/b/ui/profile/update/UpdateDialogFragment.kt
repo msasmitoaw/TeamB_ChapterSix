@@ -1,4 +1,4 @@
-package com.rockpaperscissors.team.b.ui.profile.update
+package com.suit.team.b.ui.profile.update
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.DialogFragment
-import com.rockpaperscissors.team.b.R
-import com.rockpaperscissors.team.b.ui.profile.show.ProfileView
+import com.suit.team.b.R
+import com.suit.team.b.ui.profile.show.ProfileView
 
 class UpdateDialogFragment(private val profileView: ProfileView) : DialogFragment() {
 

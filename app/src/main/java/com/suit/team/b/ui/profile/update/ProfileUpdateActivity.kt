@@ -1,4 +1,4 @@
-package com.rockpaperscissors.team.b.ui.profile.update
+package com.suit.team.b.ui.profile.update
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -6,9 +6,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.rockpaperscissors.team.b.R
-import com.rockpaperscissors.team.b.ui.profile.show.ProfilePresenter
-import com.rockpaperscissors.team.b.ui.profile.show.ProfileView
+import com.suit.team.b.R
+import com.suit.team.b.ui.profile.show.ProfilePresenter
+import com.suit.team.b.ui.profile.show.ProfileView
 
 class ProfileUpdateActivity : AppCompatActivity(), ProfileView {
 
