@@ -4,8 +4,6 @@ import androidx.room.*
 
 @Dao
 interface UserDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertUser(userEntity: UserEntity)
 
     @Query("SELECT * FROM Users WHERE id = :id LIMIT 1")
     fun fetchUserById(id: Int): UserEntity

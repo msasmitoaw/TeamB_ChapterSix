@@ -1,7 +1,6 @@
 package com.suit.team.b.ui.profile.show
 
 import android.content.Context
-import android.content.SharedPreferences
 import com.suit.team.b.App
 import com.suit.team.b.R
 import com.suit.team.b.data.local.SharedPref
@@ -16,7 +15,8 @@ class ProfilePresenterImp(private val view: ProfileView) : ProfilePresenter {
 
     override fun showProfile() {
         GlobalScope.launch(Dispatchers.IO) {
-            val userEntity = SharedPref.getLoginUserId()?.let { appDb?.dataUser()?.fetchUserById(it) }
+            val userEntity =
+                SharedPref.getLoginUserId()?.let { appDb?.dataUser()?.fetchUserById(it) }
             launch(Dispatchers.Main) {
                 if (userEntity != null) {
                     val user =
@@ -48,7 +48,7 @@ class ProfilePresenterImp(private val view: ProfileView) : ProfilePresenter {
                 }
             }
         } else {
-            view.onDeleteFailed((this as Context).getString(R.string.profile_del_failed))
+            view.onDeleteFailed((view as Context).getString(R.string.profile_del_failed))
         }
     }
 
