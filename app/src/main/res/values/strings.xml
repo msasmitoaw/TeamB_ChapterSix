@@ -71,6 +71,7 @@
     <string name="profile_btEdit">Ubah Data</string>
     <string name="profile_btDelete">Hapus Akun</string>
     <string name="profile_btLogout">Logout</string>
+    <string name="show_profile_failed">Data tidak ditemukan!</string>
     <!-- Update akun -->
     <string name="profile_update_header">Ubah Data Pemain</string>
     <string name="password_request">Masukkan password terlebih dahulu!</string>
@@ -81,7 +82,9 @@
     <!-- Hapus akun -->
     <string name="profile_del_confirmation">Yakin akunnya mau dihapus?</string>
     <string name="delete">Yakin dong!</string>
-    <string name="profile_del_success">Hapus data berhasil!</string>
+    <string name="profile_del_success">Data berhasil dihapus! Silakan login kembali</string>
     <string name="profile_del_failed">Hapus data gagal! silakan coba lagi</string>
+    <string name="del_message">Message</string>
+
 
 </resources>
