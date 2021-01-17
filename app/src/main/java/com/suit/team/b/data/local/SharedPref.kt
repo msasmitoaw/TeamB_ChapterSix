@@ -4,8 +4,6 @@ import android.content.Context
 import com.suit.team.b.App
 import com.suit.team.b.R
 import com.suit.team.b.data.model.Score
-import com.suit.team.b.utils.GameType
-import com.suit.team.b.utils.PlayerType
 
 object SharedPref {
 
@@ -46,7 +44,7 @@ object SharedPref {
         return scoreRank
     }
 
-    fun getLoginUserId() : Int? {
+    fun getLoginUserId(): Int? {
         return pref?.getInt(KEY_ID, 0)
     }
 

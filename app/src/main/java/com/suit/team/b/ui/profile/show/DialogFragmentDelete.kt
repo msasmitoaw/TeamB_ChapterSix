@@ -23,12 +23,12 @@ class DialogFragmentDelete(private val profileView: ProfileView) : DialogFragmen
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = inflater.inflate(R.layout.delete_dialog, container, false)
+    ): View = inflater.inflate(R.layout.delete_dialog, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btDelete = view.findViewById<Button>(R.id.btDelete)
-        btCancel = view.findViewById<Button>(R.id.btCancel)
+        btDelete = view.findViewById(R.id.btDelete)
+        btCancel = view.findViewById(R.id.btCancel)
 
         btDelete?.setOnClickListener {
             presenter?.deleteProfile()

@@ -17,7 +17,7 @@ import com.suit.team.b.ui.profile.show.ProfilePageActivity
 
 class ProfileUpdateActivity : AppCompatActivity(), UpdateView {
 
-    private val presenter: UpdatePresenter? = null
+    private var presenter: UpdatePresenter? = null
     private var etName: EditText? = null
     private var etUsername: EditText? = null
     private var etEmail: EditText? = null
@@ -29,6 +29,8 @@ class ProfileUpdateActivity : AppCompatActivity(), UpdateView {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.profileupdate_activity)
+
+        presenter = UpdatePresenterImp(this)
 
         etName = findViewById(R.id.etName)
         etUsername = findViewById(R.id.etUsername)
