@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.suit.team.b.R
+import com.suit.team.b.ui.MenuAbout.MainMenuAbout
 import com.suit.team.b.ui.game.GameActivity
 import com.suit.team.b.ui.score.ScoreActivity
 import com.suit.team.b.utils.string
@@ -37,6 +38,8 @@ class MainActivity : AppCompatActivity() {
                     2 -> {
                         startActivity(Intent(this, ScoreActivity::class.java))
                     }
+                    3 -> {}
+                    4 -> startActivity(Intent(this, MainMenuAbout::class.java))
                     else -> finish()
                 }
             }
