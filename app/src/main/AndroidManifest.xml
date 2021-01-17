@@ -9,14 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
-        <activity android:name="com.suit.team.b.ui.main.MainActivity">
+        <activity android:name=".ui.MenuAbout.about.ViewAbout"></activity>
+        <activity android:name=".ui.MenuAbout.MainMenuAbout" />
+        <activity android:name=".ui.HowToPlay.HowToPlayGame" />
+        <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.suit.team.b.ui.game.GameActivity" />
+        <activity android:name=".ui.game.GameActivity" />
     </application>
 
 </manifest>

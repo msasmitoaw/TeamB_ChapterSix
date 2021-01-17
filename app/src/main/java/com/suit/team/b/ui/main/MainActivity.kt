@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.suit.team.b.R
+import com.suit.team.b.ui.MenuAbout.MainMenuAbout
 import com.suit.team.b.ui.game.GameActivity
 import com.suit.team.b.utils.string
 
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         ivAbout.setOnClickListener {
-
+            startActivity(Intent(this, MainMenuAbout::class.java))
         }
     }
 }
