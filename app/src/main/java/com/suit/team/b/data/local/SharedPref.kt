@@ -19,31 +19,6 @@ object SharedPref {
 
     private val pref = App.context?.getSharedPreferences("pref", Context.MODE_PRIVATE)
 
-    fun scoreToPref(score: Score) {
-        when (score.playerType) {
-            PlayerType.P1 -> {
-                if (score.gameType == GameType.VSP) {
-                    pref?.edit()
-                        ?.putInt(KEY_SCORE_USER_VSP2, score.scoreValue ?: 0)
-                        ?.apply()
-                } else {
-                    pref?.edit()
-                        ?.putInt(KEY_SCORE_USER_VSCPU, score.scoreValue ?: 0)
-                        ?.apply()
-                }
-            }
-            PlayerType.P2 -> {
-                pref?.edit()
-                    ?.putInt(KEY_SCORE_P2, score.scoreValue ?: 0)
-                    ?.apply()
-            }
-            PlayerType.CPU -> {
-                pref?.edit()
-                    ?.putInt(KEY_SCORE_CPU, score.scoreValue ?: 0)
-                    ?.apply()
-            }
-        }
-    }
 
     fun getRankedScoreVsP(): MutableList<Score> {
         val nameP1 = pref?.getString(KEY_USERNAME, App.context?.getString(R.string.player1))
