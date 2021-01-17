@@ -8,11 +8,16 @@ import android.widget.Button
 import androidx.fragment.app.DialogFragment
 import com.suit.team.b.R
 
-class DeleteDialogFragment(private val profileView: ProfileView) : DialogFragment(), DialogView {
+class DialogFragmentDelete(private val profileView: ProfileView) : DialogFragment() {
 
-    private var profilePresenter? = null
+    private var presenter: ProfilePresenter? = null
     private var btDelete: Button? = null
     private var btCancel: Button? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        presenter = ProfilePresenterImp(profileView)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,15 +30,9 @@ class DeleteDialogFragment(private val profileView: ProfileView) : DialogFragmen
         btDelete = view.findViewById<Button>(R.id.btDelete)
         btCancel = view.findViewById<Button>(R.id.btCancel)
 
-        profilePresenter = ProfilePresenterImp(profileView)
-
         btDelete?.setOnClickListener {
-            if (true /*PROCESS DELETE HERE*/) {
-                profileView.onSuccess(resources.getString(R.string.profile_del_success))
-                //startActivity(Intent(context?.applicationContext, ScoreActivity::class.java))
-            } else {
-                profileView.onSuccess(resources.getString(R.string.profile_del_failed))
-            }
+            presenter?.deleteProfile()
+            this.dismiss()
         }
 
         btCancel?.setOnClickListener {
