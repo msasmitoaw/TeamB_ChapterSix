@@ -8,8 +8,9 @@ import android.widget.Button
 import androidx.fragment.app.DialogFragment
 import com.suit.team.b.R
 
-class DeleteDialogFragment(private val profileView: ProfileView) : DialogFragment() {
+class DeleteDialogFragment(private val profileView: ProfileView) : DialogFragment(), DialogView {
 
+    private var profilePresenter? = null
     private var btDelete: Button? = null
     private var btCancel: Button? = null
 
@@ -23,6 +24,8 @@ class DeleteDialogFragment(private val profileView: ProfileView) : DialogFragmen
         super.onViewCreated(view, savedInstanceState)
         btDelete = view.findViewById<Button>(R.id.btDelete)
         btCancel = view.findViewById<Button>(R.id.btCancel)
+
+        profilePresenter = ProfilePresenterImp(profileView)
 
         btDelete?.setOnClickListener {
             if (true /*PROCESS DELETE HERE*/) {
