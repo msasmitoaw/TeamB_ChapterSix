@@ -14,8 +14,11 @@ object SharedPref {
     private const val KEY_SCORE_USER_VSCPU = "KEY_SCORE_USER_VSCPU"
     private const val KEY_SCORE_P2 = "KEY_SCORE_P2"
     private const val KEY_SCORE_CPU = "KEY_SCORE_CPU"
-    private const val KEY_USERNAME = "USERNAME"
-    private val pref = App.weakReferenceContext.get()?.getSharedPreferences("pref", Context.MODE_PRIVATE)
+    private const val KEY_USERNAME = "KEY_USERNAME"
+    private const val KEY_ID = "KEY_ID"
+
+    private val pref =
+        App.weakReferenceContext.get()?.getSharedPreferences("pref", Context.MODE_PRIVATE)
 
     fun scoreToPref(playerType: PlayerType, gameType: GameType) {
         when (playerType) {
@@ -24,15 +27,15 @@ object SharedPref {
                     val getScoreUserVsP2 = pref?.getInt(KEY_SCORE_USER_VSP2, 0)
                     val score = getScoreUserVsP2?.plus(1)
                     pref?.edit()
-                            ?.putInt(KEY_SCORE_USER_VSP2, score!!)
-                            ?.apply()
+                        ?.putInt(KEY_SCORE_USER_VSP2, score!!)
+                        ?.apply()
                     Log.d("SharedPref", score.toString())
                 } else {
                     val getScoreUserVsCpu = pref?.getInt(KEY_SCORE_USER_VSCPU, 0)
                     val score = getScoreUserVsCpu!!.plus(1)
                     pref?.edit()
-                            ?.putInt(KEY_SCORE_USER_VSCPU, score)
-                            ?.apply()
+                        ?.putInt(KEY_SCORE_USER_VSCPU, score)
+                        ?.apply()
                     Log.d("SharedPref", score.toString())
                 }
             }
@@ -40,16 +43,16 @@ object SharedPref {
                 val getScoreP2 = pref?.getInt(KEY_SCORE_P2, 0)
                 val score = getScoreP2!!.plus(1)
                 pref?.edit()
-                        ?.putInt(KEY_SCORE_P2, score)
-                        ?.apply()
+                    ?.putInt(KEY_SCORE_P2, score)
+                    ?.apply()
                 Log.d("SharedPref", score.toString())
             }
             PlayerType.CPU -> {
                 val getScoreCpu = pref?.getInt(KEY_SCORE_CPU, 0)
                 val score = getScoreCpu!!.plus(1)
                 pref?.edit()
-                        ?.putInt(KEY_SCORE_CPU, score)
-                        ?.apply()
+                    ?.putInt(KEY_SCORE_CPU, score)
+                    ?.apply()
                 Log.d("SharedPref", score.toString())
             }
         }
@@ -61,8 +64,8 @@ object SharedPref {
         val nameP2 = App.weakReferenceContext.get()?.getString(R.string.player2)
         val scoreValueP2 = pref?.getInt(KEY_SCORE_P2, 0)
         val scoreRank = mutableListOf(
-                Score(name = nameP1, scoreValue = scoreValueP1),
-                Score(name = nameP2, scoreValue = scoreValueP2)
+            Score(name = nameP1, scoreValue = scoreValueP1),
+            Score(name = nameP2, scoreValue = scoreValueP2)
         )
         scoreRank.sortByDescending { it.scoreValue }
         return scoreRank
@@ -74,14 +77,25 @@ object SharedPref {
         val nameCPU = App.weakReferenceContext.get()?.getString(R.string.CPU)
         val scoreValueCPU = pref?.getInt(KEY_SCORE_CPU, 0)
         val scoreRank = mutableListOf(
-                Score(name = nameP1, scoreValue = scoreValueP1),
-                Score(name = nameCPU, scoreValue = scoreValueCPU)
+            Score(name = nameP1, scoreValue = scoreValueP1),
+            Score(name = nameCPU, scoreValue = scoreValueCPU)
         )
         scoreRank.sortByDescending { it.scoreValue }
         return scoreRank
     }
 
     fun getUsername(): String? {
-        return pref?.getString(KEY_USERNAME, App.weakReferenceContext.get()?.getString(R.string.player1))
+        return pref?.getString(
+            KEY_USERNAME,
+            App.weakReferenceContext.get()?.getString(R.string.player1)
+        )
+    }
+
+    fun getLoginUserId(): Int? {
+        return pref?.getInt(KEY_ID, 0)
+    }
+
+    fun logout() {
+        pref?.all?.clear()
     }
 }
