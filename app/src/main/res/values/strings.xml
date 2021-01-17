@@ -64,7 +64,7 @@
 
     <!-- Profile page -->
     <string name="profile_header">Akun Pemain</string>
-    <string name="name">Name</string>
+    <string name="name">Nama</string>
     <string name="username">Username</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
