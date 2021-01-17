@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.suit.team.b.R
-import com.suit.team.b.ui.profile.show.ProfileView
 
-class UpdateDialogFragment(private val profileView: ProfileView) : DialogFragment() {
+class UpdateDialogFragment(private val updateView: UpdateView) : DialogFragment() {
 
     private var btSave: Button? = null
     private var btCancel: Button? = null
@@ -24,20 +24,18 @@ class UpdateDialogFragment(private val profileView: ProfileView) : DialogFragmen
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btSave = view.findViewById<Button>(R.id.btDelete)
-        btCancel = view.findViewById<Button>(R.id.btCancel)
+        btSave = view.findViewById(R.id.btDelete)
+        btCancel = view.findViewById(R.id.btCancel)
 
         btSave?.setOnClickListener {
-            // SHARED PREFERENCE PASSWORD HERE!!!!!
-            if (etPassword?.text.toString() == "password") {
-                profileView.onSuccess(
-                    resources.getString(R.string.update_success)
-                )
-                this.dismiss()
+            if (etPassword?.text?.count() != 0) {
+                updateView.onChangedDataReady(etPassword?.text.toString())
             } else {
-                profileView.onSuccess(
-                    resources.getString(R.string.update_failed)
-                )
+                Toast.makeText(
+                    this.context,
+                    getString(R.string.password_request),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 

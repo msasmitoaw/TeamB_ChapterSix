@@ -1,21 +1,23 @@
 package com.suit.team.b.ui.profile.update
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.suit.team.b.R
-import com.suit.team.b.ui.profile.show.ProfilePresenter
-import com.suit.team.b.ui.profile.show.ProfileView
+import com.suit.team.b.data.model.User
+import com.suit.team.b.ui.profile.show.ProfilePageActivity
 
-class ProfileUpdateActivity : AppCompatActivity(), ProfileView {
+class ProfileUpdateActivity : AppCompatActivity(), UpdateView {
 
-    private val presenter: ProfilePresenter? = null
+    private val presenter: UpdatePresenter? = null
     private var etName: EditText? = null
     private var etUsername: EditText? = null
     private var etEmail: EditText? = null
@@ -44,7 +46,7 @@ class ProfileUpdateActivity : AppCompatActivity(), ProfileView {
 
         btSave?.setOnClickListener {
             val updateDialog = UpdateDialogFragment(this)
-            updateDialog.show(supportFragmentManager,null)
+            updateDialog.show(supportFragmentManager, null)
         }
     }
 
@@ -55,11 +57,26 @@ class ProfileUpdateActivity : AppCompatActivity(), ProfileView {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onSuccess(toastString: String) {
-        Toast.makeText(this, toastString, Toast.LENGTH_SHORT).show()
+    override fun onShowSuccess(user: User) {
+        etName?.setText(user.name, TextView.BufferType.EDITABLE)
+        etEmail?.setText(user.email, TextView.BufferType.EDITABLE)
+        etUsername?.setText(user.email, TextView.BufferType.EDITABLE)
+    }
+
+    override fun onUpdateSuccess() {
+        Toast.makeText(this, getString(R.string.update_success), Toast.LENGTH_SHORT).show()
+        startActivity(Intent(this, ProfilePageActivity::class.java))
+        finish()
     }
 
     override fun onFailed(toastString: String) {
         Toast.makeText(this, toastString, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onChangedDataReady(pass: String) {
+        val name = etName?.text.toString()
+        val email = etEmail?.text.toString()
+        val username = etUsername?.text.toString()
+        presenter?.verifyAndUpdate(name, username, email, pass)
     }
 }
