@@ -77,7 +77,7 @@ class GameActivity : AppCompatActivity(), GameView {
                 setWord(this, "$playerTwo ${string(choose)} ${btn.tag}")
                 btn.onSelected(this)
                 presenter.setPlayerTwo(player)
-                presenter.result()
+                presenter.result(playerTwo)
             }
         }
     }
@@ -95,7 +95,7 @@ class GameActivity : AppCompatActivity(), GameView {
             val btn = findViewById<ImageButton>(i)
             if (btn.tag == playerTwoBet) btn.onSelected(this)
         }
-        presenter.result()
+        presenter.result(playerTwo)
     }
 
     override fun onResult(result: String) {
