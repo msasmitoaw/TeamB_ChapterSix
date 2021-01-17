@@ -16,5 +16,5 @@ fun setWord(context: Context, message: String) {
 }
 
 fun ImageButton.onSelected(context: Context) {
-    background = ContextCompat.getDrawable(context, R.drawable.ic_item_bg)
+    background = ContextCompat.getDrawable(context, R.drawable.item_bg)
 }
