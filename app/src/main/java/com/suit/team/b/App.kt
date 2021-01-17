@@ -2,14 +2,15 @@ package com.suit.team.b
 
 import android.app.Application
 import android.content.Context
+import java.lang.ref.WeakReference
 
 class App : Application() {
     companion object {
-        var context: Context? = null
+        lateinit var weakReferenceContext: WeakReference<Context>
     }
 
     override fun onCreate() {
         super.onCreate()
-        context = applicationContext
+        weakReferenceContext = WeakReference(applicationContext)
     }
 }

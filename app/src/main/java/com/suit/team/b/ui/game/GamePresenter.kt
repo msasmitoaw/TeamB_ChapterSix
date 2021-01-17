@@ -7,5 +7,5 @@ interface GamePresenter {
     fun setPlayerTwo()
     fun getPlayerTwo() : Player
     fun setPlayerTwo(player: Player)
-    fun result()
+    fun result(mode: String)
 }

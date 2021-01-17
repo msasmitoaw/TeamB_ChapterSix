@@ -52,7 +52,7 @@ class GameActivity : AppCompatActivity(), GameView {
     override fun onPlayerOnePick() {
         llPlayerTwo.visibility = View.GONE
         mutableListOf(
-            R.id.btnRockOne, R.id.btnScissorsOne, R.id.btnPaperOne
+                R.id.btnRockOne, R.id.btnScissorsOne, R.id.btnPaperOne
         ).forEachIndexed { _, i ->
             findViewById<ImageButton>(i).setOnClickListener {
                 val btn = it as ImageButton
@@ -69,7 +69,7 @@ class GameActivity : AppCompatActivity(), GameView {
         llPlayerOne.visibility = View.GONE
         llPlayerTwo.visibility = View.VISIBLE
         mutableListOf(
-            R.id.btnRockTwo, R.id.btnScissorsTwo, R.id.btnPaperTwo
+                R.id.btnRockTwo, R.id.btnScissorsTwo, R.id.btnPaperTwo
         ).forEachIndexed { _, i ->
             findViewById<ImageButton>(i).setOnClickListener {
                 val btn = it as ImageButton
@@ -77,7 +77,7 @@ class GameActivity : AppCompatActivity(), GameView {
                 setWord(this, "$playerTwo ${string(choose)} ${btn.tag}")
                 btn.onSelected(this)
                 presenter.setPlayerTwo(player)
-                presenter.result()
+                presenter.result(playerTwo)
             }
         }
     }
@@ -90,12 +90,12 @@ class GameActivity : AppCompatActivity(), GameView {
         val playerTwoBet = presenter.getPlayerTwo().bet
         setWord(this, "$playerTwo ${string(choose)} $playerTwoBet")
         mutableListOf(
-            R.id.btnRockTwo, R.id.btnScissorsTwo, R.id.btnPaperTwo
+                R.id.btnRockTwo, R.id.btnScissorsTwo, R.id.btnPaperTwo
         ).forEachIndexed { _, i ->
             val btn = findViewById<ImageButton>(i)
             if (btn.tag == playerTwoBet) btn.onSelected(this)
         }
-        presenter.result()
+        presenter.result(playerTwo)
     }
 
     override fun onResult(result: String) {
@@ -104,12 +104,16 @@ class GameActivity : AppCompatActivity(), GameView {
         val gameEnd = when (result) {
             string(player_one_win) -> {
                 var count = tvPlayerOneScore.text.toString().replace("#", "").toInt()
-                count++; tvPlayerOneScore.text = "#$count"
+                count++
+                val score = string(_tags) + count
+                tvPlayerOneScore.text = score
                 "$playerOne${string(wins)}"
             }
             string(player_two_win) -> {
                 var count = tvPlayerTwoScore.text.toString().replace("#", "").toInt()
-                count++; tvPlayerTwoScore.text = "#$count"
+                count++
+                val score = string(_tags) + count
+                tvPlayerTwoScore.text = score
                 if (playerTwo == string(cpu)) string(cpu_win)
                 else string(player_two_win)
             }
@@ -118,7 +122,7 @@ class GameActivity : AppCompatActivity(), GameView {
         setWord(this, gameEnd)
 
         val view = LayoutInflater.from(this)
-            .inflate(R.layout.custom_dialog, null, false)
+                .inflate(R.layout.custom_dialog, null, false)
         val dialogBuilder = AlertDialog.Builder(this)
         dialogBuilder.setView(view)
         val dialog = dialogBuilder.create()
@@ -138,8 +142,8 @@ class GameActivity : AppCompatActivity(), GameView {
 
     override fun onRefresh() {
         mutableListOf(
-            R.id.btnRockOne, R.id.btnRockTwo, R.id.btnPaperOne,
-            R.id.btnPaperTwo, R.id.btnScissorsOne, R.id.btnScissorsTwo,
+                R.id.btnRockOne, R.id.btnRockTwo, R.id.btnPaperOne,
+                R.id.btnPaperTwo, R.id.btnScissorsOne, R.id.btnScissorsTwo,
         ).forEachIndexed { _, i ->
             findViewById<ImageButton>(i).background = null
         }

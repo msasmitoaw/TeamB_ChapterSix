@@ -6,57 +6,40 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.suit.team.b.R
 import com.suit.team.b.ui.game.GameActivity
+import com.suit.team.b.ui.score.ScoreActivity
 import com.suit.team.b.utils.string
 
 class MainActivity : AppCompatActivity() {
-    private val ivPlayerVsPlayer: ImageView by lazy(LazyThreadSafetyMode.NONE) {
-        findViewById(R.id.iv_player_vs_player)
-    }
-
-    private val ivPlayerVsComputer: ImageView by lazy(LazyThreadSafetyMode.NONE) {
-        findViewById(R.id.iv_player_vs_computer)
-    }
-
-    private val ivScore: ImageView by lazy(LazyThreadSafetyMode.NONE) {
-        findViewById(R.id.iv_score)
-    }
-
-    private val ivSetting: ImageView by lazy(LazyThreadSafetyMode.NONE) {
-        findViewById(R.id.iv_setting)
-    }
-
-    private val ivAbout: ImageView by lazy(LazyThreadSafetyMode.NONE) {
-        findViewById(R.id.iv_about)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        ivPlayerVsPlayer.setOnClickListener {
-            val intent = Intent(this, GameActivity::class.java)
-            intent.putExtra("mode", string(R.string.player_two))
-            startActivity(intent)
-            finish()
-        }
-
-        ivPlayerVsComputer.setOnClickListener {
-            val intent = Intent(this, GameActivity::class.java)
-            intent.putExtra("mode", string(R.string.cpu))
-            startActivity(intent)
-            finish()
-        }
-
-        ivScore.setOnClickListener {
-
-        }
-
-        ivSetting.setOnClickListener {
-
-        }
-
-        ivAbout.setOnClickListener {
-
+        mutableListOf(
+                R.id.iv_player_vs_player,
+                R.id.iv_player_vs_computer,
+                R.id.iv_score,
+                R.id.iv_setting,
+                R.id.iv_about,
+        ).forEachIndexed { index, i ->
+            findViewById<ImageView>(i).setOnClickListener {
+                when (index) {
+                    0 -> {
+                        val intent = Intent(this, GameActivity::class.java)
+                        intent.putExtra("mode", string(R.string.player_two))
+                        startActivity(intent)
+                        finish()
+                    }
+                    1 -> {
+                        val intent = Intent(this, GameActivity::class.java)
+                        intent.putExtra("mode", string(R.string.cpu))
+                        startActivity(intent)
+                        finish()
+                    }
+                    2 -> {
+                        startActivity(Intent(this, ScoreActivity::class.java))
+                    }
+                    else -> finish()
+                }
+            }
         }
     }
 }
