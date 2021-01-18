@@ -13,22 +13,24 @@
         <activity android:name=".ui.about.AboutActivity" />
         <activity android:name=".ui.menu_about.MenuAboutActivity" />
         <activity android:name=".ui.tutorial.TutorialActivity" />
+        <activity android:name="com.suit.team.b.ui.auth.AuthenticationActivity">
         <activity
             android:name=".ui.score.ScoreActivity"
             android:theme="@style/Style1" />
         <activity android:name="com.suit.team.b.ui.main.MainActivity" />
         <activity
             android:name=".ui.profile.show.ProfilePageActivity"
-            android:theme="@style/Style1">
-
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
+            android:theme="@style/Style1" />
         <activity
             android:name=".ui.profile.update.ProfileUpdateActivity"
             android:theme="@style/Style1" />
+        <activity android:name="com.suit.team.b.ui.auth.AuthenticationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name="com.suit.team.b.ui.game.GameActivity" />
+
     </application>
 </manifest>

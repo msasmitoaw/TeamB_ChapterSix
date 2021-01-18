@@ -15,6 +15,7 @@ object SharedPref {
     private const val KEY_SCORE_P2 = "KEY_SCORE_P2"
     private const val KEY_SCORE_CPU = "KEY_SCORE_CPU"
     private const val KEY_USERNAME = "KEY_USERNAME"
+    private const val KEY_ISLOGIN = "KEY_ISLOGIN"
     private const val KEY_ID = "KEY_ID"
 
     private val pref =
@@ -78,6 +79,28 @@ object SharedPref {
         }
     }
 
+<<<<<<< HEAD
+=======
+    var isLogin: Boolean?
+        get() = pref?.getBoolean(KEY_ISLOGIN, false)
+        set(value) {
+            value?.let {
+                pref?.edit()
+                    ?.putBoolean(KEY_ISLOGIN, it)
+                    ?.apply()
+            }
+        }
+
+    var id: Int?
+        get() = pref?.getInt(KEY_ID,0)
+        set(value) {
+            value?.let {
+                pref?.edit()
+                    ?.putInt(KEY_ID, it)
+                    ?.apply()
+            }
+        }
+>>>>>>> 3f9e517 ([putut] penambahan login dan register)
 
     fun getRankedScoreVsP(): MutableList<Score> {
         val nameP1 = username
