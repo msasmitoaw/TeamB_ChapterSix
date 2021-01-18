@@ -51,15 +51,14 @@ Adapun fitur di dalamnya meliputi :
  d. Mengatur profil pengguna (melakukan update data atau menghapus data pengguna)
 
 Aplikasi ini dibangun guna memenuhi challenge pada Chapter 6 di Binar Academy Wave 4
- dimana proses pembuatannya dilakukan dalam tim dengan menerapkan metode SCRUM. Dibangun dengan arsitektur MVP (Model-View-Presenter), aplikasi ini juga menerapkan fitur penyimpanan seperti seperti SharedPreference dan ORM sehingga diharapkan dapat memberikan pengalaman yang menarik bagi pengguna.</string>
+ dimana proses pembuatannya dilakukan dalam tim dengan menerapkan metode SCRUM. Dibangun dengan arsitektur MVP (Model-View-Presenter), aplikasi ini juga menerapkan fitur penyimpanan seperti SharedPreference dan ORM sehingga diharapkan dapat memberikan pengalaman yang menarik bagi pengguna.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="next">next</string>
     <string name="back">back</string>
     <string name="hallo">HALLO</string>
     <string name="title">Title</string>
-    <string name="gambartutor">GambarTutor</string>
-    <string name="gambarabout">GambarAbout</string>
-    <string name="warnatombol">WarnaTombol</string>
+    <string name="content">description</string>
+    <string name="finish">Finish</string>
 </resources>

@@ -14,15 +14,15 @@ class SecondFragment : Fragment() {
     private var gambar = 0
     private lateinit var listener: (String) -> Unit
 
-    private val ARGPARAM1 = "param1"
-    private val ARGPARAM2 = "param2"
+    private val argParamSatu = "param1"
+    private val argParamDua = "param2"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            desc = it.getString(ARGPARAM1)
-            gambar = it.getInt(ARGPARAM2)
+            desc = it.getString(argParamSatu)
+            gambar = it.getInt(argParamDua)
         }
     }
 
@@ -53,8 +53,8 @@ class SecondFragment : Fragment() {
             SecondFragment().apply {
                 this.listener = listener
                 arguments = Bundle().apply {
-                    putString(ARGPARAM1, param1)
-                    putInt(ARGPARAM2, gambar)
+                    putString(argParamSatu, param1)
+                    putInt(argParamDua, gambar)
                 }
             }
     }

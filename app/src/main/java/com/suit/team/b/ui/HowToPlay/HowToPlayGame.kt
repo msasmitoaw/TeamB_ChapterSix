@@ -14,7 +14,7 @@ class HowToPlayGame : AppCompatActivity() {
     private val vpviewpager2: ViewPager2 by lazy(LazyThreadSafetyMode.NONE) {
         findViewById(R.id.viewpager2)
     }
-    private val didots_indicator: DotsIndicator by lazy(LazyThreadSafetyMode.NONE) {
+    private val didotsIndicator: DotsIndicator by lazy(LazyThreadSafetyMode.NONE) {
         findViewById(R.id.dots_indicator)
     }
     private val btnnext: Button by lazy(LazyThreadSafetyMode.NONE) {
@@ -30,13 +30,13 @@ class HowToPlayGame : AppCompatActivity() {
         }
 
         vpviewpager2.adapter = viewPagerAdapter
-        didots_indicator.setViewPager2(vpviewpager2)
+        didotsIndicator.setViewPager2(vpviewpager2)
 
         btnnext.setOnClickListener {
             if (vpviewpager2.currentItem < 6) {
                 vpviewpager2.currentItem = vpviewpager2.currentItem.plus(1)
             } else if (name != "") {
-                btnnext.text = "Finish"
+                btnnext.text = getString(R.string.finish)
                 finish()
             }
         }
