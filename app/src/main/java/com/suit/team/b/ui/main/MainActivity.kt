@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.suit.team.b.R
+import com.suit.team.b.ui.MenuAbout.MainMenuAbout
 import com.suit.team.b.ui.game.GameActivity
 import com.suit.team.b.ui.score.ScoreActivity
 import com.suit.team.b.utils.string
@@ -14,11 +15,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mutableListOf(
-                R.id.iv_player_vs_player,
-                R.id.iv_player_vs_computer,
-                R.id.iv_score,
-                R.id.iv_setting,
-                R.id.iv_about,
+                R.id.ivPlayerVsPlayer,
+                R.id.ivPlayerVsComputer,
+                R.id.ivScore,
+                R.id.ivSetting,
+                R.id.ivAbout2,
         ).forEachIndexed { index, i ->
             findViewById<ImageView>(i).setOnClickListener {
                 when (index) {
@@ -37,6 +38,8 @@ class MainActivity : AppCompatActivity() {
                     2 -> {
                         startActivity(Intent(this, ScoreActivity::class.java))
                     }
+                    3 -> {}
+                    4 -> startActivity(Intent(this, MainMenuAbout::class.java))
                     else -> finish()
                 }
             }
