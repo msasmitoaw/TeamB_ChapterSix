@@ -31,6 +31,7 @@
     <string name="setting">setting</string>
     <string name="about">about</string>
     <string name="wins">\nMenang!</string>
+    <string name="_tags">#</string>
 
     <string name="score_header">Ranking</string>
     <string name="vs_Player">vs Player</string>

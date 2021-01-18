@@ -5,4 +5,9 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="AppStyle" parent="Theme.Design.NoActionBar">
+        <item name="android:windowBackground">@color/window_background</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
 </resources>
