@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppStyle">
-        <activity android:name="com.suit.team.b.ui.about.AboutActivity"/>
+        <activity android:name=".ui.about.AboutActivity" />
         <activity android:name=".ui.menu_about.MenuAboutActivity" />
         <activity android:name=".ui.tutorial.TutorialActivity" />
         <activity
