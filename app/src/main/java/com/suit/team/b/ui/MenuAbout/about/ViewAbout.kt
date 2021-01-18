@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import androidx.viewpager2.widget.ViewPager2
 import com.suit.team.b.R
 
 class ViewAbout : AppCompatActivity() {

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="60dp"
-        android:src="@drawable/tutorgmbr" />
+        android:src="@drawable/ic_tutorgmbr"/>
 
     <ImageView
         android:id="@+id/icon_about"
@@ -30,8 +29,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:backgroundTint="#F39F9F"
-        android:text="back"
+        android:background="#F39F9F"
+        android:text="@string/back"
         android:textColor="@color/black"
         android:textSize="20sp" />
 

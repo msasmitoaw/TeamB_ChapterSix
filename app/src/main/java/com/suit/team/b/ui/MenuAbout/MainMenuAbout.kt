@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
-import androidx.viewpager2.widget.ViewPager2
 import com.suit.team.b.R
 import com.suit.team.b.ui.HowToPlay.HowToPlayGame
 import com.suit.team.b.ui.MenuAbout.about.ViewAbout

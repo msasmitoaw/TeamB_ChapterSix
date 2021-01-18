@@ -14,15 +14,15 @@ class SecondFragment : Fragment() {
     private var gambar = 0
     private lateinit var listener: (String) -> Unit
 
-    private val ARG_PARAM1 = "param1"
-    private val ARG_PARAM2 = "param2"
+    private val ARGPARAM1 = "param1"
+    private val ARGPARAM2 = "param2"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            desc = it.getString(ARG_PARAM1)
-            gambar = it.getInt(ARG_PARAM2)
+            desc = it.getString(ARGPARAM1)
+            gambar = it.getInt(ARGPARAM2)
         }
     }
 
@@ -40,7 +40,7 @@ class SecondFragment : Fragment() {
 
         text.text = desc
         image.setImageResource(gambar)
-        if (gambar == R.drawable.pvcom2) {
+        if (gambar == R.drawable.ic_pvcom2) {
             listener("akhir")
         } else {
             listener("")
@@ -53,8 +53,8 @@ class SecondFragment : Fragment() {
             SecondFragment().apply {
                 this.listener = listener
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putInt(ARG_PARAM2, gambar)
+                    putString(ARGPARAM1, param1)
+                    putInt(ARGPARAM2, gambar)
                 }
             }
     }

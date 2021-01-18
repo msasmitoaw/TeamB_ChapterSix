@@ -12,37 +12,37 @@ class ViewPagerAdapter(
     private val dataFragments = mutableListOf(
         SecondFragment.newInstance(
             "Tutorial permainan player vs player",
-            R.drawable.pvplayer,
+            R.drawable.ic_pvplayer,
             listener
         ),
         SecondFragment.newInstance(
             "Player pertama memilih terlebih dahulu",
-            R.drawable.pvp1,
+            R.drawable.ic_menupvp,
             listener
         ),
         SecondFragment.newInstance(
             "Kemudian player dua memilih pilihannya",
-            R.drawable.pvp2,
+            R.drawable.ic_menupvp2,
             listener
         ),
         SecondFragment.newInstance(
             "Menampilkan hasil siapa yg menang dan menanyakan main lagi atau kembali ke menu",
-            R.drawable.pvp3,
+            R.drawable.ic_menupvp3,
             listener
         ),
         SecondFragment.newInstance(
             "Tutorial permainan player vs computer",
-            R.drawable.pvcomputer,
+            R.drawable.ic_pvcomputer,
             listener
         ),
         SecondFragment.newInstance(
             "Player pertama memillih terlebih dahulu kemudian komputer merandom pilihannya ",
-            R.drawable.pvcom1,
+            R.drawable.ic_pvcom1,
             listener
         ),
         SecondFragment.newInstance(
             "Menampilkan hasil siapa yg menang dan menanyakan main lagi atau kembali ke menu",
-            R.drawable.pvcom2,
+            R.drawable.ic_pvcom2,
             listener
         ),
     )
