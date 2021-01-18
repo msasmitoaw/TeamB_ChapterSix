@@ -24,11 +24,12 @@ class UpdateDialogFragment(private val updateView: UpdateView) : DialogFragment(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btSave = view.findViewById(R.id.btDelete)
+        btSave = view.findViewById(R.id.btSave)
         btCancel = view.findViewById(R.id.btCancel)
+        etPassword = view.findViewById(R.id.etPassword)
 
         btSave?.setOnClickListener {
-            if (etPassword?.text?.count() != 0) {
+            if (etPassword?.text?.length!! > 0) {
                 updateView.onChangedDataReady(etPassword?.text.toString())
             } else {
                 Toast.makeText(

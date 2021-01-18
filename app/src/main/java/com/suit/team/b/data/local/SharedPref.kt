@@ -52,3 +52,4 @@ object SharedPref {
         pref?.all?.clear()
     }
 }
+

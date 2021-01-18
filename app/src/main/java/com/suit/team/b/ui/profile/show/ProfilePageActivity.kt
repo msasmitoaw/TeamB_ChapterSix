@@ -33,9 +33,9 @@ class ProfilePageActivity : AppCompatActivity(), ProfileView {
 
         presenter = ProfilePresenterImp(this)
 
-        tvName = findViewById(R.id.etName)
-        tvUsername = findViewById(R.id.etUsername)
-        tvEmail = findViewById(R.id.etEmail)
+        tvName = findViewById(R.id.tvName)
+        tvUsername = findViewById(R.id.tvUsername)
+        tvEmail = findViewById(R.id.tvEmail)
         btUpdate = findViewById(R.id.btUpdate)
         btLogout = findViewById(R.id.btLogout)
         btDelete = findViewById(R.id.btDelete)
@@ -60,6 +60,7 @@ class ProfilePageActivity : AppCompatActivity(), ProfileView {
             val deleteDialog = DialogFragmentDelete(this)
             deleteDialog.show(supportFragmentManager, null)
         }
+
     }
 
     override fun onStart() {
@@ -81,6 +82,9 @@ class ProfilePageActivity : AppCompatActivity(), ProfileView {
     }
 
     override fun onShowFailed(toastString: String) {
+        tvName?.text = ""
+        tvEmail?.text = ""
+        tvUsername?.text = ""
         Toast.makeText(this, toastString, Toast.LENGTH_SHORT).show()
     }
 
