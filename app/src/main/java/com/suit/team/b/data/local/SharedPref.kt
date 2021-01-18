@@ -56,7 +56,7 @@ object SharedPref {
     }
 
     fun getRankedScoreVsP(): MutableList<Score> {
-        val nameP1 = pref?.getString(KEY_USERNAME, App.weakReferenceContext.get()?.getString(R.string.player1))
+        val nameP1 = getUsername()
         val scoreValueP1 = pref?.getInt(KEY_SCORE_USER_VSP2, 0)
         val nameP2 = App.weakReferenceContext.get()?.getString(R.string.player2)
         val scoreValueP2 = pref?.getInt(KEY_SCORE_P2, 0)
@@ -69,7 +69,7 @@ object SharedPref {
     }
 
     fun getRankedScoreVsCPU(): MutableList<Score> {
-        val nameP1 = pref?.getString(KEY_USERNAME, App.weakReferenceContext.get()?.getString(R.string.player1))
+        val nameP1 = getUsername()
         val scoreValueP1 = pref?.getInt(KEY_SCORE_USER_VSCPU, 0)
         val nameCPU = App.weakReferenceContext.get()?.getString(R.string.CPU)
         val scoreValueCPU = pref?.getInt(KEY_SCORE_CPU, 0)
@@ -79,5 +79,9 @@ object SharedPref {
         )
         scoreRank.sortByDescending { it.scoreValue }
         return scoreRank
+    }
+
+    fun getUsername(): String? {
+        return pref?.getString(KEY_USERNAME, App.weakReferenceContext.get()?.getString(R.string.player1))
     }
 }
