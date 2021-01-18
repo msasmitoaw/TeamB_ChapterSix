@@ -137,7 +137,8 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="TODO" />
+        android:contentDescription="@string/profile_header"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/btUpdate"
@@ -150,7 +151,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guide1" />
+        app:layout_constraintTop_toBottomOf="@id/guide1"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/btLogout"
@@ -163,7 +165,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btUpdate" />
+        app:layout_constraintTop_toBottomOf="@id/btUpdate"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/btDelete"
@@ -176,7 +179,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btLogout" />
+        app:layout_constraintTop_toBottomOf="@id/btLogout"
+        tools:targetApi="lollipop" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
