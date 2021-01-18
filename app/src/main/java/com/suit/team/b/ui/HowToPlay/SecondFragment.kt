@@ -35,8 +35,8 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val image: ImageView = view.findViewById(R.id.image)
-        val text: TextView = view.findViewById(R.id.title)
+        val image: ImageView = view.findViewById(R.id.ivImage)
+        val text: TextView = view.findViewById(R.id.tvTitle)
 
         text.text = desc
         image.setImageResource(gambar)

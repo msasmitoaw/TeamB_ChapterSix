@@ -12,10 +12,10 @@ class HowToPlayGame : AppCompatActivity() {
     private var name: String = ""
 
     private val vpviewpager2: ViewPager2 by lazy(LazyThreadSafetyMode.NONE) {
-        findViewById(R.id.viewpager2)
+        findViewById(R.id.viewPager2)
     }
     private val didotsIndicator: DotsIndicator by lazy(LazyThreadSafetyMode.NONE) {
-        findViewById(R.id.dots_indicator)
+        findViewById(R.id.dotsIndicator)
     }
     private val btnnext: Button by lazy(LazyThreadSafetyMode.NONE) {
         findViewById(R.id.btnNext)

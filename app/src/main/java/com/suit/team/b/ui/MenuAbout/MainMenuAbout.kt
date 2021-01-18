@@ -25,17 +25,15 @@ class MainMenuAbout : AppCompatActivity() {
         btnback.setOnClickListener {
             finish()
         }
-
-
     }
 
     private val ivtutorial: ImageView by lazy(LazyThreadSafetyMode.NONE) {
-        findViewById(R.id.icon_tutorial)
+        findViewById(R.id.ivTutorial)
     }
     private val ivabout: ImageView by lazy(LazyThreadSafetyMode.NONE) {
-        findViewById(R.id.icon_about)
+        findViewById(R.id.ivAbout)
     }
     private val btnback: Button by lazy(LazyThreadSafetyMode.NONE) {
-        findViewById(R.id.btnbabout)
+        findViewById(R.id.btnBackAbout)
     }
 }

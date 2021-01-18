@@ -10,19 +10,17 @@ class ViewAbout : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_about)
-        tvabout.text = getString(R.string.content_about)
+        tvAbout.text = getString(R.string.content_about)
 
-        btncontent.setOnClickListener {
+        btnContent.setOnClickListener {
             finish()
         }
-
     }
 
-
-    private val tvabout: TextView by lazy(LazyThreadSafetyMode.NONE) {
-        findViewById(R.id.textabout)
+    private val tvAbout: TextView by lazy(LazyThreadSafetyMode.NONE) {
+        findViewById(R.id.textAbout)
     }
-    private val btncontent: Button by lazy(LazyThreadSafetyMode.NONE) {
-        findViewById(R.id.btnbcontent)
+    private val btnContent: Button by lazy(LazyThreadSafetyMode.NONE) {
+        findViewById(R.id.btnBackContent)
     }
 }

@@ -40,18 +40,18 @@
     <string name="player2">Player 2</string>
     <string name="CPU">CPU</string>
 
-    <string name="content_about">Batu gunting kertas adalah aplikasi permainan suit dalam bentuk aplikasi mobile.
-Adapun fitur di dalamnya meliputi :
-1. Registrasi &amp; Login Pengguna
- Pengguna dapat melakukan registrasi data serta login ke aplikasi sehingga hasil permainan dapat tercata dalam aplikasi
-2. Mode Permainan :
- a. Pengguna Vs Pemain 2
- b. Pengguna Vs CPU
- c. Melihat hasil/score permainan
- d. Mengatur profil pengguna (melakukan update data atau menghapus data pengguna)
+    <string name="content_about"><b>\t\tBatu gunting kertas</b> adalah aplikasi permainan suit dalam bentuk aplikasi mobile.\n
+Adapun fitur di dalamnya meliputi :\n\n
+<b>1. Registrasi &amp; Login Pengguna</b>\n
+ \t\tPengguna dapat melakukan registrasi \n\t\tdata serta login ke aplikasi sehingga hasil \n\t\tpermainan dapat tercata dalam aplikasi\n\n
+<b>2. Mode Permainan :</b>\n
+ \t\ta. Pengguna Vs Pemain 2\n
+ \t\tb. Pengguna Vs CPU\n
+ \t\tc. Melihat hasil/score permainan\n
+ \t\td. Mengatur profil pengguna (melakukan \n\t\tupdate data atau menghapus data \n\t\tpengguna)\n\n
 
-Aplikasi ini dibangun guna memenuhi challenge pada Chapter 6 di Binar Academy Wave 4
- dimana proses pembuatannya dilakukan dalam tim dengan menerapkan metode SCRUM. Dibangun dengan arsitektur MVP (Model-View-Presenter), aplikasi ini juga menerapkan fitur penyimpanan seperti SharedPreference dan ORM sehingga diharapkan dapat memberikan pengalaman yang menarik bagi pengguna.</string>
+\t\tAplikasi ini dibangun guna memenuhi challenge pada Chapter 6 di Binar Academy Wave 4
+ dimana proses pembuatannya dilakukan dalam tim dengan menerapkan metode SCRUM.\n\t\tDibangun dengan arsitektur MVP (Model-View-Presenter), aplikasi ini juga menerapkan fitur penyimpanan seperti SharedPreference dan ORM sehingga diharapkan dapat memberikan pengalaman yang menarik bagi pengguna.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 
