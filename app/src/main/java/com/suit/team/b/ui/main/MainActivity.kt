@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.suit.team.b.R
-import com.suit.team.b.ui.MenuAbout.MainMenuAbout
+import com.suit.team.b.ui.menu_about.MenuAboutActivity
 import com.suit.team.b.ui.game.GameActivity
 import com.suit.team.b.ui.score.ScoreActivity
 import com.suit.team.b.utils.string
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                         startActivity(Intent(this, ScoreActivity::class.java))
                     }
                     3 -> {}
-                    4 -> startActivity(Intent(this, MainMenuAbout::class.java))
+                    4 -> startActivity(Intent(this, MenuAboutActivity::class.java))
                     else -> finish()
                 }
             }

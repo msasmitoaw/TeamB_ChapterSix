@@ -1,25 +1,25 @@
-package com.suit.team.b.ui.MenuAbout
+package com.suit.team.b.ui.menu_about
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import com.suit.team.b.R
-import com.suit.team.b.ui.HowToPlay.HowToPlayGame
-import com.suit.team.b.ui.MenuAbout.about.ViewAbout
+import com.suit.team.b.ui.about.AboutActivity
+import com.suit.team.b.ui.tutorial.TutorialActivity
 
-class MainMenuAbout : AppCompatActivity() {
+class MenuAboutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_menu_about)
+        setContentView(R.layout.activity_menu_about)
 
         ivtutorial.setOnClickListener {
-            val intent = Intent(this@MainMenuAbout, HowToPlayGame::class.java)
+            val intent = Intent(this@MenuAboutActivity, TutorialActivity::class.java)
             startActivity(intent)
         }
         ivabout.setOnClickListener {
-            val intent = Intent(this@MainMenuAbout, ViewAbout::class.java)
+            val intent = Intent(this@MenuAboutActivity, AboutActivity::class.java)
             startActivity(intent)
         }
         btnback.setOnClickListener {

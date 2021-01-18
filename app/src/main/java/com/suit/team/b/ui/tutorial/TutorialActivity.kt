@@ -1,4 +1,4 @@
-package com.suit.team.b.ui.HowToPlay
+package com.suit.team.b.ui.tutorial
 
 import android.os.Bundle
 import android.widget.Button
@@ -7,7 +7,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.suit.team.b.R
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 
-class HowToPlayGame : AppCompatActivity() {
+class TutorialActivity : AppCompatActivity() {
 
     private var name: String = ""
 
@@ -23,11 +23,9 @@ class HowToPlayGame : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_how_to_play_game)
+        setContentView(R.layout.activity_tutorial)
 
-        val viewPagerAdapter = ViewPagerAdapter(this) {
-            name = it
-        }
+        val viewPagerAdapter = ViewPagerAdapter(this) { name = it }
 
         vpviewpager2.adapter = viewPagerAdapter
         didotsIndicator.setViewPager2(vpviewpager2)

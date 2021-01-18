@@ -1,4 +1,4 @@
-package com.suit.team.b.ui.HowToPlay
+package com.suit.team.b.ui.tutorial
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -35,8 +35,8 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val image: ImageView = view.findViewById(R.id.ivImage)
-        val text: TextView = view.findViewById(R.id.tvTitle)
+        val image: ImageView = view.findViewById(R.id.ivTutorialItem)
+        val text: TextView = view.findViewById(R.id.tvTutorialTitle)
 
         text.text = desc
         image.setImageResource(gambar)

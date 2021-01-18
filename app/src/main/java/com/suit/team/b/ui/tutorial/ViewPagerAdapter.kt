@@ -1,4 +1,4 @@
-package com.suit.team.b.ui.HowToPlay
+package com.suit.team.b.ui.tutorial
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

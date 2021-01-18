@@ -7,4 +7,5 @@
     <color name="bg_reset">#9fc1f3</color>
     <color name="bg_menu">#f39f9f</color>
     <color name="bg_btn">#616161</color>
+    <color name="btn_pink">#F39F9F</color>
 </resources>
