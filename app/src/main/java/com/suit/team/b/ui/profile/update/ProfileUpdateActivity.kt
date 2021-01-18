@@ -47,9 +47,21 @@ class ProfileUpdateActivity : AppCompatActivity(), UpdateView {
         }
 
         btSave?.setOnClickListener {
-            val updateDialog = UpdateDialogFragment(this)
-            updateDialog.show(supportFragmentManager, null)
+            if (etName?.text?.isBlank() == true ||
+                etUsername?.text?.isBlank() == true ||
+                etEmail?.text?.isBlank() == true
+            ) {
+                Toast.makeText(this, getString(R.string.blank_input), Toast.LENGTH_SHORT).show()
+            } else {
+                val updateDialog = UpdateDialogFragment(this)
+                updateDialog.show(supportFragmentManager, null)
+            }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        presenter?.showProfile()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -62,7 +74,7 @@ class ProfileUpdateActivity : AppCompatActivity(), UpdateView {
     override fun onShowSuccess(user: User) {
         etName?.setText(user.name, TextView.BufferType.EDITABLE)
         etEmail?.setText(user.email, TextView.BufferType.EDITABLE)
-        etUsername?.setText(user.email, TextView.BufferType.EDITABLE)
+        etUsername?.setText(user.username, TextView.BufferType.EDITABLE)
     }
 
     override fun onUpdateSuccess() {

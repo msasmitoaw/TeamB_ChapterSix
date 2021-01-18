@@ -1,6 +1,5 @@
 package com.suit.team.b.ui.profile.show
 
-import android.content.Context
 import com.suit.team.b.App
 import com.suit.team.b.R
 import com.suit.team.b.data.local.SharedPref
@@ -12,12 +11,13 @@ import kotlinx.coroutines.launch
 class ProfilePresenterImp(private val view: ProfileView) : ProfilePresenter {
 
     private val appDb = App.appDb
+    private val appContext = App.context
 
     override fun showProfile() {
+        val id = SharedPref.getLoginUserId()
         GlobalScope.launch(Dispatchers.IO) {
-            val userEntity =
-                SharedPref.getLoginUserId()?.let { appDb?.dataUser()?.fetchUserById(it) }
-            launch(Dispatchers.Main) {
+            val userEntity = appDb?.dataUser()?.fetchUserById(id!!)
+            GlobalScope.launch(Dispatchers.Main) {
                 if (userEntity != null) {
                     val user =
                         User(
@@ -28,7 +28,7 @@ class ProfilePresenterImp(private val view: ProfileView) : ProfilePresenter {
                         )
                     view.onShowSuccess(user)
                 } else {
-                    view.onShowFailed((this as Context).getString(R.string.show_profile_failed))
+                    appContext?.let { view.onShowFailed(it.getString(R.string.show_profile_failed)) }
                 }
             }
         }
@@ -41,14 +41,22 @@ class ProfilePresenterImp(private val view: ProfileView) : ProfilePresenter {
                 val userEntity = appDb?.dataUser()?.deleteUserById(id)
                 launch(Dispatchers.Main) {
                     if (userEntity != null) {
-                        view.onDeleteSuccess((this as Context).getString(R.string.profile_del_success))
+                        appContext?.getString(R.string.profile_del_success)?.let {
+                            view.onDeleteSuccess(
+                                it
+                            )
+                        }
                     } else {
-                        view.onDeleteFailed((this as Context).getString(R.string.profile_del_failed))
+                        appContext?.getString(R.string.profile_del_failed)?.let {
+                            view.onDeleteFailed(
+                                it
+                            )
+                        }
                     }
                 }
             }
         } else {
-            view.onDeleteFailed((view as Context).getString(R.string.profile_del_failed))
+            appContext?.getString(R.string.profile_del_failed)?.let { view.onDeleteFailed(it) }
         }
     }
 

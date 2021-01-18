@@ -16,18 +16,19 @@
         <activity
             android:name=".ui.score.ScoreActivity"
             android:theme="@style/Style1" />
-        <activity android:name="com.suit.team.b.ui.main.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name="com.suit.team.b.ui.main.MainActivity" />
+        <activity
+            android:name=".ui.profile.show.ProfilePageActivity"
+            android:theme="@style/Style1">
+
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
-        <activity android:name=".ui.profile.show.ProfilePageActivity"
-            android:theme="@style/Style1"
-            />
-        <activity android:name=".ui.profile.update.ProfileUpdateActivity"
-            android:theme="@style/Style1"
-            />
+        <activity
+            android:name=".ui.profile.update.ProfileUpdateActivity"
+            android:theme="@style/Style1" />
         <activity android:name="com.suit.team.b.ui.game.GameActivity" />
     </application>
 </manifest>
