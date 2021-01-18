@@ -20,6 +20,26 @@ object SharedPref {
     private val pref =
         App.weakReferenceContext.get()?.getSharedPreferences("pref", Context.MODE_PRIVATE)
 
+    var username: String?
+        get() = pref?.getString(KEY_USERNAME,"")
+        set(username) {
+            username?.let {
+                pref?.edit()
+                    ?.putString(KEY_ID, it)
+                    ?.apply()
+            }
+        }
+
+    var id: Int?
+        get() = pref?.getInt(KEY_ID,0)
+        set(value) {
+            value?.let {
+                pref?.edit()
+                    ?.putInt(KEY_ID, it)
+                    ?.apply()
+            }
+        }
+
     fun scoreToPref(playerType: PlayerType, gameType: GameType) {
         when (playerType) {
             PlayerType.P1 -> {
@@ -58,8 +78,9 @@ object SharedPref {
         }
     }
 
+
     fun getRankedScoreVsP(): MutableList<Score> {
-        val nameP1 = getUsername()
+        val nameP1 = username
         val scoreValueP1 = pref?.getInt(KEY_SCORE_USER_VSP2, 0)
         val nameP2 = App.weakReferenceContext.get()?.getString(R.string.player2)
         val scoreValueP2 = pref?.getInt(KEY_SCORE_P2, 0)
@@ -72,7 +93,7 @@ object SharedPref {
     }
 
     fun getRankedScoreVsCPU(): MutableList<Score> {
-        val nameP1 = getUsername()
+        val nameP1 = username
         val scoreValueP1 = pref?.getInt(KEY_SCORE_USER_VSCPU, 0)
         val nameCPU = App.weakReferenceContext.get()?.getString(R.string.CPU)
         val scoreValueCPU = pref?.getInt(KEY_SCORE_CPU, 0)
@@ -84,19 +105,7 @@ object SharedPref {
         return scoreRank
     }
 
-    fun getUsername(): String? {
-        return pref?.getString(
-            KEY_USERNAME,
-            App.weakReferenceContext.get()?.getString(R.string.player1)
-        )
-    }
-
-    fun getLoginUserId(): Int? {
-        return pref?.getInt(KEY_ID, 0)
-    }
-
     fun logout() {
         pref?.all?.clear()
     }
 }
-
