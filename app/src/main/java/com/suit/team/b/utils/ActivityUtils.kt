@@ -7,6 +7,7 @@ import android.widget.ImageButton
 import android.widget.Toast
 import android.widget.Toast.makeText
 import androidx.core.content.ContextCompat
+import android.widget.EditText
 import com.suit.team.b.R
 
 fun setWord(context: Context, message: String) {
@@ -18,3 +19,5 @@ fun setWord(context: Context, message: String) {
 fun ImageButton.onSelected(context: Context) {
     background = ContextCompat.getDrawable(context, R.drawable.ic_item_bg)
 }
+
+fun EditText.text(): String = text.toString()
