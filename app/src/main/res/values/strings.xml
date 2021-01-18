@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Batu Gunting Kertas</string>
+    <string name="app_name">E-Suit</string>
     <string name="scissors_caps">Gunting</string>
     <string name="rock_caps">Batu</string>
     <string name="paper_caps">Kertas</string>
@@ -40,24 +40,24 @@
     <string name="player2">Player 2</string>
     <string name="CPU">CPU</string>
 
-    <string name="content_about"><b>\t\tBatu gunting kertas</b> adalah aplikasi permainan suit dalam bentuk aplikasi mobile.\n
-Adapun fitur di dalamnya meliputi :\n\n
-<b>1. Registrasi &amp; Login Pengguna</b>\n
- \t\tPengguna dapat melakukan registrasi \n\t\tdata serta login ke aplikasi sehingga hasil \n\t\tpermainan dapat tercata dalam aplikasi\n\n
-<b>2. Mode Permainan :</b>\n
- \t\ta. Pengguna Vs Pemain 2\n
- \t\tb. Pengguna Vs CPU\n
- \t\tc. Melihat hasil/score permainan\n
- \t\td. Mengatur profil pengguna (melakukan \n\t\tupdate data atau menghapus data \n\t\tpengguna)\n\n
-
-\t\tAplikasi ini dibangun guna memenuhi challenge pada Chapter 6 di Binar Academy Wave 4
- dimana proses pembuatannya dilakukan dalam tim dengan menerapkan metode SCRUM.\n\t\tDibangun dengan arsitektur MVP (Model-View-Presenter), aplikasi ini juga menerapkan fitur penyimpanan seperti SharedPreference dan ORM sehingga diharapkan dapat memberikan pengalaman yang menarik bagi pengguna.</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="content_about">
+        <b>\t\tBatu gunting kertas</b> adalah aplikasi permainan suit dalam bentuk aplikasi mobile.
+        \n Adapun fitur di dalamnya meliputi :\n\n<b>1. Registrasi &amp; Login Pengguna</b>
+        \n\t\tPengguna dapat melakukan registrasi \n\t\tdata serta login ke aplikasi sehingga hasil
+        \n\t\tpermainan dapat tercata dalam aplikasi\n\n<b>2. Mode Permainan :</b>
+        \n\t\ta. Pengguna Vs Pemain 2\n\t\tb. Pengguna Vs CPU\n
+        \t\tc. Melihat hasil/score permainan\n\t
+        \td. Mengatur profil pengguna (melakukan \n\t\tupdate data atau menghapus data
+        \n\t\tpengguna)\n\n \t\tAplikasi ini dibangun guna memenuhi challenge pada Chapter 6 di
+        Binar Academy Wave 4 dimana proses pembuatannya dilakukan dalam tim dengan menerapkan metode SCRUM.
+        \n\t\tDibangun dengan arsitektur MVP (Model-View-Presenter),
+        aplikasi ini juga menerapkan fitur penyimpanan seperti SharedPreference dan
+        ORM sehingga diharapkan dapat memberikan pengalaman yang menarik bagi pengguna.
+    </string>
 
     <string name="next">next</string>
     <string name="back">back</string>
-    <string name="hallo">HALLO</string>
+    <string name="lorem">lorem ipsum dolor sit amet</string>
     <string name="title">Title</string>
     <string name="content">description</string>
     <string name="finish">Finish</string>
