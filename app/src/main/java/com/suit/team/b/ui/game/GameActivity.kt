@@ -37,7 +37,7 @@ class GameActivity : AppCompatActivity(), GameView {
         mutableListOf(R.id.btnHome, R.id.btnClose).forEachIndexed { index, i ->
             findViewById<Button>(i).setOnClickListener { if (index == 1) finish() else backToMenu() }
         }
-        playerOne = string(player_one)
+        playerOne = presenter.getPlayerOneName()
         playerTwo = intent.getStringExtra("mode").toString()
         tvPlayerOne.text = playerOne
         tvPlayerTwo.text = playerTwo
