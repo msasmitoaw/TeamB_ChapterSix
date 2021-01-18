@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -25,6 +24,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:autofillHints=""
         android:background="@drawable/et_border"
         android:gravity="start"
         android:hint="@string/name"
@@ -35,8 +35,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvName"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@id/tvName" />
 
     <TextView
         android:id="@+id/tvUsername"
@@ -57,6 +56,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:autofillHints=""
         android:background="@drawable/et_border"
         android:gravity="start"
         android:hint="@string/username"
@@ -67,8 +67,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvUsername"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@id/tvUsername" />
 
     <TextView
         android:id="@+id/tvEmail"
@@ -89,6 +88,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:autofillHints=""
         android:background="@drawable/et_border"
         android:gravity="start"
         android:hint="@string/email"
@@ -99,15 +99,14 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvEmail"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@id/tvEmail" />
 
     <Button
         android:id="@+id/btSave"
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_marginTop="80dp"
-        android:backgroundTint="@color/blue_btn"
+        android:background="@color/blue_btn"
         android:text="@string/save"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -119,7 +118,7 @@
         android:id="@+id/btCancel"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:backgroundTint="@color/red_btn"
+        android:background="@color/red_btn"
         android:text="@string/cancel"
         android:textColor="@color/black"
         android:textStyle="bold"
