@@ -12,7 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import com.suit.team.b.R
-import com.suit.team.b.data.model.User
+import com.suit.team.b.data.model.Users
 import com.suit.team.b.ui.profile.update.ProfileUpdateActivity
 
 class ProfilePageActivity : AppCompatActivity(), ProfileView {
@@ -75,7 +75,7 @@ class ProfilePageActivity : AppCompatActivity(), ProfileView {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onShowSuccess(user: User) {
+    override fun onShowSuccess(user: Users) {
         tvName?.text = user.name
         tvEmail?.text = user.email
         tvUsername?.text = user.username
@@ -90,7 +90,7 @@ class ProfilePageActivity : AppCompatActivity(), ProfileView {
 
     override fun onDeleteSuccess(toastString: String) {
         this.startActivity(
-            Intent(this, ProfileUpdateActivity::class.java),
+            Intent(this, AuthenticationActivity::class.java),
             bundleOf(getString(R.string.del_message) to toastString)
         )
         finish()

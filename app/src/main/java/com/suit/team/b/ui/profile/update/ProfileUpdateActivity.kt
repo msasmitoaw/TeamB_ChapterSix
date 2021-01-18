@@ -12,8 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.suit.team.b.R
-import com.suit.team.b.data.model.User
-import com.suit.team.b.ui.profile.show.ProfilePageActivity
+import com.suit.team.b.data.model.Users
 
 class ProfileUpdateActivity : AppCompatActivity(), UpdateView {
 
@@ -71,7 +70,7 @@ class ProfileUpdateActivity : AppCompatActivity(), UpdateView {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onShowSuccess(user: User) {
+    override fun onShowSuccess(user: Users) {
         etName?.setText(user.name, TextView.BufferType.EDITABLE)
         etEmail?.setText(user.email, TextView.BufferType.EDITABLE)
         etUsername?.setText(user.username, TextView.BufferType.EDITABLE)
@@ -79,7 +78,7 @@ class ProfileUpdateActivity : AppCompatActivity(), UpdateView {
 
     override fun onUpdateSuccess() {
         Toast.makeText(this, getString(R.string.update_success), Toast.LENGTH_SHORT).show()
-        startActivity(Intent(this, ProfilePageActivity::class.java))
+        startActivity(Intent(this, AuthenticationActivity::class.java))
         finish()
     }
 

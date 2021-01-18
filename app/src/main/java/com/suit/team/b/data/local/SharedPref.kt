@@ -11,12 +11,30 @@ object SharedPref {
     private const val KEY_SCORE_USER_VSCPU = "KEY_SCORE_USER_VSCPU"
     private const val KEY_SCORE_P2 = "KEY_SCORE_P2"
     private const val KEY_SCORE_CPU = "KEY_SCORE_CPU"
-
     private const val KEY_ID = "KEY_ID"
-    private const val KEY_USERNAME = "KEY_USERNAME"
+    private const val KEY_USERNAME = "USERNAME"
 
     private val pref = App.context?.getSharedPreferences("pref", Context.MODE_PRIVATE)
 
+    var username: String?
+        get() = pref?.getString(KEY_USERNAME,"")
+        set(username) {
+            username?.let {
+                pref?.edit()
+                    ?.putString(KEY_ID, it)
+                    ?.apply()
+            }
+        }
+
+    var id: Int?
+        get() = pref?.getInt(KEY_ID,0)
+        set(value) {
+            value?.let {
+                pref?.edit()
+                    ?.putInt(KEY_ID, it)
+                    ?.apply()
+            }
+        }
 
     fun getRankedScoreVsP(): MutableList<Score> {
         val nameP1 = pref?.getString(KEY_USERNAME, App.context?.getString(R.string.player1))

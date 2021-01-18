@@ -3,7 +3,7 @@ package com.suit.team.b.ui.profile.show
 import com.suit.team.b.App
 import com.suit.team.b.R
 import com.suit.team.b.data.local.SharedPref
-import com.suit.team.b.data.model.User
+import com.suit.team.b.data.model.Users
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -14,17 +14,18 @@ class ProfilePresenterImp(private val view: ProfileView) : ProfilePresenter {
     private val appContext = App.context
 
     override fun showProfile() {
-        val id = SharedPref.getLoginUserId()
+        val id = SharedPref.id
         GlobalScope.launch(Dispatchers.IO) {
             val userEntity = appDb?.dataUser()?.fetchUserById(id!!)
             GlobalScope.launch(Dispatchers.Main) {
                 if (userEntity != null) {
                     val user =
-                        User(
+                        Users(
                             userEntity.id,
                             userEntity.name,
-                            userEntity.username,
-                            userEntity.email
+                            userEntity.password,
+                            userEntity.email,
+                            userEntity.username
                         )
                     view.onShowSuccess(user)
                 } else {
@@ -35,7 +36,7 @@ class ProfilePresenterImp(private val view: ProfileView) : ProfilePresenter {
     }
 
     override fun deleteProfile() {
-        val id = SharedPref.getLoginUserId()
+        val id = SharedPref.id
         if (id != null) {
             GlobalScope.launch(Dispatchers.IO) {
                 val userEntity = appDb?.dataUser()?.deleteUserById(id)
