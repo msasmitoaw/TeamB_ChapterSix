@@ -48,7 +48,7 @@ class UpdatePresenterImp(private val view: UpdateView) : UpdatePresenter {
     ) {
 
         val currentId = SharedPref.id
-        val currentUName = SharedPref.username
+        val currentUName = SharedPref.name
 
         val newData = currentId?.let { UserEntity(it, name, pass, email, username) }
 
