@@ -30,7 +30,7 @@ class RegisterActivity : AppCompatActivity(), RegisterView {
     }
 
     override fun onError(msg: String) {
-        Toast.makeText(this,msg, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 
     override fun onSuccess() {

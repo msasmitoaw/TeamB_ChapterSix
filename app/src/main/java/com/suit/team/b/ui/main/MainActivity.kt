@@ -16,11 +16,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mutableListOf(
-                R.id.ivPlayerVsPlayer,
-                R.id.ivPlayerVsComputer,
-                R.id.ivScore,
-                R.id.ivSetting,
-                R.id.ivAbout2,
+            R.id.ivPlayerVsPlayer,
+            R.id.ivPlayerVsComputer,
+            R.id.ivScore,
+            R.id.ivSetting,
+            R.id.ivAbout2,
         ).forEachIndexed { index, i ->
             findViewById<ImageView>(i).setOnClickListener {
                 when (index) {
