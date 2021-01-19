@@ -11,7 +11,7 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabBackground="@color/window_background"
+        app:tabBackground="@color/app_bg"
         app:tabIconTint="@color/selector_tabscore_icon"
         app:tabIndicatorAnimationDuration="1400"
         app:tabIndicatorColor="@android:color/holo_orange_dark"

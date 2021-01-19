@@ -2,10 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="app_bg">#FEFADB</color>
-    <color name="window_background">#FEFADB</color>
+
     <color name="dialog_bg">#f0efef</color>
     <color name="bg_reset">#9fc1f3</color>
     <color name="bg_menu">#f39f9f</color>
     <color name="bg_btn">#616161</color>
     <color name="btn_pink">#F39F9F</color>
+
+    <color name="blue_btn">#9FC1F3</color>
+    <color name="red_btn">#F98383</color>
 </resources>
