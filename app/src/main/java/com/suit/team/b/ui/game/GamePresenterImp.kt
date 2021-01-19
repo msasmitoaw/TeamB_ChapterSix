@@ -9,23 +9,23 @@ import com.suit.team.b.utils.PlayerType
 import com.suit.team.b.utils.string
 
 class GamePresenterImp(
-        private val view: GameView
+    private val view: GameView
 ) : GamePresenter {
     private lateinit var player: Player
     private lateinit var playerTwo: Player
     private val context = view as Context
     private var weakness =
-            mapOf(
-                    context.string(R.string.scissors_caps) to context.string(R.string.rock_caps),
-                    context.string(R.string.paper_caps) to context.string(R.string.scissors_caps),
-                    context.string(R.string.rock_caps) to context.string(R.string.paper_caps)
-            )
+        mapOf(
+            context.string(R.string.scissors_caps) to context.string(R.string.rock_caps),
+            context.string(R.string.paper_caps) to context.string(R.string.scissors_caps),
+            context.string(R.string.rock_caps) to context.string(R.string.paper_caps)
+        )
 
     override fun getPlayerTwo(): Player {
         return this.playerTwo
     }
 
-    override fun getPlayerOneName(): String {me
+    override fun getPlayerOneName(): String {
         return SharedPref.name.toString()
     }
 
@@ -50,17 +50,17 @@ class GamePresenterImp(
             else -> GameType.VSP
         }
         view.onResult(
-                when (player.bet) {
-                    playerTwo.bet -> context.string(R.string.draw)
-                    weakness[playerTwo.bet] -> {
-                        SharedPref.scoreToPref(PlayerType.P1, gameType)
-                        context.string(R.string.player_one_win)
-                    }
-                    else -> {
-                        SharedPref.scoreToPref(playerType, gameType)
-                        context.string(R.string.player_two_win)
-                    }
+            when (player.bet) {
+                playerTwo.bet -> context.string(R.string.draw)
+                weakness[playerTwo.bet] -> {
+                    SharedPref.scoreToPref(PlayerType.P1, gameType)
+                    context.string(R.string.player_one_win)
                 }
+                else -> {
+                    SharedPref.scoreToPref(playerType, gameType)
+                    context.string(R.string.player_two_win)
+                }
+            }
         )
     }
 }

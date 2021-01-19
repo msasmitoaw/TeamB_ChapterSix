@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.suit.team.b.R
-import com.suit.team.b.ui.menu_about.MenuAboutActivity
 import com.suit.team.b.ui.game.GameActivity
+import com.suit.team.b.ui.menu_about.MenuAboutActivity
 import com.suit.team.b.ui.profile.show.ProfilePageActivity
 import com.suit.team.b.ui.score.ScoreActivity
 import com.suit.team.b.utils.string
