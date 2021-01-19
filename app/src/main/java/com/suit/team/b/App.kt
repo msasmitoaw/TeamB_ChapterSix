@@ -15,6 +15,14 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        context = applicationContext
+
+        appDb = Room
+                .databaseBuilder(
+                        applicationContext,
+                        User::class.java,
+                        "MyDb"
+                ).build()
         weakReferenceContext = WeakReference(applicationContext)
         context = applicationContext
 
