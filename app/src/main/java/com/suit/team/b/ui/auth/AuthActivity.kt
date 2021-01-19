@@ -11,7 +11,7 @@ import com.suit.team.b.ui.main.MainActivity
 import com.suit.team.b.ui.register.RegisterActivity
 import com.suit.team.b.utils.text
 
-class AuthActivity : AppCompatActivity() , AuthView {
+class AuthActivity : AppCompatActivity(), AuthView {
     private var presenter: AuthPresenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,13 +33,13 @@ class AuthActivity : AppCompatActivity() , AuthView {
 
         btnRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
+            finish()
         }
-
     }
 
     override fun onSuccess(id: Int) {
-        val intent =Intent(this, MainActivity::class.java)
-        intent.putExtra("id",id)
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("id", id)
         startActivity(intent)
         finish()
     }

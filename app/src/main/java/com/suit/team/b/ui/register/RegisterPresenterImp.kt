@@ -8,7 +8,8 @@ import kotlinx.coroutines.launch
 
 class RegisterPresenterImp(private val view: RegisterView) : RegisterPresenter {
     override fun register(username: String, password: String, name: String, email: String) {
-        val newUser = UserEntity(0,name, username, password,email)
+        val newUser =
+            UserEntity(username = username, password = password, name = name, email = email)
         val appDb = App.appDb
 
         GlobalScope.launch(Dispatchers.IO) {
@@ -18,11 +19,10 @@ class RegisterPresenterImp(private val view: RegisterView) : RegisterPresenter {
                 launch(Dispatchers.Main) {
                     view.onError("Username kamu sama!")
                 }
-            } else
-            {
+            } else {
                 appDb?.dataUser()
                     ?.insertUser(newUser)
-                launch (Dispatchers.Main){
+                launch(Dispatchers.Main) {
                     view.onSuccess()
                 }
             }

@@ -88,6 +88,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="sign_in">Sign In</string>
     <string name="player_email">putut@janken.com</string>
+    <string name="not_authenticated_msg">Mohon maaf username dan password salah.</string>
 
 
 </resources>

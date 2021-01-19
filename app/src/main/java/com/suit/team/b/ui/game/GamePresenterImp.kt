@@ -25,8 +25,8 @@ class GamePresenterImp(
         return this.playerTwo
     }
 
-    override fun getPlayerOneName(): String {
-        return SharedPref.username.toString()
+    override fun getPlayerOneName(): String {me
+        return SharedPref.name.toString()
     }
 
     override fun setPlayer(player: Player) {
