@@ -131,12 +131,12 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:baseline="60dp"
+        android:contentDescription="@string/profile_header"
         android:elevation="10dp"
         android:src="@drawable/ic_profile"
         app:layout_constraintBaseline_toBaselineOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="@string/profile_header"
         tools:targetApi="lollipop" />
 
     <Button
