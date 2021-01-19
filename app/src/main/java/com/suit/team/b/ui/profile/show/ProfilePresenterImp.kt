@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 class ProfilePresenterImp(private val view: ProfileView) : ProfilePresenter {
 
     private val appDb = App.appDb
-    private val appContext = App.context
+    private val appContext = App.weakReferenceContext.get()
 
     override fun showProfile() {
         val id = SharedPref.id
@@ -29,7 +29,11 @@ class ProfilePresenterImp(private val view: ProfileView) : ProfilePresenter {
                         )
                     view.onShowSuccess(user)
                 } else {
-                    appContext?.let { view.onShowFailed(it.getString(R.string.show_profile_failed)) }
+                    appContext.let {
+                        view.onShowFailed(
+                            it?.getString(R.string.show_profile_failed).toString()
+                        )
+                    }
                 }
             }
         }
@@ -42,22 +46,19 @@ class ProfilePresenterImp(private val view: ProfileView) : ProfilePresenter {
                 val userEntity = appDb?.dataUser()?.deleteUserById(id)
                 launch(Dispatchers.Main) {
                     if (userEntity != null) {
-                        appContext?.getString(R.string.profile_del_success)?.let {
-                            view.onDeleteSuccess(
-                                it
-                            )
+                        appContext?.getString(R.string.profile_del_success).let {
+                            view.onDeleteSuccess(it.toString())
                         }
                     } else {
-                        appContext?.getString(R.string.profile_del_failed)?.let {
-                            view.onDeleteFailed(
-                                it
-                            )
+                        appContext?.getString(R.string.profile_del_failed).let {
+                            view.onDeleteFailed(it.toString())
                         }
                     }
                 }
             }
         } else {
-            appContext?.getString(R.string.profile_del_failed)?.let { view.onDeleteFailed(it) }
+            appContext?.getString(R.string.profile_del_failed)
+                .let { view.onDeleteFailed(it.toString()) }
         }
     }
 
