@@ -1,6 +1,9 @@
 package com.suit.team.b.ui.profile.show
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
@@ -20,6 +23,7 @@ class ProfilePageActivity : AppCompatActivity(), ProfileView {
     private var btLogout: Button? = null
     private var btDelete: Button? = null
 
+    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -34,6 +38,8 @@ class ProfilePageActivity : AppCompatActivity(), ProfileView {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setTitle(R.string.profile_header)
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor(getString(R.color.app_bg))))
+
 
         btUpdate?.setOnClickListener {
             startActivity(Intent(this, ProfileUpdateActivity::class.java))
