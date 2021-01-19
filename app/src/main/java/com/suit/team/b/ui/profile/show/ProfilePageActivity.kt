@@ -89,10 +89,11 @@ class ProfilePageActivity : AppCompatActivity(), ProfileView {
     }
 
     override fun onDeleteSuccess(toastString: String) {
+        /*
         this.startActivity(
             Intent(this, AuthenticationActivity::class.java),
             bundleOf(getString(R.string.del_message) to toastString)
-        )
+        )*/
         finish()
     }
 
