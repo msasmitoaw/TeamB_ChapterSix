@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.suit.team.b.R
 import com.suit.team.b.data.model.Users
+import com.suit.team.b.ui.auth.AuthActivity
 
 class ProfileUpdateActivity : AppCompatActivity(), UpdateView {
 
@@ -78,7 +79,7 @@ class ProfileUpdateActivity : AppCompatActivity(), UpdateView {
 
     override fun onUpdateSuccess() {
         Toast.makeText(this, getString(R.string.update_success), Toast.LENGTH_SHORT).show()
-        startActivity(Intent(this, AuthenticationActivity::class.java))
+        startActivity(Intent(this, AuthActivity::class.java))
         finish()
     }
 

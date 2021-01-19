@@ -11,11 +11,11 @@ import com.suit.team.b.utils.PlayerType
 object SharedPref {
 
     private const val KEY_SCORE_USER_VSP2 = "KEY_SCORE_USER_VSP2"
-    private const val KEY_SCORE_USER_VSCPU = "KEY_SCORE_USER_VSCPU"
+    private const val KEY_SCORE_USER_VS_CPU = "KEY_SCORE_USER_VS_CPU"
     private const val KEY_SCORE_P2 = "KEY_SCORE_P2"
     private const val KEY_SCORE_CPU = "KEY_SCORE_CPU"
     private const val KEY_USERNAME = "KEY_USERNAME"
-    private const val KEY_ISLOGIN = "KEY_ISLOGIN"
+    private const val KEY_IS_LOGIN = "KEY_IS_LOGIN"
     private const val KEY_ID = "KEY_ID"
 
     private val pref =
@@ -32,11 +32,11 @@ object SharedPref {
         }
 
     var isLogin: Boolean?
-        get() = pref?.getBoolean(KEY_ISLOGIN, false)
+        get() = pref?.getBoolean(KEY_IS_LOGIN, false)
         set(value) {
             value?.let {
                 pref?.edit()
-                        ?.putBoolean(KEY_ISLOGIN, it)
+                        ?.putBoolean(KEY_IS_LOGIN, it)
                         ?.apply()
             }
         }
@@ -61,10 +61,10 @@ object SharedPref {
                             ?.apply()
                     Log.d("SharedPref", score.toString())
                 } else {
-                    val getScoreUserVsCpu = pref?.getInt(KEY_SCORE_USER_VSCPU, 0)
+                    val getScoreUserVsCpu = pref?.getInt(KEY_SCORE_USER_VS_CPU, 0)
                     val score = getScoreUserVsCpu!!.plus(1)
                     pref?.edit()
-                            ?.putInt(KEY_SCORE_USER_VSCPU, score)
+                            ?.putInt(KEY_SCORE_USER_VS_CPU, score)
                             ?.apply()
                     Log.d("SharedPref", score.toString())
                 }
@@ -104,7 +104,7 @@ object SharedPref {
 
     fun getRankedScoreVsCPU(): MutableList<Score> {
         val nameP1 = username
-        val scoreValueP1 = pref?.getInt(KEY_SCORE_USER_VSCPU, 0)
+        val scoreValueP1 = pref?.getInt(KEY_SCORE_USER_VS_CPU, 0)
         val nameCPU = App.weakReferenceContext.get()?.getString(R.string.CPU)
         val scoreValueCPU = pref?.getInt(KEY_SCORE_CPU, 0)
         val scoreRank = mutableListOf(

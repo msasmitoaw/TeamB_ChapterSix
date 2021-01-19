@@ -36,7 +36,6 @@
     <string name="score_header">Ranking</string>
     <string name="vs_Player">vs Player</string>
     <string name="vs_CPU">vs CPU</string>
-    <string name="player1">Player 1</string>
     <string name="player2">Player 2</string>
     <string name="CPU">CPU</string>
 
@@ -86,6 +85,9 @@
     <string name="profile_del_success">Data berhasil dihapus! Silakan login kembali</string>
     <string name="profile_del_failed">Hapus data gagal! silakan coba lagi</string>
     <string name="del_message">Message</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="player_email">putut@janken.com</string>
 
 
 </resources>
