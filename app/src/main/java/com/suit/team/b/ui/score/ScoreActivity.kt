@@ -21,7 +21,7 @@ class ScoreActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setTitle(R.string.score_header)
-        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor(getString(R.color.window_background))))
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor(getString(R.color.app_bg))))
 
         val vp2adapter = ScoreFragmentStateAdapter(this)
         val viewPager2 = findViewById<ViewPager2>(R.id.vpScore)

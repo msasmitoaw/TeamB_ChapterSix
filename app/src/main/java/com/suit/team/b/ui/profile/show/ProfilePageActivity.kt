@@ -51,7 +51,7 @@ class ProfilePageActivity : AppCompatActivity(), ProfileView {
         btLogout?.setOnClickListener {
             presenter?.logout()
             this.startActivity(
-                Intent(this, ProfileUpdateActivity::class.java)
+                Intent(this, AuthenticationActivity::class.java)
             )
             finish()
         }
@@ -89,11 +89,10 @@ class ProfilePageActivity : AppCompatActivity(), ProfileView {
     }
 
     override fun onDeleteSuccess(toastString: String) {
-        /*
         this.startActivity(
             Intent(this, AuthenticationActivity::class.java),
             bundleOf(getString(R.string.del_message) to toastString)
-        )*/
+        )
         finish()
     }
 

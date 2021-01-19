@@ -2,7 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="app_bg">#FEFADB</color>
-    <color name="window_background">#FEFADB</color>
 
     <color name="dialog_bg">#f0efef</color>
     <color name="bg_reset">#9fc1f3</color>

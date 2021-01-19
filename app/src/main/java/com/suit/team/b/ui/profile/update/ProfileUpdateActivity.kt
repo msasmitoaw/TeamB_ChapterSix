@@ -78,7 +78,7 @@ class ProfileUpdateActivity : AppCompatActivity(), UpdateView {
 
     override fun onUpdateSuccess() {
         Toast.makeText(this, getString(R.string.update_success), Toast.LENGTH_SHORT).show()
-        //startActivity(Intent(this, AuthenticationActivity::class.java))
+        startActivity(Intent(this, AuthenticationActivity::class.java))
         finish()
     }
 
