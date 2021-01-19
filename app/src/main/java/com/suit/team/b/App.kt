@@ -2,9 +2,9 @@ package com.suit.team.b
 
 import android.app.Application
 import android.content.Context
-import java.lang.ref.WeakReference
 import androidx.room.Room
 import com.suit.team.b.data.db.AppDb
+import java.lang.ref.WeakReference
 
 class App : Application() {
     companion object {
@@ -15,14 +15,22 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        context = applicationContext
+
+        appDb = Room
+                .databaseBuilder(
+                        applicationContext,
+                        User::class.java,
+                        "MyDb"
+                ).build()
         weakReferenceContext = WeakReference(applicationContext)
         context = applicationContext
 
         appDb = Room
-            .databaseBuilder(
-                applicationContext,
-                AppDb::class.java,
-                "SuitDb"
-            ).build()
+                .databaseBuilder(
+                        applicationContext,
+                        AppDb::class.java,
+                        "SuitDb"
+                ).build()
     }
 }

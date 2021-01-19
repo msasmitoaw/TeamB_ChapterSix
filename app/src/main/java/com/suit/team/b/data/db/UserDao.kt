@@ -8,7 +8,7 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertUser(userEntity: UserEntity)
 
-    @Query("SELECT id,name,username,password,email FROM Users WHERE username = :username and password = :password LIMIT 1")
+    @Query("SELECT id, name, username, password, email FROM Users WHERE username = :username and password = :password LIMIT 1")
     fun checkUserPassword(username: String, password: String): UserEntity
 
     @Query("SELECT * FROM Users WHERE id = :id LIMIT 1")
