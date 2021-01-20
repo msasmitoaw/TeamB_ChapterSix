@@ -24,6 +24,7 @@ class AuthPresenterImp(private val view: AuthView) : AuthPresenter {
                     SharedPref.isLogin = true
                     SharedPref.id = userEntity.id
                     SharedPref.name = userEntity.name
+                    SharedPref.username = userEntity.username
                     view.onSuccess(userEntity.id)
                 } else {
                     view.onError(

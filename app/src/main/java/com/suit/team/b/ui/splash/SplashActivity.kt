@@ -3,6 +3,7 @@ package com.suit.team.b.ui.splash
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.suit.team.b.R
@@ -20,7 +21,7 @@ class SplashActivity : AppCompatActivity(), SplashView {
     }
 
     override fun onLogged() {
-        val handler = Handler()
+        val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
             startActivity(Intent(this, MainActivity::class.java))
             finish()
@@ -28,7 +29,7 @@ class SplashActivity : AppCompatActivity(), SplashView {
     }
 
     override fun unLogged() {
-        val handler = Handler()
+        val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
             val intent = Intent(this, SlideActivity::class.java)
             startActivity(intent)
