@@ -14,8 +14,7 @@
         android:theme="@style/AppStyle">
         <activity android:name=".ui.slide.SlideActivity" />
         <activity
-            android:name=".ui.auth.AuthActivity"
-            android:theme="@style/Style1">
+            android:name=".ui.auth.AuthActivity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

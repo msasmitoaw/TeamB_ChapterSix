@@ -22,27 +22,27 @@ class FirstSegment : Fragment() {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_landingpage, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val title by lazy{view.findViewById<TextView>(R.id.tvTitleLandingPage)}
-        val image1 by lazy{view.findViewById<ImageView>(R.id.ivLandingOne)}
-        val image2 by lazy{view.findViewById<ImageView>(R.id.ivLandingTwo)}
-        val image3 by lazy{view.findViewById<ImageView>(R.id.ivLandingThree)}
+        val title by lazy { view.findViewById<TextView>(R.id.tvTitleLandingPage) }
+        val image1 by lazy { view.findViewById<ImageView>(R.id.ivLandingOne) }
+        val image2 by lazy { view.findViewById<ImageView>(R.id.ivLandingTwo) }
+        val image3 by lazy { view.findViewById<ImageView>(R.id.ivLandingThree) }
         title.text = param1
-        when(param1){
-            "Bermain suit melawan sesama pemain"->{
+        when (param1) {
+            "Bermain suit melawan sesama pemain" -> {
                 image1.visibility = View.VISIBLE
             }
-            "Bermain suit melawan komputer"->{
+            "Bermain suit melawan komputer" -> {
                 image2.visibility = View.VISIBLE
             }
-            "Masuk Permainan"->{
+            "Masuk Permainan" -> {
                 image3.visibility = View.VISIBLE
             }
         }
@@ -51,10 +51,10 @@ class FirstSegment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance(param1: String) =
-                FirstSegment().apply {
-                    arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                    }
+            FirstSegment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
                 }
+            }
     }
 }

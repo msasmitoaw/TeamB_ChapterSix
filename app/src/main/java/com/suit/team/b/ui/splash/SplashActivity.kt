@@ -14,7 +14,7 @@ class SplashActivity : AppCompatActivity(), SplashView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        val ivSplashScreen1 by lazy {this.findViewById<ImageView>(R.id.ivSplashScreen1)}
+        val ivSplashScreen1 by lazy { this.findViewById<ImageView>(R.id.ivSplashScreen1) }
         presenter = SplashPresenterImp(this)
         presenter?.checkIsLogin()
     }
@@ -23,7 +23,8 @@ class SplashActivity : AppCompatActivity(), SplashView {
         val handler = Handler()
         handler.postDelayed({
             startActivity(Intent(this, MainActivity::class.java))
-            finish() }, 3000)
+            finish()
+        }, 3000)
     }
 
     override fun unLogged() {

@@ -25,8 +25,7 @@ class SlideActivity : AppCompatActivity() {
         btnNext.setOnClickListener {
             if (viewpager2.currentItem < 2) {
                 viewpager2.currentItem = viewpager2.currentItem.plus(1)
-            }
-            else{
+            } else {
                 startActivity(Intent(this, AuthActivity::class.java))
                 finish()
             }
