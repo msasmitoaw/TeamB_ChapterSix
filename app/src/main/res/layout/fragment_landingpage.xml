@@ -8,10 +8,10 @@
     tools:context=".ui.slide.FirstSegment">
 
     <ImageView
-        android:id="@+id/image1"
+        android:id="@+id/ivLandingOne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_landingpagepvcom"
+        android:src="@drawable/ic_landing_pvp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:visibility="invisible"
@@ -20,10 +20,10 @@
         android:contentDescription="@string/landing_page_first" />
 
     <ImageView
-        android:id="@+id/image2"
+        android:id="@+id/ivLandingTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_landingpagepvplayer"
+        android:src="@drawable/ic_landing_pvc"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,10 +32,10 @@
         android:contentDescription="@string/landing_page_second" />
 
     <ImageView
-        android:id="@+id/image3"
+        android:id="@+id/ivLandingThree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_landingpagestart"
+        android:src="@drawable/ic_landing_start"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +44,7 @@
         android:contentDescription="@string/landing_page_third" />
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/tvTitleLandingPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -57,7 +57,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/image1"
+        app:layout_constraintTop_toBottomOf="@id/ivLandingOne"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

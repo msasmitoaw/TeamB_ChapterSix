@@ -4,9 +4,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class SlideAdapter (
-        fa: FragmentActivity,
-        listener: (CharSequence) -> Unit
+class SlideAdapter(
+    fa: FragmentActivity
 ) : FragmentStateAdapter(fa) {
     private val dataFragments = mutableListOf(
             FirstSegment.newInstance("Bermain suit melawan sesama pemain"),

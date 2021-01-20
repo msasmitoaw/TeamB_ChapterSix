@@ -17,9 +17,7 @@ class SlideActivity : AppCompatActivity() {
         val viewpager2 by lazy { this.findViewById<ViewPager2>(R.id.viewPager1) }
         val dotsIndicator by lazy { this.findViewById<DotsIndicator>(R.id.diLanding) }
         val btnNext by lazy { this.findViewById<Button>(R.id.btnNext) }
-        val viewPagerAdapter = SlideAdapter(this) {
-            name = it.toString()
-        }
+        val viewPagerAdapter = SlideAdapter(this)
         viewpager2.adapter = viewPagerAdapter
 
         dotsIndicator.setViewPager2(viewpager2)

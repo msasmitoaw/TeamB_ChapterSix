@@ -9,7 +9,6 @@ import com.suit.team.b.R
 import com.suit.team.b.ui.main.MainActivity
 import com.suit.team.b.ui.slide.SlideActivity
 
-
 class SplashActivity : AppCompatActivity(), SplashView {
     private var presenter: SplashPresenter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
