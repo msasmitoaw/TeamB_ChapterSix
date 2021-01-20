@@ -8,7 +8,9 @@
     <color name="bg_menu">#f39f9f</color>
     <color name="bg_btn">#616161</color>
     <color name="btn_pink">#F39F9F</color>
-
     <color name="blue_btn">#9FC1F3</color>
     <color name="red_btn">#F98383</color>
+    <color name="mainBgColor">#ffffff</color>
+    <color name="mainTextColor">#000000</color>
+
 </resources>

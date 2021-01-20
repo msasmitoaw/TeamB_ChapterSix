@@ -86,6 +86,12 @@
     <string name="profile_del_success">Data berhasil dihapus! Silakan login kembali</string>
     <string name="profile_del_failed">Hapus data gagal! silakan coba lagi</string>
     <string name="del_message">Message</string>
+    <!-- Landing Page -->
+    <string name="landing_page_first">Bermain suit melawan sesama pemain</string>
+    <string name="landing_page_second">Bermain suit melawan sesama computer</string>
+    <string name="landing_page_third">Masuk Permainan</string>
+
+
 
 
 </resources>
