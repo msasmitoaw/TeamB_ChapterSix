@@ -48,17 +48,20 @@ class UpdatePresenterImp(private val view: UpdateView) : UpdatePresenter {
     ) {
 
         val currentId = SharedPref.id
-        val currentUName = SharedPref.name
+        val currentUName = SharedPref.username
 
         val newData = currentId?.let { UserEntity(it, name, pass, email, username) }
 
         GlobalScope.launch(Dispatchers.IO) {
             val currentUser = appDb?.dataUser()?.checkUserPassword(currentUName!!, pass)
             if (currentUser != null && currentUser.id == currentId) {
+
                 val updated = appDb?.dataUser()?.updateUser(newData!!)
 
                 GlobalScope.launch(Dispatchers.Main) {
                     if (updated != null && updated == 1) {
+                        SharedPref.username = username
+                        SharedPref.name = name
                         view.onUpdateSuccess()
                     } else {
                         appContext.let {
