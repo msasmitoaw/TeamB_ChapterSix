@@ -100,4 +100,11 @@
     <string name="tutorial_pvp_one">Player pertama memilih terlebih dahulu</string>
     <string name="tutorial_pvp">Tutorial permainan player vs player</string>
     <string name="last">akhir</string>
+    <string name="username_exist">Username telah dipakai!</string>
+    <string name="sign_up_success">Silahkan masuk dengan username dan password anda</string>
+    <string name="email_format_validation">Format Email tidak sesuai!</string>
+    <string name="username_validation">Username tidak boleh kosong!</string>
+    <string name="password_validation">Password tidak boleh kosong!</string>
+    <string name="name_validation">Nama tidak boleh kosong!</string>
+    <string name="email_validation">Email tidak boleh kosong!</string>
 </resources>
