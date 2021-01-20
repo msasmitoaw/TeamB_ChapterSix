@@ -2,13 +2,12 @@ package com.suit.team.b.ui.splash
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
 import com.suit.team.b.R
 import com.suit.team.b.ui.main.MainActivity
 import com.suit.team.b.ui.slide.SlideActivity
-import android.os.Handler
 
 
 class SplashActivity : AppCompatActivity(), SplashView {

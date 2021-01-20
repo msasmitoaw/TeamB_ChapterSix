@@ -117,6 +117,6 @@ object SharedPref {
     }
 
     fun logout() {
-        pref?.all?.clear()
+        pref?.edit()?.clear()?.apply()
     }
 }
