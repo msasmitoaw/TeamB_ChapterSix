@@ -18,9 +18,6 @@ class SplashActivity : AppCompatActivity(), SplashView {
         setContentView(R.layout.activity_splash)
         val ivSplashScreen1 by lazy {this.findViewById<ImageView>(R.id.ivSplashScreen1)}
         presenter = SplashPresenterImp(this)
-        Glide.with(this)
-                .load("https://i.ibb.co/HC5ZPgD/splash-screen1.png")
-                .into(ivSplashScreen1)
         presenter?.checkIsLogin()
     }
 

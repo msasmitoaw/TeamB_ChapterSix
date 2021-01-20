@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.suit.team.b.R
 import com.suit.team.b.data.model.Users
+import com.suit.team.b.ui.auth.AuthenticationActivity
 
 class ProfileUpdateActivity : AppCompatActivity(), UpdateView {
 

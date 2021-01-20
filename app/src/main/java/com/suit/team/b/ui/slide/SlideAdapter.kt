@@ -14,6 +14,6 @@ class SlideAdapter (
             FirstSegment.newInstance("Masuk Permainan")
     )
 
-    override fun getItemCount(): Int = 2
+    override fun getItemCount(): Int = 3
     override fun createFragment(position: Int): Fragment = dataFragments[position]
 }

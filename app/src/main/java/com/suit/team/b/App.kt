@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.suit.team.b.data.db.AppDb
+import com.suit.team.b.data.db.User
 import java.lang.ref.WeakReference
 
 class App : Application() {
@@ -17,12 +18,6 @@ class App : Application() {
         super.onCreate()
         context = applicationContext
 
-        appDb = Room
-                .databaseBuilder(
-                        applicationContext,
-                        User::class.java,
-                        "MyDb"
-                ).build()
         weakReferenceContext = WeakReference(applicationContext)
         context = applicationContext
 
