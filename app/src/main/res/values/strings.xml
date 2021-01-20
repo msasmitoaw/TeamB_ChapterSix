@@ -92,4 +92,12 @@
     <string name="sign_up">Sign Up</string>
     <string name="sign_in">Sign In</string>
     <string name="not_authenticated_msg">Mohon maaf username dan password salah.</string>
+    <string name="tutorial_pvc_two">Menampilkan hasil siapa yg menang dan menanyakan main lagi atau kembali ke menu</string>
+    <string name="tutorial_pvc_one">Player pertama memillih terlebih dahulu kemudian komputer merandom pilihannya.</string>
+    <string name="tutorial_pvc">Tutorial permainan player vs computer</string>
+    <string name="tutorial_pvp_three">Menampilkan hasil siapa yg menang dan menanyakan main lagi atau kembali ke menu</string>
+    <string name="tutorial_pvp_two">Kemudian player dua memilih pilihannya</string>
+    <string name="tutorial_pvp_one">Player pertama memilih terlebih dahulu</string>
+    <string name="tutorial_pvp">Tutorial permainan player vs player</string>
+    <string name="last">akhir</string>
 </resources>

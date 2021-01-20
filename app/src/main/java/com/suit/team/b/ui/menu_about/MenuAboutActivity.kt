@@ -14,26 +14,26 @@ class MenuAboutActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu_about)
 
-        ivtutorial.setOnClickListener {
-            val intent = Intent(this@MenuAboutActivity, TutorialActivity::class.java)
-            startActivity(intent)
+        ivTutorial.setOnClickListener {
+            startActivity(Intent(this@MenuAboutActivity, TutorialActivity::class.java))
+            finish()
         }
-        ivabout.setOnClickListener {
-            val intent = Intent(this@MenuAboutActivity, AboutActivity::class.java)
-            startActivity(intent)
+        ivAbout.setOnClickListener {
+            startActivity(Intent(this@MenuAboutActivity, AboutActivity::class.java))
+            finish()
         }
-        btnback.setOnClickListener {
+        btnBack.setOnClickListener {
             finish()
         }
     }
 
-    private val ivtutorial: ImageView by lazy(LazyThreadSafetyMode.NONE) {
+    private val ivTutorial: ImageView by lazy(LazyThreadSafetyMode.NONE) {
         findViewById(R.id.ivTutorial)
     }
-    private val ivabout: ImageView by lazy(LazyThreadSafetyMode.NONE) {
+    private val ivAbout: ImageView by lazy(LazyThreadSafetyMode.NONE) {
         findViewById(R.id.ivAbout)
     }
-    private val btnback: Button by lazy(LazyThreadSafetyMode.NONE) {
+    private val btnBack: Button by lazy(LazyThreadSafetyMode.NONE) {
         findViewById(R.id.btnBackAbout)
     }
 }

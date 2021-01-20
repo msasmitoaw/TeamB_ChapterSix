@@ -1,5 +1,6 @@
 package com.suit.team.b.ui.tutorial
 
+import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -9,39 +10,40 @@ class ViewPagerAdapter(
     fa: FragmentActivity,
     listener: (String) -> Unit
 ) : FragmentStateAdapter(fa) {
+    private val context = fa as Context
     private val dataFragments = mutableListOf(
-        SecondFragment.newInstance(
-            "Tutorial permainan player vs player",
+        TutorialFragment.newInstance(
+            context.getString(R.string.tutorial_pvp),
             R.drawable.ic_pvplayer,
             listener
         ),
-        SecondFragment.newInstance(
-            "Player pertama memilih terlebih dahulu",
+        TutorialFragment.newInstance(
+            context.getString(R.string.tutorial_pvp_one),
             R.drawable.ic_menupvp,
             listener
         ),
-        SecondFragment.newInstance(
-            "Kemudian player dua memilih pilihannya",
+        TutorialFragment.newInstance(
+            context.getString(R.string.tutorial_pvp_two),
             R.drawable.ic_menupvp2,
             listener
         ),
-        SecondFragment.newInstance(
-            "Menampilkan hasil siapa yg menang dan menanyakan main lagi atau kembali ke menu",
+        TutorialFragment.newInstance(
+            context.getString(R.string.tutorial_pvp_three),
             R.drawable.ic_menupvp3,
             listener
         ),
-        SecondFragment.newInstance(
-            "Tutorial permainan player vs computer",
+        TutorialFragment.newInstance(
+            context.getString(R.string.tutorial_pvc),
             R.drawable.ic_pvcomputer,
             listener
         ),
-        SecondFragment.newInstance(
-            "Player pertama memillih terlebih dahulu kemudian komputer merandom pilihannya ",
+        TutorialFragment.newInstance(
+            context.getString(R.string.tutorial_pvc_one),
             R.drawable.ic_pvcom1,
             listener
         ),
-        SecondFragment.newInstance(
-            "Menampilkan hasil siapa yg menang dan menanyakan main lagi atau kembali ke menu",
+        TutorialFragment.newInstance(
+            context.getString(R.string.tutorial_pvc_two),
             R.drawable.ic_pvcom2,
             listener
         ),
