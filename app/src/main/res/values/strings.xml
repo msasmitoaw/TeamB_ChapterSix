@@ -1,3 +1,110 @@
 <resources>
-    <string name="app_name">BatuGuntingKertas</string>
+    <string name="app_name">E-Suit</string>
+    <string name="scissors_caps">Gunting</string>
+    <string name="rock_caps">Batu</string>
+    <string name="paper_caps">Kertas</string>
+    <string name="draw">Seri\n</string>
+    <string name="player_one_win">Pemain 1\nMenang!</string>
+    <string name="player_two_win">Pemain 2\nMenang!</string>
+    <string name="cpu_win">CPU\nMenang!</string>
+    <string name="result">Hasil</string>
+    <string name="player_one">Putut</string>
+    <string name="player_two">Pemain 2</string>
+    <string name="vs">VS</string>
+    <string name="home">Home</string>
+    <string name="_0">#0</string>
+    <string name="choose">memilih</string>
+    <string name="close">Close</string>
+    <string name="play_again">Main lagi</string>
+    <string name="back_to_menu">Kembali ke menu</string>
+    <string name="cpu">CPU</string>
+    <string name="logo">logo</string>
+    <string name="player_one_rock">player one rock</string>
+    <string name="player_one_scissors">player one scissors</string>
+    <string name="player_one_paper">player one paper</string>
+    <string name="player_two_rock">player two rock</string>
+    <string name="player_two_scissors">player two scissors</string>
+    <string name="player_two_paper">player two paper</string>
+    <string name="pvp">pvp</string>
+    <string name="pvc">pvc</string>
+    <string name="score">score</string>
+    <string name="setting">setting</string>
+    <string name="about">about</string>
+    <string name="wins">\nMenang!</string>
+    <string name="_tags">#</string>
+
+    <string name="score_header">Ranking</string>
+    <string name="vs_Player">vs Player</string>
+    <string name="vs_CPU">vs CPU</string>
+    <string name="player2">Player 2</string>
+    <string name="CPU">CPU</string>
+
+    <string name="content_about">
+        <b>\t\tBatu gunting kertas</b> adalah aplikasi permainan suit dalam bentuk aplikasi mobile.
+        \n Adapun fitur di dalamnya meliputi :\n\n<b>1. Registrasi &amp; Login Pengguna</b>
+        \n\t\tPengguna dapat melakukan registrasi \n\t\tdata serta login ke aplikasi sehingga hasil
+        \n\t\tpermainan dapat tercata dalam aplikasi\n\n<b>2. Mode Permainan :</b>
+        \n\t\ta. Pengguna Vs Pemain 2\n\t\tb. Pengguna Vs CPU\n
+        \t\tc. Melihat hasil/score permainan\n\t
+        \td. Mengatur profil pengguna (melakukan \n\t\tupdate data atau menghapus data
+        \n\t\tpengguna)\n\n \t\tAplikasi ini dibangun guna memenuhi challenge pada Chapter 6 di
+        Binar Academy Wave 4 dimana proses pembuatannya dilakukan dalam tim dengan menerapkan metode SCRUM.
+        \n\t\tDibangun dengan arsitektur MVP (Model-View-Presenter),
+        aplikasi ini juga menerapkan fitur penyimpanan seperti SharedPreference dan
+        ORM sehingga diharapkan dapat memberikan pengalaman yang menarik bagi pengguna.
+    </string>
+
+    <string name="next">next</string>
+    <string name="back">back</string>
+    <string name="lorem">lorem ipsum dolor sit amet</string>
+    <string name="title">Title</string>
+    <string name="content">description</string>
+    <string name="finish">Finish</string>
+
+    <!-- Profile page -->
+    <string name="profile_header">Akun Pemain</string>
+    <string name="name">Nama</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="profile_btEdit">Ubah Data</string>
+    <string name="profile_btDelete">Hapus Akun</string>
+    <string name="profile_btLogout">Logout</string>
+    <string name="show_profile_failed">Data tidak ditemukan!</string>
+    <!-- Update akun -->
+    <string name="profile_update_header">Ubah Data Pemain</string>
+    <string name="password_request">Masukkan password terlebih dahulu!</string>
+    <string name="save">Simpan</string>
+    <string name="cancel">Batal</string>
+    <string name="update_success">Ubah data berhasil!</string>
+    <string name="update_failed">Password/Username salah! periksa kembali</string>
+    <string name="blank_input">Input tidak boleh kosong!</string>
+    <!-- Hapus akun -->
+    <string name="profile_del_confirmation">Yakin akunnya mau dihapus?</string>
+    <string name="delete">Yakin dong!</string>
+    <string name="profile_del_success">Data berhasil dihapus! Silakan login kembali</string>
+    <string name="profile_del_failed">Hapus data gagal! silakan coba lagi</string>
+    <string name="del_message">Message</string>
+    <!-- Landing Page -->
+    <string name="landing_page_first">Bermain suit melawan sesama pemain</string>
+    <string name="landing_page_second">Bermain suit melawan sesama computer</string>
+    <string name="landing_page_third">Masuk Permainan</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="not_authenticated_msg">Mohon maaf username dan password salah.</string>
+    <string name="tutorial_pvc_two">Menampilkan hasil siapa yg menang dan menanyakan main lagi atau kembali ke menu</string>
+    <string name="tutorial_pvc_one">Player pertama memillih terlebih dahulu kemudian komputer merandom pilihannya.</string>
+    <string name="tutorial_pvc">Tutorial permainan player vs computer</string>
+    <string name="tutorial_pvp_three">Menampilkan hasil siapa yg menang dan menanyakan main lagi atau kembali ke menu</string>
+    <string name="tutorial_pvp_two">Kemudian player dua memilih pilihannya</string>
+    <string name="tutorial_pvp_one">Player pertama memilih terlebih dahulu</string>
+    <string name="tutorial_pvp">Tutorial permainan player vs player</string>
+    <string name="last">akhir</string>
+    <string name="username_exist">Username telah dipakai!</string>
+    <string name="sign_up_success">Silahkan masuk dengan username dan password anda</string>
+    <string name="email_format_validation">Format Email tidak sesuai!</string>
+    <string name="username_validation">Username tidak boleh kosong!</string>
+    <string name="password_validation">Password tidak boleh kosong!</string>
+    <string name="name_validation">Nama tidak boleh kosong!</string>
+    <string name="email_validation">Email tidak boleh kosong!</string>
 </resources>
