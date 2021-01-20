@@ -11,4 +11,6 @@
     <color name="red_btn">#F98383</color>
     <color name="mainBgColor">#ffffff</color>
     <color name="mainTextColor">#000000</color>
+    <color name="pb_blue_dark">#1976D2</color>
+    <color name="pb_blue">#64B5F6</color>
 </resources>
