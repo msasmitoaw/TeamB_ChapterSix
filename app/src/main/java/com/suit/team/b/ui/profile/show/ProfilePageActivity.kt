@@ -13,7 +13,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import com.suit.team.b.R
 import com.suit.team.b.data.model.Users
-import com.suit.team.b.ui.auth.AuthenticationActivity
+
+import com.suit.team.b.ui.auth.AuthActivity
 import com.suit.team.b.ui.profile.update.ProfileUpdateActivity
 
 class ProfilePageActivity : AppCompatActivity(), ProfileView {
@@ -52,7 +53,7 @@ class ProfilePageActivity : AppCompatActivity(), ProfileView {
         btLogout?.setOnClickListener {
             presenter?.logout()
             this.startActivity(
-                Intent(this, AuthenticationActivity::class.java)
+                Intent(this, AuthActivity::class.java)
             )
             finish()
         }
@@ -91,7 +92,7 @@ class ProfilePageActivity : AppCompatActivity(), ProfileView {
 
     override fun onDeleteSuccess(toastString: String) {
         this.startActivity(
-            Intent(this, AuthenticationActivity::class.java),
+            Intent(this, AuthActivity::class.java),
             bundleOf(getString(R.string.del_message) to toastString)
         )
         finish()

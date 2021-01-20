@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 class UpdatePresenterImp(private val view: UpdateView) : UpdatePresenter {
 
     private val appDb = App.appDb
-    private val appContext = App.context
+    private val appContext = App.weakReferenceContext.get()
 
     override fun showProfile() {
         val id = SharedPref.id
@@ -30,7 +30,11 @@ class UpdatePresenterImp(private val view: UpdateView) : UpdatePresenter {
                         )
                     view.onShowSuccess(user)
                 } else {
-                    appContext?.let { view.onFailed(it.getString(R.string.show_profile_failed)) }
+                    appContext.let {
+                        view.onFailed(
+                            it?.getString(R.string.show_profile_failed).toString()
+                        )
+                    }
                 }
             }
         }
@@ -44,7 +48,7 @@ class UpdatePresenterImp(private val view: UpdateView) : UpdatePresenter {
     ) {
 
         val currentId = SharedPref.id
-        val currentUName = SharedPref.username
+        val currentUName = SharedPref.name
 
         val newData = currentId?.let { UserEntity(it, name, pass, email, username) }
 
@@ -57,12 +61,20 @@ class UpdatePresenterImp(private val view: UpdateView) : UpdatePresenter {
                     if (updated != null && updated == 1) {
                         view.onUpdateSuccess()
                     } else {
-                        appContext?.let { view.onFailed(it.getString(R.string.update_failed)) }
+                        appContext.let {
+                            view.onFailed(
+                                it?.getString(R.string.update_failed).toString()
+                            )
+                        }
                     }
                 }
             } else {
                 GlobalScope.launch(Dispatchers.Main) {
-                    appContext?.let { view.onFailed(it.getString(R.string.update_failed)) }
+                    appContext.let {
+                        view.onFailed(
+                            it?.getString(R.string.update_failed).toString()
+                        )
+                    }
                 }
             }
         }

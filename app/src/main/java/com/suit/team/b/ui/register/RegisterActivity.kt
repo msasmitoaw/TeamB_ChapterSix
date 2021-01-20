@@ -7,8 +7,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.suit.team.b.R
-import com.suit.team.b.ui.auth.AuthenticationActivity
-import com.suit.team.b.ui.main.MainActivity
+import com.suit.team.b.ui.auth.AuthActivity
 import com.suit.team.b.utils.text
 
 class RegisterActivity : AppCompatActivity(), RegisterView {
@@ -31,11 +30,11 @@ class RegisterActivity : AppCompatActivity(), RegisterView {
     }
 
     override fun onError(msg: String) {
-        Toast.makeText(this,msg, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 
     override fun onSuccess() {
-        val intent = Intent(this, AuthenticationActivity::class.java)
+        val intent = Intent(this, AuthActivity::class.java)
         startActivity(intent)
         finish()
     }

@@ -11,13 +11,13 @@ import com.suit.team.b.ui.main.MainActivity
 import com.suit.team.b.ui.register.RegisterActivity
 import com.suit.team.b.utils.text
 
-class AuthenticationActivity : AppCompatActivity() , AuthenticView {
-    private var presenter: AuthenticPresenter? = null
+class AuthActivity : AppCompatActivity(), AuthView {
+    private var presenter: AuthPresenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-        presenter = AuthenticPresenterImp(this)
+        setContentView(R.layout.activity_auth)
+        presenter = AuthPresenterImp(this)
         if (presenter?.checkIsLogin() == true) {
             presenter?.getId()?.let { onSuccess(it) }
         }
@@ -33,13 +33,13 @@ class AuthenticationActivity : AppCompatActivity() , AuthenticView {
 
         btnRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
+            finish()
         }
-
     }
 
     override fun onSuccess(id: Int) {
-        val intent =Intent(this, MainActivity::class.java)
-        intent.putExtra("id",id)
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("id", id)
         startActivity(intent)
         finish()
     }

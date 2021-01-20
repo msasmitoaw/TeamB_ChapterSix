@@ -3,11 +3,11 @@ package com.suit.team.b.utils
 import android.app.Activity
 import android.content.Context
 import android.util.Log
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import android.widget.Toast.makeText
 import androidx.core.content.ContextCompat
-import android.widget.EditText
 import com.suit.team.b.R
 
 fun setWord(context: Context, message: String) {

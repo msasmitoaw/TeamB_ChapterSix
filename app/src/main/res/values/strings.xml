@@ -36,7 +36,6 @@
     <string name="score_header">Ranking</string>
     <string name="vs_Player">vs Player</string>
     <string name="vs_CPU">vs CPU</string>
-    <string name="player1">Player 1</string>
     <string name="player2">Player 2</string>
     <string name="CPU">CPU</string>
 
@@ -90,8 +89,8 @@
     <string name="landing_page_first">Bermain suit melawan sesama pemain</string>
     <string name="landing_page_second">Bermain suit melawan sesama computer</string>
     <string name="landing_page_third">Masuk Permainan</string>
-
-
-
-
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="player_email">putut@janken.com</string>
+    <string name="not_authenticated_msg">Mohon maaf username dan password salah.</string>
 </resources>
