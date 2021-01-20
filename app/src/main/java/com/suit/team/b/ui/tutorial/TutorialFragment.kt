@@ -9,20 +9,20 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.suit.team.b.R
 
-class SecondFragment : Fragment() {
+class TutorialFragment : Fragment() {
     private var desc: String? = null
     private var gambar = 0
     private lateinit var listener: (String) -> Unit
 
-    private val argParamSatu = "param1"
-    private val argParamDua = "param2"
+    private val argParamOne = "param1"
+    private val argParamTwo = "param2"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            desc = it.getString(argParamSatu)
-            gambar = it.getInt(argParamDua)
+            desc = it.getString(argParamOne)
+            gambar = it.getInt(argParamTwo)
         }
     }
 
@@ -30,7 +30,7 @@ class SecondFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_second, container, false)
+        return inflater.inflate(R.layout.fragment_tutorial, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,7 +41,7 @@ class SecondFragment : Fragment() {
         text.text = desc
         image.setImageResource(gambar)
         if (gambar == R.drawable.ic_pvcom2) {
-            listener("akhir")
+            listener(getString(R.string.last))
         } else {
             listener("")
         }
@@ -50,11 +50,11 @@ class SecondFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance(param1: String, gambar: Int, listener: (String) -> Unit) =
-            SecondFragment().apply {
+            TutorialFragment().apply {
                 this.listener = listener
                 arguments = Bundle().apply {
-                    putString(argParamSatu, param1)
-                    putInt(argParamDua, gambar)
+                    putString(argParamOne, param1)
+                    putInt(argParamTwo, gambar)
                 }
             }
     }
