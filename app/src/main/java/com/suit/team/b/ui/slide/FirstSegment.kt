@@ -26,7 +26,7 @@ class FirstSegment : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_second, container, false)
+        return inflater.inflate(R.layout.fragment_landingpage, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

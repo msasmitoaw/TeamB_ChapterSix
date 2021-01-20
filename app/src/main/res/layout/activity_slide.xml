@@ -8,7 +8,7 @@
     tools:context=".ui.slide.SlideActivity">
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewpager2"
+        android:id="@+id/viewPager1"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
-        android:id="@+id/dots_indicator"
+        android:id="@+id/diLanding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:dotsColor="#98C2EF"
@@ -49,7 +49,7 @@
         android:textColor="@color/mainBgColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/dots_indicator"
+        app:layout_constraintStart_toEndOf="@id/diLanding"
         app:layout_constraintTop_toBottomOf="@id/gl1" />
 
 
