@@ -16,5 +16,5 @@ data class UserEntity(
     @ColumnInfo(name = "email")
     val email: String,
     @ColumnInfo(name = "username")
-    val username: String
+    val username: String,
 )

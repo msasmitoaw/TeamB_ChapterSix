@@ -7,5 +7,5 @@ data class Score(
     val name: String? = null,
     val playerType: PlayerType? = null,
     val scoreValue: Int? = null,
-    val gameType: GameType? = null
+    val gameType: GameType? = null,
 )

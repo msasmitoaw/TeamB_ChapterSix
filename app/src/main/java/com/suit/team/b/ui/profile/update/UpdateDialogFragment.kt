@@ -19,7 +19,7 @@ class UpdateDialogFragment(private val updateView: UpdateView) : DialogFragment(
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View = inflater.inflate(R.layout.update_dialog, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

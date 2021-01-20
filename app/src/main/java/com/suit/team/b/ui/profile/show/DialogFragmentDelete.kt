@@ -22,7 +22,7 @@ class DialogFragmentDelete(private val profileView: ProfileView) : DialogFragmen
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View = inflater.inflate(R.layout.delete_dialog, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

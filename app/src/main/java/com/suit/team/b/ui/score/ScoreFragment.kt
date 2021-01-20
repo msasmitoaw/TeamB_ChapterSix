@@ -19,7 +19,7 @@ class ScoreFragment(private val gameType: GameType) : Fragment(), ScoreView {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? = inflater.inflate(R.layout.score_fragment, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

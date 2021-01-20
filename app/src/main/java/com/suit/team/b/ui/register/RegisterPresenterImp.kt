@@ -28,6 +28,7 @@ class RegisterPresenterImp(private val view: RegisterView) : RegisterPresenter {
                 index == 3 -> {
                     if (!Patterns.EMAIL_ADDRESS.matcher(i).matches()) {
                         view.onError(context.getString(R.string.email_format_validation))
+                        return
                     }
                 }
             }

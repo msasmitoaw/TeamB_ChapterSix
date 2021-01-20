@@ -8,7 +8,7 @@ import com.suit.team.b.R
 
 class ViewPagerAdapter(
     fa: FragmentActivity,
-    listener: (String) -> Unit
+    listener: (String) -> Unit,
 ) : FragmentStateAdapter(fa) {
     private val context = fa as Context
     private val dataFragments = mutableListOf(
