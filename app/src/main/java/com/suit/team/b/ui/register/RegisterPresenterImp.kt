@@ -12,9 +12,6 @@ import kotlinx.coroutines.launch
 class RegisterPresenterImp(private val view: RegisterView) : RegisterPresenter {
     override fun register(username: String, password: String, name: String, email: String) {
         val context = view as Context
-
-        val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
-
         mutableListOf(
             username, password, name, email
         ).forEachIndexed { index, i ->
