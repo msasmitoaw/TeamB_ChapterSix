@@ -26,14 +26,14 @@ class RegisterActivity : AppCompatActivity(), RegisterView {
         btnRegister.setOnClickListener {
             presenter?.register(username.text(), password.text(), name.text(), email.text())
         }
-
     }
 
     override fun onError(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onSuccess() {
+    override fun onSuccess(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
         val intent = Intent(this, AuthActivity::class.java)
         startActivity(intent)
         finish()
