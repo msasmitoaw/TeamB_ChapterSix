@@ -85,8 +85,11 @@
     <string name="profile_del_success">Data berhasil dihapus! Silakan login kembali</string>
     <string name="profile_del_failed">Hapus data gagal! silakan coba lagi</string>
     <string name="del_message">Message</string>
+    <!-- Landing Page -->
+    <string name="landing_page_first">Bermain suit melawan sesama pemain</string>
+    <string name="landing_page_second">Bermain suit melawan sesama computer</string>
+    <string name="landing_page_third">Masuk Permainan</string>
     <string name="sign_up">Sign Up</string>
     <string name="sign_in">Sign In</string>
-    <string name="player_email">putut@janken.com</string>
     <string name="not_authenticated_msg">Mohon maaf username dan password salah.</string>
 </resources>
