@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppStyle">
         <activity android:name=".ui.slide.SlideActivity" />
-        <activity android:name=".ui.auth.AuthActivity">
+        <activity
+            android:name=".ui.auth.AuthActivity"
+            android:theme="@style/Style1">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
