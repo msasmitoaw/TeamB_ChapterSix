@@ -44,7 +44,7 @@ class UpdatePresenterImp(private val view: UpdateView) : UpdatePresenter {
         name: String,
         username: String,
         email: String,
-        pass: String
+        pass: String,
     ) {
 
         val currentId = SharedPref.id

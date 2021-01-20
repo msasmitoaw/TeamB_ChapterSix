@@ -9,7 +9,7 @@ import com.suit.team.b.utils.PlayerType
 import com.suit.team.b.utils.string
 
 class GamePresenterImp(
-    private val view: GameView
+    private val view: GameView,
 ) : GamePresenter {
     private lateinit var player: Player
     private lateinit var playerTwo: Player
