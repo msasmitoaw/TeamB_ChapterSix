@@ -47,6 +47,7 @@ class ProfilePresenterImp(private val view: ProfileView) : ProfilePresenter {
                 launch(Dispatchers.Main) {
                     if (userEntity != null) {
                         appContext?.getString(R.string.profile_del_success).let {
+                            SharedPref.logout()
                             view.onDeleteSuccess(it.toString())
                         }
                     } else {

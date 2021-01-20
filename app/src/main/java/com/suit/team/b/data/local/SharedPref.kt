@@ -17,6 +17,7 @@ object SharedPref {
     private const val KEY_NAME = "KEY_NAME"
     private const val KEY_IS_LOGIN = "KEY_IS_LOGIN"
     private const val KEY_ID = "KEY_ID"
+    private const val KEY_USERNAME = "KEY_USERNAME"
 
     private val pref =
         App.weakReferenceContext.get()?.getSharedPreferences("pref", Context.MODE_PRIVATE)
@@ -43,10 +44,20 @@ object SharedPref {
 
     var name: String?
         get() = pref?.getString(KEY_NAME, "")
+        set(name) {
+            name?.let {
+                pref?.edit()
+                    ?.putString(KEY_NAME, it)
+                    ?.apply()
+            }
+        }
+
+    var username: String?
+        get() = pref?.getString(KEY_USERNAME, "")
         set(username) {
             username?.let {
                 pref?.edit()
-                    ?.putString(KEY_NAME, it)
+                    ?.putString(KEY_USERNAME, it)
                     ?.apply()
             }
         }
