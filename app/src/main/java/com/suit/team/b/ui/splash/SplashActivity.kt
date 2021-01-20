@@ -3,7 +3,7 @@ package com.suit.team.b.ui.splash
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.widget.ImageView
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.suit.team.b.R
 import com.suit.team.b.ui.main.MainActivity
@@ -14,25 +14,19 @@ class SplashActivity : AppCompatActivity(), SplashView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        val ivSplashScreen1 by lazy { this.findViewById<ImageView>(R.id.ivSplashScreen1) }
-        presenter = SplashPresenterImp(this)
-        presenter?.checkIsLogin()
+        Handler(Looper.getMainLooper()).postDelayed({
+            presenter = SplashPresenterImp(this)
+            presenter?.checkIsLogin()
+        }, 1500)
     }
 
     override fun onLogged() {
-        val handler = Handler()
-        handler.postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-        }, 3000)
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     override fun unLogged() {
-        val handler = Handler()
-        handler.postDelayed({
-            val intent = Intent(this, SlideActivity::class.java)
-            startActivity(intent)
-            finish()
-        }, 3000)
+        startActivity(Intent(this, SlideActivity::class.java))
+        finish()
     }
 }

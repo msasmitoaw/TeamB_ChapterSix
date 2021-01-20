@@ -10,7 +10,6 @@ import com.suit.team.b.ui.auth.AuthActivity
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 
 class SlideActivity : AppCompatActivity() {
-    private var name: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_slide)
