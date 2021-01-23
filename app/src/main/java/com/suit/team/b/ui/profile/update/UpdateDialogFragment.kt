@@ -30,7 +30,7 @@ class UpdateDialogFragment(private val updateView: UpdateView) : DialogFragment(
 
         btSave?.setOnClickListener {
             if (etPassword?.text?.length!! > 0) {
-                updateView.onChangedDataReady(etPassword?.text.toString())
+                updateView.onPasswordEntered(etPassword?.text.toString())
             } else {
                 Toast.makeText(
                     this.context,
