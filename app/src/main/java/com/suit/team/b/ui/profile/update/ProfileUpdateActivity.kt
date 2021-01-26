@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.suit.team.b.R
 import com.suit.team.b.data.model.Users
 import com.suit.team.b.ui.auth.AuthActivity
+import com.suit.team.b.utils.EmailValidator
+import com.suit.team.b.utils.text
 
 class ProfileUpdateActivity : AppCompatActivity(), UpdateView {
 
@@ -47,21 +49,32 @@ class ProfileUpdateActivity : AppCompatActivity(), UpdateView {
         }
 
         btSave?.setOnClickListener {
-            if (etName?.text?.isBlank() == true ||
-                etUsername?.text?.isBlank() == true ||
-                etEmail?.text?.isBlank() == true
+            val name = etName?.text()
+            val username = etUsername?.text()
+            val email = etEmail?.text()
+
+            if (name?.isNullOrBlank() == true ||
+                username?.isNullOrBlank() == true ||
+                email?.isNullOrBlank() == true
             ) {
                 Toast.makeText(this, getString(R.string.blank_input), Toast.LENGTH_SHORT).show()
+            } else if (!etEmail?.error.isNullOrBlank()) {
+                Toast.makeText(
+                    this,
+                    getString(R.string.email_format_validation),
+                    Toast.LENGTH_SHORT
+                ).show()
             } else {
-                val updateDialog = UpdateDialogFragment(this)
-                updateDialog.show(supportFragmentManager, null)
+                presenter?.checkDuplicate(username, email)!!
             }
         }
+
+        etEmail?.addTextChangedListener(EmailValidator(etEmail!!))
     }
 
     override fun onStart() {
         super.onStart()
-        presenter?.showProfile()
+        presenter?.fetchUser()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -71,7 +84,12 @@ class ProfileUpdateActivity : AppCompatActivity(), UpdateView {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onShowSuccess(user: Users) {
+    override fun onNoDuplicate() {
+        val updateDialog = UpdateDialogFragment(this)
+        updateDialog.show(supportFragmentManager, null)
+    }
+
+    override fun onFetchSuccess(user: Users) {
         etName?.setText(user.name, TextView.BufferType.EDITABLE)
         etEmail?.setText(user.email, TextView.BufferType.EDITABLE)
         etUsername?.setText(user.username, TextView.BufferType.EDITABLE)
@@ -87,7 +105,7 @@ class ProfileUpdateActivity : AppCompatActivity(), UpdateView {
         Toast.makeText(this, toastString, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onChangedDataReady(pass: String) {
+    override fun onPasswordEntered(pass: String) {
         val name = etName?.text.toString()
         val email = etEmail?.text.toString()
         val username = etUsername?.text.toString()

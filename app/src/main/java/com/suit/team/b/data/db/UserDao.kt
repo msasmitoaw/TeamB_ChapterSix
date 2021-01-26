@@ -22,4 +22,8 @@ interface UserDao {
 
     @Update
     fun updateUser(userEntity: UserEntity): Int
+
+    @Query("SELECT COUNT(id) FROM Users WHERE id != :id AND (username =:username OR email=:email)")
+    fun countDuplicate(id: Int, username: String, email: String): Int
+
 }

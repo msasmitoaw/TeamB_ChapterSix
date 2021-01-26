@@ -5,16 +5,15 @@ import com.suit.team.b.R
 import com.suit.team.b.data.db.UserEntity
 import com.suit.team.b.data.local.SharedPref
 import com.suit.team.b.data.model.Users
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import com.suit.team.b.utils.string
+import kotlinx.coroutines.*
 
 class UpdatePresenterImp(private val view: UpdateView) : UpdatePresenter {
 
     private val appDb = App.appDb
     private val appContext = App.weakReferenceContext.get()
 
-    override fun showProfile() {
+    override fun fetchUser() {
         val id = SharedPref.id
         GlobalScope.launch(Dispatchers.IO) {
             val userEntity = appDb?.dataUser()?.fetchUserById(id!!)
@@ -28,7 +27,7 @@ class UpdatePresenterImp(private val view: UpdateView) : UpdatePresenter {
                             userEntity.email,
                             userEntity.username
                         )
-                    view.onShowSuccess(user)
+                    view.onFetchSuccess(user)
                 } else {
                     appContext.let {
                         view.onFailed(
@@ -40,6 +39,25 @@ class UpdatePresenterImp(private val view: UpdateView) : UpdatePresenter {
         }
     }
 
+    override fun checkDuplicate(username: String, email: String) {
+        CoroutineScope(Dispatchers.Main).launch {
+            val countUname = withContext(Dispatchers.IO) {
+                appDb?.dataUser()?.countDuplicate(SharedPref.id!!, username, "")
+            }
+            val countEmail = withContext(Dispatchers.IO) {
+                appDb?.dataUser()?.countDuplicate(SharedPref.id!!, "", email)
+            }
+            if (countUname != null && countUname > 0) {
+                view.onFailed(appContext?.string(R.string.username_exist)!!)
+            } else if (countEmail != null && countEmail > 0) {
+                view.onFailed(appContext?.string(R.string.email_exist)!!)
+            } else {
+                view.onNoDuplicate()
+            }
+        }
+
+    }
+
     override fun verifyAndUpdate(
         name: String,
         username: String,
@@ -49,7 +67,6 @@ class UpdatePresenterImp(private val view: UpdateView) : UpdatePresenter {
 
         val currentId = SharedPref.id
         val currentUName = SharedPref.username
-
         val newData = currentId?.let { UserEntity(it, name, pass, email, username) }
 
         GlobalScope.launch(Dispatchers.IO) {
@@ -66,7 +83,7 @@ class UpdatePresenterImp(private val view: UpdateView) : UpdatePresenter {
                     } else {
                         appContext.let {
                             view.onFailed(
-                                it?.getString(R.string.update_failed).toString()
+                                it?.string(R.string.update_failed)!!
                             )
                         }
                     }
@@ -75,11 +92,12 @@ class UpdatePresenterImp(private val view: UpdateView) : UpdatePresenter {
                 GlobalScope.launch(Dispatchers.Main) {
                     appContext.let {
                         view.onFailed(
-                            it?.getString(R.string.update_failed).toString()
+                            it?.string(R.string.update_failed)!!
                         )
                     }
                 }
             }
         }
     }
+
 }
