@@ -26,6 +26,7 @@ class RegisterActivity : AppCompatActivity(), RegisterNavigator {
         val username = findViewById<EditText>(R.id.etUsername)
         val password = findViewById<EditText>(R.id.etPassword)
         val email = findViewById<EditText>(R.id.etEmail)
+
         val btnRegister = findViewById<Button>(R.id.btnRegister)
 
         btnRegister.setOnClickListener {

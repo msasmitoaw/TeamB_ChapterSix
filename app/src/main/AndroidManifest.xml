@@ -13,13 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppStyle">
         <activity android:name=".ui.slide.SlideActivity" />
-        <activity
-            android:name=".ui.auth.AuthActivity">
+        <activity android:name=".ui.auth.AuthActivity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.register.RegisterActivity" />
+        <activity
+            android:name=".ui.register.RegisterActivity"
+            android:theme="@style/MaterialStyle"
+            android:windowSoftInputMode="stateVisible|adjustResize"/>
         <activity android:name=".ui.main.MainActivity" />
         <activity android:name=".ui.menu_about.MenuAboutActivity" />
         <activity android:name=".ui.tutorial.TutorialActivity" />
