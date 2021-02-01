@@ -3,8 +3,10 @@ package com.suit.team.b.data.model
 import com.google.gson.annotations.SerializedName
 
 data class RegisterResponse(
+    @SerializedName("errors")
+    val errors: String,
     @SerializedName("data")
-    val `data`: Data,
+    val data: Data,
     @SerializedName("success")
     val success: Boolean,
 ) {
