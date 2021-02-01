@@ -1,13 +1,11 @@
 package com.suit.team.b.ui.register
 
 import android.util.Patterns
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.google.gson.JsonParser
 import com.suit.team.b.R
 import com.suit.team.b.data.model.RegisterRequest
-import com.suit.team.b.data.model.RegisterResponse
 import com.suit.team.b.data.remote.AuthApiService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -22,7 +20,6 @@ class RegisterViewModel(private val service: AuthApiService) : ViewModel() {
 
     private lateinit var disposable: Disposable
     lateinit var navigator: RegisterNavigator
-    private val dataRegister = MutableLiveData<RegisterResponse>()
 
     fun register(registerRequest: RegisterRequest) {
         if (registerRequest.username.isBlank()) {
@@ -59,7 +56,7 @@ class RegisterViewModel(private val service: AuthApiService) : ViewModel() {
     }
 
     private fun getServiceErrorMsg(error: Throwable): String {
-        var message = "Terjadi kesalahan pada service kami"
+        var message = "Sorry there a problem in our services"
         message = when (error) {
             is HttpException -> {
                 try {

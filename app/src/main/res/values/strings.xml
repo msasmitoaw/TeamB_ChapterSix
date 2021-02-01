@@ -109,5 +109,4 @@
     <string name="username_not_alphanumeric">Username tidak boleh memiliki karakter selain alfanumber!</string>
     <string name="username_shorter">Username harus memiliki lebih dari 6 karakter!</string>
     <string name="password_validation">Password tidak boleh kosong!</string>
-    <string name="name_validation">Nama tidak boleh kosong!</string>
 </resources>
