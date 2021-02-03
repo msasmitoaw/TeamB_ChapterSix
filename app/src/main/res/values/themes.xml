@@ -1,8 +1,9 @@
 <resources>
 
-    <style name="Style1" parent="Theme.MaterialComponents.Light">
+    <style name="WithActionBar" parent="Theme.MaterialComponents.Light">
         <item name="android:windowBackground">@color/app_bg</item>
         <item name="android:windowFullscreen">true</item>
+        <item name="colorPrimary">@android:color/holo_blue_light</item>
     </style>
 
     <style name="AppStyle" parent="Theme.Design.NoActionBar">

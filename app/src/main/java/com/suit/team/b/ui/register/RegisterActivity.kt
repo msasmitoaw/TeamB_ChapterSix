@@ -29,7 +29,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        val factory = RegisterViewModel.Factory(ApiModule.authService)
+        val factory = RegisterViewModel.Factory(ApiModule.service)
         val viewModel = ViewModelProvider(this, factory)[RegisterViewModel::class.java]
 
         viewModel.onErrorRegister().observe(this, {

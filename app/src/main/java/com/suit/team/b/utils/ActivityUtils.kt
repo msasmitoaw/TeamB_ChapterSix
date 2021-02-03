@@ -8,6 +8,7 @@ import android.widget.ImageButton
 import android.widget.Toast
 import android.widget.Toast.makeText
 import androidx.core.content.ContextCompat
+import com.suit.team.b.App
 import com.suit.team.b.R
 
 fun setWord(context: Context, message: String) {
@@ -21,3 +22,7 @@ fun ImageButton.onSelected(context: Context) {
 }
 
 fun EditText.text(): String = text.toString()
+
+fun getString(resourceId: Int): String?{
+    return App.weakReferenceContext.get()?.getString(resourceId)
+}
