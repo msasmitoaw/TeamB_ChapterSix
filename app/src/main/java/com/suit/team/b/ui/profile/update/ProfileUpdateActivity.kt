@@ -133,7 +133,7 @@ class ProfileUpdateActivity : AppCompatActivity() {
                 filePath = resultUri.toFile()
                 Glide.with(this).load(filePath).into(ivPhoto)
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                viewModel.errorRegister.value = this.getString(R.string.Capture_image_failed)
+                viewModel.errorRegister.value = this.getString(R.string.capture_image_failed)
                 result.error.printStackTrace()
             }
         }

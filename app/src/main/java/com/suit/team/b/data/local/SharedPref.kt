@@ -21,7 +21,17 @@ object SharedPref {
     private const val KEY_TOKEN ="KEY_TOKEN"
 
     private val pref =
-        App.weakReferenceContext.get()?.getSharedPreferences("pref", Context.MODE_PRIVATE)
+        App.weakReferenceContext.get()?.getSharedPreferences("suitPref", Context.MODE_PRIVATE)
+
+    var token: String?
+        get() = pref?.getString(KEY_TOKEN, "")
+        set(value) {
+            value?.let {
+                pref?.edit()
+                    ?.putString(KEY_TOKEN, it)
+                    ?.apply()
+            }
+        }
 
     var token: String?
     get() = pref?.getString(KEY_TOKEN,"")

@@ -81,7 +81,6 @@
     <string name="landing_page_third">Masuk Permainan</string>
     <string name="sign_up">Sign Up</string>
     <string name="sign_in">Sign In</string>
-    <string name="not_authenticated_msg">Mohon maaf username dan password salah.</string>
     <string name="tutorial_pvc_two">Menampilkan hasil siapa yg menang dan menanyakan main lagi atau kembali ke menu</string>
     <string name="tutorial_pvc_one">Player pertama memillih terlebih dahulu kemudian komputer merandom pilihannya.</string>
     <string name="tutorial_pvc">Tutorial permainan player vs computer</string>
@@ -99,5 +98,7 @@
     <string name="username_shorter">Username harus memiliki lebih dari 6 karakter!</string>
     <string name="password_validation">Password tidak boleh kosong!</string>
     <string name="email_validation">Email tidak boleh kosong!</string>
-    <string name="Capture_image_failed">Tidak dapat menangkap gambar!</string>
+    <string name="capture_image_failed">Tidak dapat menangkap gambar!</string>
+    <string name="wrong_password">Password anda salah!</string>
+    <string name="wrong_email">Email anda tidak terdaftar!</string>
 </resources>
