@@ -16,7 +16,7 @@ import io.reactivex.schedulers.Schedulers
 
 class RegisterViewModel(private val service: ApiService) : ViewModel() {
 
-    private lateinit var disposable: Disposable
+    private var disposable: Disposable? = null
     private val resultRegister = MutableLiveData<RegisterResponse>()
     private val errorRegister = MutableLiveData<String>()
 
@@ -36,7 +36,7 @@ class RegisterViewModel(private val service: ApiService) : ViewModel() {
 
     override fun onCleared() {
         super.onCleared()
-        disposable.dispose()
+        disposable?.dispose()
     }
 
     class Factory(private val service: ApiService) : ViewModelProvider.Factory {
