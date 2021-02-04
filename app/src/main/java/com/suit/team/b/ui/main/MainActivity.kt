@@ -37,7 +37,10 @@ class MainActivity : AppCompatActivity() {
                         finish()
                     }
                     2 -> startActivity(Intent(this, ScoreActivity::class.java))
-                    3 -> startActivity(Intent(this, ProfilePageActivity::class.java))
+                    3 -> {
+                        startActivity(Intent(this, ProfilePageActivity::class.java))
+                        finish()
+                    }
                     4 -> startActivity(Intent(this, MenuAboutActivity::class.java))
                     else -> finish()
                 }
