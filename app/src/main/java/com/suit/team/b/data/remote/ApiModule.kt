@@ -9,14 +9,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ApiModule {
     private const val BASE_URL = "https://binar-gdd-cc8.herokuapp.com"
 
-    val authService: AuthApiService by lazy {
+    val service: ApiService by lazy {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(client)
             .build()
-        retrofit.create(AuthApiService::class.java)
+        retrofit.create(ApiService::class.java)
     }
 
     private val logging: HttpLoggingInterceptor

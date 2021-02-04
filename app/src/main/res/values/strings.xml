@@ -68,23 +68,13 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="profile_btEdit">Ubah Data</string>
-    <string name="profile_btDelete">Hapus Akun</string>
     <string name="profile_btLogout">Logout</string>
-    <string name="show_profile_failed">Data tidak ditemukan!</string>
     <!-- Update akun -->
     <string name="profile_update_header">Ubah Data Pemain</string>
-    <string name="password_request">Masukkan password terlebih dahulu!</string>
     <string name="save">Simpan</string>
     <string name="cancel">Batal</string>
     <string name="update_success">Ubah data berhasil!</string>
-    <string name="update_failed">Password/Username salah! periksa kembali</string>
-    <string name="blank_input">Input tidak boleh kosong!</string>
     <!-- Hapus akun -->
-    <string name="profile_del_confirmation">Yakin akunnya mau dihapus?</string>
-    <string name="delete">Yakin dong!</string>
-    <string name="profile_del_success">Data berhasil dihapus! Silakan login kembali</string>
-    <string name="profile_del_failed">Hapus data gagal! silakan coba lagi</string>
-    <string name="del_message">Message</string>
     <!-- Landing Page -->
     <string name="landing_page_first">Bermain suit melawan sesama pemain</string>
     <string name="landing_page_second">Bermain suit melawan sesama computer</string>
@@ -103,10 +93,11 @@
     <string name="sign_up_success">Silahkan masuk dengan username dan password anda</string>
     <string name="email_exist">Email telah dipakai!</string>
     <string name="email_format_validation">Format Email tidak sesuai!</string>
-    <string name="email_validation">Email tidak boleh kosong!</string>
     <string name="username_exist">Username telah dipakai!</string>
     <string name="username_validation">Username tidak boleh kosong!</string>
     <string name="username_not_alphanumeric">Username tidak boleh memiliki karakter selain alfanumber!</string>
     <string name="username_shorter">Username harus memiliki lebih dari 6 karakter!</string>
     <string name="password_validation">Password tidak boleh kosong!</string>
+    <string name="email_validation">Email tidak boleh kosong!</string>
+    <string name="Capture_image_failed">Tidak dapat menangkap gambar!</string>
 </resources>

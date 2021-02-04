@@ -39,23 +39,10 @@
                 app:layout_constraintGuide_begin="125dp" />
 
             <TextView
-                android:id="@+id/lbName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:fontFamily="@font/comic_sans_ms"
-                android:gravity="start"
-                android:text="@string/name"
-                android:textAlignment="viewStart"
-                android:textColor="@android:color/black"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/lbEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/comic_sans_ms"
                 android:gravity="start"
@@ -64,12 +51,15 @@
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/lbName" />
+                app:layout_constraintTop_toBottomOf="@id/tvUsername"
+                tools:layout_editor_absoluteY="115dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="50dp"
                 android:fontFamily="@font/comic_sans_ms"
                 android:gravity="start"
                 android:text="@string/username"
@@ -77,22 +67,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/lbEmail" />
-
-            <TextView
-                android:id="@+id/tvName"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:fontFamily="@font/comic_sans_ms"
-                android:gravity="start"
-                android:textAlignment="viewStart"
-                android:textColor="@android:color/black"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="@id/guide2"
-                app:layout_constraintTop_toTopOf="parent"
-
-                tools:text="@tools:sample/full_names" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvEmail"
@@ -105,27 +80,28 @@
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@id/guide2"
-                app:layout_constraintTop_toBottomOf="@id/tvName"
+                app:layout_constraintTop_toBottomOf="@id/tvUsername"
                 tools:text="@tools:sample/cities" />
 
             <TextView
                 android:id="@+id/tvUsername"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="50dp"
                 android:fontFamily="@font/comic_sans_ms"
                 android:gravity="start"
                 android:textAlignment="viewStart"
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@id/guide2"
-                app:layout_constraintTop_toBottomOf="@id/tvEmail"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="@tools:sample/last_names" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <ImageView
+        android:id="@+id/ivPhoto"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginEnd="16dp"
@@ -141,45 +117,35 @@
 
     <Button
         android:id="@+id/btUpdate"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="@color/blue_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/ic_white_button"
         android:text="@string/profile_btEdit"
-        android:textColor="@color/black"
-        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guide1"
-        tools:targetApi="lollipop" />
+        app:layout_constraintTop_toBottomOf="@id/guide1" />
 
     <Button
         android:id="@+id/btLogout"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/blue_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/ic_white_button"
         android:text="@string/profile_btLogout"
-        android:textColor="@color/black"
-        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btUpdate"
-        tools:targetApi="lollipop" />
-
-    <Button
-        android:id="@+id/btDelete"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/blue_btn"
-        android:text="@string/profile_btDelete"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btLogout"
-        tools:targetApi="lollipop" />
+        app:layout_constraintTop_toBottomOf="@id/btUpdate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

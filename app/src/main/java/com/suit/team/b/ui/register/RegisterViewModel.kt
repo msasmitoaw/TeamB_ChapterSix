@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.suit.team.b.data.model.RegisterRequest
 import com.suit.team.b.data.model.RegisterResponse
-import com.suit.team.b.data.remote.AuthApiService
+import com.suit.team.b.data.remote.ApiService
 import com.suit.team.b.utils.getErrorMessage
 import com.suit.team.b.utils.getErrorThrowableCode
 import com.suit.team.b.utils.getServiceErrorMsg
@@ -14,7 +14,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-class RegisterViewModel(private val service: AuthApiService) : ViewModel() {
+class RegisterViewModel(private val service: ApiService) : ViewModel() {
 
     private lateinit var disposable: Disposable
     private val resultRegister = MutableLiveData<RegisterResponse>()
@@ -39,7 +39,7 @@ class RegisterViewModel(private val service: AuthApiService) : ViewModel() {
         disposable.dispose()
     }
 
-    class Factory(private val service: AuthApiService) : ViewModelProvider.Factory {
+    class Factory(private val service: ApiService) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             @Suppress("UNCHECKED_CAST")
             return RegisterViewModel(service) as T
