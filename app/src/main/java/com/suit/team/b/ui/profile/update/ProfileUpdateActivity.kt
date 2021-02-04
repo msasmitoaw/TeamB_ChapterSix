@@ -117,11 +117,6 @@ class ProfileUpdateActivity : AppCompatActivity() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             super.onBackPressed()
