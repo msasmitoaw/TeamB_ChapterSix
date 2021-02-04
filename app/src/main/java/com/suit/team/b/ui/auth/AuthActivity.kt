@@ -30,7 +30,7 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
 
-        val factory = AuthViewModel.Factory(ApiModule.authService, SharedPref)
+        val factory = AuthViewModel.Factory(ApiModule.service, SharedPref)
         val viewModel = ViewModelProvider(this, factory)[AuthViewModel::class.java]
 
         viewModel.checkIsLogin()

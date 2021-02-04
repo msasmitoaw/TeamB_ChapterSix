@@ -33,16 +33,6 @@ object SharedPref {
             }
         }
 
-    var token: String?
-    get() = pref?.getString(KEY_TOKEN,"")
-    set(value) {
-        value?.let{
-        pref?.edit()
-            ?.putString(KEY_TOKEN, value)
-            ?.apply()
-        }
-    }
-
     var isLogin: Boolean?
         get() = pref?.getBoolean(KEY_IS_LOGIN, false)
         set(value) {

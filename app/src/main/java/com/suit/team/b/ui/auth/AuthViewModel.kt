@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.suit.team.b.data.local.SharedPref
 import com.suit.team.b.data.model.LoginRequest
 import com.suit.team.b.data.model.LoginResponse
-import com.suit.team.b.data.remote.AuthApiService
+import com.suit.team.b.data.remote.ApiService
 import com.suit.team.b.utils.getErrorMessage
 import com.suit.team.b.utils.getErrorThrowableCode
 import com.suit.team.b.utils.getServiceErrorMsg
@@ -15,7 +15,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-class AuthViewModel(private val service: AuthApiService, private val pref: SharedPref) :
+class AuthViewModel(private val service: ApiService, private val pref: SharedPref) :
     ViewModel() {
 
     private var disposable: Disposable? = null
@@ -56,7 +56,7 @@ class AuthViewModel(private val service: AuthApiService, private val pref: Share
         disposable?.dispose()
     }
 
-    class Factory(private val service: AuthApiService, private val pref: SharedPref) :
+    class Factory(private val service: ApiService, private val pref: SharedPref) :
         ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             @Suppress("UNCHECKED_CAST")
