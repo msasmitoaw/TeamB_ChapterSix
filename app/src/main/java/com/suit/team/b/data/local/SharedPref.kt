@@ -18,7 +18,7 @@ object SharedPref {
     private const val KEY_IS_LOGIN = "KEY_IS_LOGIN"
     private const val KEY_ID = "KEY_ID"
     private const val KEY_USERNAME = "KEY_USERNAME"
-    private const val KEY_TOKEN ="KEY_TOKEN"
+    private const val KEY_TOKEN = "KEY_TOKEN"
 
     private val pref =
         App.weakReferenceContext.get()?.getSharedPreferences("suitPref", Context.MODE_PRIVATE)

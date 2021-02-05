@@ -23,6 +23,6 @@ fun ImageButton.onSelected(context: Context) {
 
 fun EditText.text(): String = text.toString()
 
-fun getString(resourceId: Int): String?{
+fun getString(resourceId: Int): String? {
     return App.weakReferenceContext.get()?.getString(resourceId)
 }
