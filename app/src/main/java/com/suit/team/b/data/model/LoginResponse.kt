@@ -1,8 +1,9 @@
 package com.suit.team.b.data.model
 
+
 import com.google.gson.annotations.SerializedName
 
-data class RegisterResponse(
+data class LoginResponse(
     @SerializedName("data")
     val data: Data,
     @SerializedName("success")
@@ -13,6 +14,8 @@ data class RegisterResponse(
         val email: String,
         @SerializedName("_id")
         val id: String,
+        @SerializedName("token")
+        val token: String,
         @SerializedName("username")
         val username: String,
     )
