@@ -59,6 +59,7 @@ class AuthActivity : AppCompatActivity() {
 
         btnRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
+            finish()
         }
 
         viewModel.onErrorLogin().observe(this, {
