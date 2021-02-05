@@ -44,6 +44,10 @@ class GameActivity : AppCompatActivity(), GameView {
         onPlayerOnePick()
     }
 
+    override fun onBackPressed() {
+        backToMenu()
+    }
+
     private fun backToMenu() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()

@@ -32,25 +32,6 @@ class RegisterActivity : AppCompatActivity() {
         val factory = RegisterViewModel.Factory(ApiModule.service)
         val viewModel = ViewModelProvider(this, factory)[RegisterViewModel::class.java]
 
-        viewModel.onErrorRegister().observe(this, {
-            when (it) {
-                R.string.username_exist.toString() -> tilUsername.error =
-                    string(R.string.username_exist)
-                R.string.email_exist.toString() -> tilEmail.error = string(R.string.email_exist)
-                R.string.username_not_alphanumeric.toString() -> tilUsername.error =
-                    string(R.string.username_not_alphanumeric)
-                R.string.username_shorter.toString() -> tilUsername.error =
-                    string(R.string.username_shorter)
-                else -> Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
-            }
-        })
-
-        viewModel.onResultRegister().observe(this, {
-            Toast.makeText(this, string(R.string.sign_up_success), Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, AuthActivity::class.java))
-            finish()
-        })
-
         btnRegister.setOnClickListener {
             tilEmail.error = null
             tilPassword.error = null
@@ -78,10 +59,36 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val registerRequest = RegisterRequest(username = etUsername.text(),
+            val registerRequest = RegisterRequest(
+                username = etUsername.text(),
                 password = etPassword.text(),
-                email = etEmail.text())
+                email = etEmail.text()
+            )
             viewModel.register(registerRequest)
         }
+
+        viewModel.onErrorRegister().observe(this, {
+            when (it) {
+                R.string.username_exist.toString() -> tilUsername.error =
+                    string(R.string.username_exist)
+                R.string.email_exist.toString() -> tilEmail.error = string(R.string.email_exist)
+                R.string.username_not_alphanumeric.toString() -> tilUsername.error =
+                    string(R.string.username_not_alphanumeric)
+                R.string.username_shorter.toString() -> tilUsername.error =
+                    string(R.string.username_shorter)
+                else -> Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        viewModel.onResultRegister().observe(this, {
+            Toast.makeText(this, string(R.string.sign_up_success), Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, AuthActivity::class.java))
+            finish()
+        })
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this, AuthActivity::class.java))
+        finish()
     }
 }

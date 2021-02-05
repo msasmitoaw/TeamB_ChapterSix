@@ -1,8 +1,6 @@
 package com.suit.team.b.data.remote
 
-import com.suit.team.b.data.model.RegisterRequest
-import com.suit.team.b.data.model.RegisterResponse
-import com.suit.team.b.data.model.UsersResponse
+import com.suit.team.b.data.model.*
 import io.reactivex.Single
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -31,4 +29,10 @@ interface ApiService {
         @Part("email") email: RequestBody,
         @Part photo: MultipartBody.Part
     ): Single<UsersResponse>
+
+    @POST("api/v1/auth/login")
+    fun login(@Body loginRequest: LoginRequest): Single<LoginResponse>
+
+    @GET("api/v1/auth/me")
+    fun me(@Header("Authorization") authorization: String): Single<MeResponse>
 }

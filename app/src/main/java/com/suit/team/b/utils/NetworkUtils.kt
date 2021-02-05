@@ -45,6 +45,11 @@ fun Throwable.getErrorThrowableCode(): Int = when (this) {
 
 fun getErrorMessage(msg: String, errCode: Int = 0): String = when (errCode) {
     400 -> R.string.email_format_validation.toString()
+    401 -> when {
+        msg.contains("doesn't exist!") -> R.string.wrong_email.toString()
+        msg.contains("password!") -> R.string.wrong_password.toString()
+        else -> msg
+    }
     422 -> when {
         msg.contains("username_1 dup key") -> R.string.username_exist.toString()
         msg.contains("email_1 dup key") -> R.string.email_exist.toString()

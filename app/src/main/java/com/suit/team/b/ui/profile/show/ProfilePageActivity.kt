@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.suit.team.b.R
 import com.suit.team.b.ui.auth.AuthActivity
+import com.suit.team.b.ui.main.MainActivity
 import com.suit.team.b.ui.profile.update.ProfileUpdateActivity
 
 class ProfilePageActivity : AppCompatActivity() {
@@ -72,6 +73,11 @@ class ProfilePageActivity : AppCompatActivity() {
             super.onBackPressed()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
 }
