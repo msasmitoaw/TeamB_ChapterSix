@@ -5,37 +5,17 @@
     android:layout_height="match_parent"
     android:background="@color/app_bg">
 
-    <ImageView
-        android:id="@+id/ivSplashScreen1"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:contentDescription="@string/logo"
-        android:src="@drawable/ic_logo"
-        app:layout_constraintBottom_toTopOf="@id/pbSplash"
-        app:layout_constraintEnd_toEndOf="parent"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_splash"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textColor="@color/pb_blue_dark"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/ivSplashScreen1"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/pbSplash" />
-
-    <ProgressBar
-        android:id="@+id/pbSplash"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:indeterminateDrawable="@drawable/pb_splash"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivSplashScreen1" />
-
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/handpick"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

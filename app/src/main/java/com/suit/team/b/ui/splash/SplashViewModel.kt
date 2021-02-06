@@ -23,7 +23,15 @@ class SplashViewModel(private val service: ApiService, private val pref: SharedP
         disposable = service.me("Bearer" + pref.token)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ checkLogin.value = it.success }) {
+            .subscribe({
+                if (it.status != null) {
+                    checkLogin.postValue(it.status)
+                } else {
+                    checkLogin.postValue(it.success)
+                }
+
+            }) {
+                checkLogin.postValue(false)
                 it.printStackTrace()
             }
         return pref.isLogin == true

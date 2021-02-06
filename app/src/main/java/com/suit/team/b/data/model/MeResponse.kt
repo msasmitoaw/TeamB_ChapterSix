@@ -7,7 +7,11 @@ data class MeResponse(
     @SerializedName("data")
     val data: Data,
     @SerializedName("success")
-    val success: Boolean
+    val success: Boolean,
+    @SerializedName("status")
+    val status: Boolean?,
+    @SerializedName("errors")
+    val errors: String?
 ) {
     data class Data(
         @SerializedName("email")
