@@ -5,11 +5,13 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.suit.team.b.utils.GameType
 
-class ScoreFragmentStateAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
+class ScoreFragmentStateAdapter(
+    fa: FragmentActivity
+) : FragmentStateAdapter(fa) {
 
-    private val dataFragment = mutableListOf(
-        ScoreFragment(GameType.VSP),
-        ScoreFragment(GameType.VSCPU)
+    private var dataFragment = mutableListOf(
+        ScoreFragment(GameType.Multiplayer),
+        ScoreFragment(GameType.Singleplayer)
     )
 
     override fun getItemCount(): Int = dataFragment.size

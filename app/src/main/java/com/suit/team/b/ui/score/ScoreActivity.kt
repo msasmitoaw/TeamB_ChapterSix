@@ -11,6 +11,9 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.suit.team.b.R
+import kotlin.math.abs
+
+private const val MIN_SCALE = 0.75f
 
 class ScoreActivity : AppCompatActivity() {
 
@@ -28,7 +31,6 @@ class ScoreActivity : AppCompatActivity() {
         viewPager2.adapter = vp2adapter
         viewPager2.setPageTransformer(FlipHorizontalPageTransformer())
 
-
         val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
         val tabTitle = arrayOf(R.string.vs_Player, R.string.vs_CPU)
         val tabIcon = arrayOf(R.drawable.ic_tabscore_vp, R.drawable.ic_tabscore_vcpu)
@@ -37,26 +39,44 @@ class ScoreActivity : AppCompatActivity() {
             tab.text = resources.getString(tabTitle[pos])
             tab.setIcon(tabIcon[pos])
         }.attach()
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             super.onBackPressed()
         }
+
         return super.onOptionsItemSelected(item)
     }
 
     class FlipHorizontalPageTransformer : ViewPager2.PageTransformer {
-        override fun transformPage(page: View, pos: Float) {
-            val rotation = (180f * pos)
-            val alpha = if (rotation > 90f || rotation < -90f) 0f else 1f
+        override fun transformPage(view: View, position: Float) {
+            view.apply {
+                val pageWidth = width
+                when {
+                    position < -1 -> {
+                        alpha = 0f
+                    }
+                    position <= 0 -> {
+                        alpha = 1f
+                        translationX = 0f
+                        scaleX = 1f
+                        scaleY = 1f
+                    }
+                    position <= 1 -> {
+                        alpha = 1 - position
 
-            page.alpha = alpha
-            page.pivotX = page.width * 0.5f
-            page.pivotY = page.height * 0.5f
-            page.rotationY = rotation
+                        translationX = pageWidth * -position
+
+                        val scaleFactor = (MIN_SCALE + (1 - MIN_SCALE) * (1 - abs(position)))
+                        scaleX = scaleFactor
+                        scaleY = scaleFactor
+                    }
+                    else -> {
+                        alpha = 0f
+                    }
+                }
+            }
         }
-
     }
 }

@@ -63,10 +63,8 @@
 
     <!-- Profile page -->
     <string name="profile_header">Akun Pemain</string>
-    <string name="name">Nama</string>
     <string name="username">Username</string>
     <string name="email">Email</string>
-    <string name="password">Password</string>
     <string name="profile_btEdit">Ubah Data</string>
     <string name="profile_btLogout">Logout</string>
     <!-- Update akun -->
