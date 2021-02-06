@@ -3,15 +3,10 @@ package com.suit.team.b.ui.splash
 import android.animation.Animator
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import com.airbnb.lottie.LottieAnimationView
 import androidx.lifecycle.ViewModelProvider
+import com.airbnb.lottie.LottieAnimationView
 import com.suit.team.b.R
-import com.suit.team.b.data.local.SharedPref
-import com.suit.team.b.data.remote.ApiModule
 import com.suit.team.b.ui.main.MainActivity
 import com.suit.team.b.ui.slide.SlideActivity
 
@@ -20,7 +15,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        val factory = SplashViewModel.Factory(ApiModule.service, SharedPref)
+        val factory = SplashViewModel.Factory()
         val viewModel = ViewModelProvider(this, factory)[SplashViewModel::class.java]
 
         viewModel.checkIsLogin()
@@ -28,14 +23,13 @@ class SplashActivity : AppCompatActivity() {
         val lottie = findViewById<LottieAnimationView>(R.id.lottie_splash)
 
         lottie.apply {
-            addAnimatorListener(object: Animator.AnimatorListener{
+            addAnimatorListener(object : Animator.AnimatorListener {
                 override fun onAnimationRepeat(animation: Animator?) {
 
                 }
 
-                override fun onAnimationEnd(animation: Animator?) {
-                    viewModel.onCheckLogin().observe(this@SplashActivity, Observer { if (it) onLogged() else unLogged() })
-                }
+                override fun onAnimationEnd(animation: Animator?) =
+                    if (viewModel.checkIsLogin()) onLogged() else unLogged()
 
                 override fun onAnimationCancel(animation: Animator?) {
 
