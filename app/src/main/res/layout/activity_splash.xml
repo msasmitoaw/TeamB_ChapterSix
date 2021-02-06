@@ -6,7 +6,7 @@
     android:background="@color/app_bg">
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottie_splash"
+        android:id="@+id/lavSplash"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_gravity="center"

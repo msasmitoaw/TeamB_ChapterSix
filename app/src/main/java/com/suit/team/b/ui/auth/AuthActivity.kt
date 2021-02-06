@@ -49,8 +49,8 @@ class AuthActivity : AppCompatActivity() {
             }
 
             it.isEnabled = false
-            bind.lottieLoginLoading.visibility = View.VISIBLE
-            bind.lottieLoginLoading.playAnimation()
+            bind.lavLoginLoading.visibility = View.VISIBLE
+            bind.lavLoginLoading.playAnimation()
             viewModel.login(
                 LoginRequest(
                     email = bind.etEmail.text.toString(),
@@ -82,8 +82,8 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun onAnimationFinish() {
-        bind.lottieLoginLoading.pauseAnimation()
-        bind.lottieLoginLoading.visibility = View.INVISIBLE
+        bind.lavLoginLoading.pauseAnimation()
+        bind.lavLoginLoading.visibility = View.INVISIBLE
         bind.btnLogin.isEnabled = true
     }
 
