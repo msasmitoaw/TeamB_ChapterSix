@@ -5,6 +5,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 object ApiModule {
     private const val BASE_URL = "https://binar-gdd-cc8.herokuapp.com"
@@ -28,6 +29,7 @@ object ApiModule {
         }
 
     private val client = OkHttpClient.Builder()
+        .callTimeout(5, TimeUnit.MINUTES)
         .addInterceptor(logging)
         .build()
 }
