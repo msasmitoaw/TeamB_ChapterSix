@@ -18,11 +18,7 @@
         <activity
             android:name=".ui.auth.AuthActivity"
             android:theme="@style/MaterialStyle"
-            android:windowSoftInputMode="stateVisible|adjustResize">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
             android:name=".ui.register.RegisterActivity"
             android:theme="@style/MaterialStyle"
