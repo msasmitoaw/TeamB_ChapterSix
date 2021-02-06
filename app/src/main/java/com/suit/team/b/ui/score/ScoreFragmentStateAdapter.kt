@@ -9,7 +9,7 @@ class ScoreFragmentStateAdapter(
     fa: FragmentActivity
 ) : FragmentStateAdapter(fa) {
 
-    private var dataFragment = mutableListOf(
+    private val dataFragment = mutableListOf(
         ScoreFragment(GameType.Multiplayer),
         ScoreFragment(GameType.Singleplayer)
     )
