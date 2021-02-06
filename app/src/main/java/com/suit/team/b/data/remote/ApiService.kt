@@ -1,10 +1,6 @@
 package com.suit.team.b.data.remote
 
 import com.suit.team.b.data.model.*
-import com.suit.team.b.data.model.BattleResponse
-import com.suit.team.b.data.model.RegisterRequest
-import com.suit.team.b.data.model.RegisterResponse
-import com.suit.team.b.data.model.UsersResponse
 import io.reactivex.Single
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
