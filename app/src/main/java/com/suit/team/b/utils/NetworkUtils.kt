@@ -3,6 +3,7 @@ package com.suit.team.b.utils
 import com.suit.team.b.R
 import org.json.JSONObject
 import retrofit2.adapter.rxjava2.HttpException
+import java.io.InterruptedIOException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
@@ -22,6 +23,7 @@ fun Throwable.getServiceErrorMsg(): String {
         is UnknownHostException -> "Unknown Error"
         is ConnectException -> "No internet connected"
         is SocketTimeoutException -> "No internet connected"
+        is InterruptedIOException -> "Request timeout"
         else -> {
             message.toString()
         }
