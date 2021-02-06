@@ -3,32 +3,26 @@ package com.suit.team.b.ui.auth
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
-import android.widget.Button
-import android.widget.EditText
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.textfield.TextInputLayout
 import com.suit.team.b.R
 import com.suit.team.b.data.local.SharedPref
 import com.suit.team.b.data.model.LoginRequest
 import com.suit.team.b.data.remote.ApiModule
+import com.suit.team.b.databinding.ActivityAuthBinding
 import com.suit.team.b.ui.main.MainActivity
 import com.suit.team.b.ui.register.RegisterActivity
 import com.suit.team.b.utils.string
-import com.suit.team.b.utils.text
 
 class AuthActivity : AppCompatActivity() {
-    private val etEmail: EditText by lazy(LazyThreadSafetyMode.NONE) { findViewById(R.id.etEmail) }
-    private val etPassword: EditText by lazy(LazyThreadSafetyMode.NONE) { findViewById(R.id.etPassword) }
-    private val tilEmail: TextInputLayout by lazy(LazyThreadSafetyMode.NONE) { findViewById(R.id.tilEmail) }
-    private val tilPassword: TextInputLayout by lazy(LazyThreadSafetyMode.NONE) { findViewById(R.id.tilPassword) }
-    private val btnRegister: Button by lazy(LazyThreadSafetyMode.NONE) { findViewById(R.id.btnRegister) }
-    private val btnLogin: Button by lazy(LazyThreadSafetyMode.NONE) { findViewById(R.id.btnLogin) }
+    private lateinit var bind: ActivityAuthBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auth)
+        bind = ActivityAuthBinding.inflate(layoutInflater)
+        setContentView(bind.root)
 
         val factory = AuthViewModel.Factory(ApiModule.service, SharedPref)
         val viewModel = ViewModelProvider(this, factory)[AuthViewModel::class.java]
@@ -36,42 +30,61 @@ class AuthActivity : AppCompatActivity() {
         viewModel.checkIsLogin()
         viewModel.onCheckLogin().observe(this, { onSuccess() })
 
-        btnLogin.setOnClickListener {
-            tilEmail.error = null
-            tilPassword.error = null
+        bind.btnLogin.setOnClickListener {
+            bind.tilEmail.error = null
+            bind.tilPassword.error = null
 
-            if (etEmail.text.isBlank()) {
-                tilEmail.error = string(R.string.email_validation)
+            if (bind.etEmail.text!!.isBlank()) {
+                bind.tilEmail.error = string(R.string.email_validation)
                 return@setOnClickListener
             }
-            if (!Patterns.EMAIL_ADDRESS.matcher(etEmail.text).matches()) {
-                tilEmail.error =
+            if (!Patterns.EMAIL_ADDRESS.matcher(bind.etEmail.text!!).matches()) {
+                bind.tilEmail.error =
                     string(R.string.email_format_validation)
                 return@setOnClickListener
             }
-            if (etPassword.text.isBlank()) {
-                tilPassword.error = string(R.string.password_validation)
+            if (bind.etPassword.text!!.isBlank()) {
+                bind.tilPassword.error = string(R.string.password_validation)
                 return@setOnClickListener
             }
 
-            viewModel.login(LoginRequest(email = etEmail.text(), password = etPassword.text()))
+            it.isEnabled = false
+            bind.lottieLoginLoading.visibility = View.VISIBLE
+            bind.lottieLoginLoading.playAnimation()
+            viewModel.login(
+                LoginRequest(
+                    email = bind.etEmail.text.toString(),
+                    password = bind.etPassword.text.toString()
+                )
+            )
         }
 
-        btnRegister.setOnClickListener {
+        bind.btnRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
             finish()
         }
 
         viewModel.onErrorLogin().observe(this, {
             when (it) {
-                R.string.wrong_email.toString() -> tilEmail.error = string(R.string.wrong_email)
-                R.string.wrong_password.toString() -> tilPassword.error =
+                R.string.wrong_email.toString() -> bind.tilEmail.error =
+                    string(R.string.wrong_email)
+                R.string.wrong_password.toString() -> bind.tilPassword.error =
                     string(R.string.wrong_password)
                 else -> Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
             }
+            onAnimationFinish()
         })
 
-        viewModel.onResultLogin().observe(this, { onSuccess() })
+        viewModel.onResultLogin().observe(this, {
+            onSuccess()
+            onAnimationFinish()
+        })
+    }
+
+    private fun onAnimationFinish() {
+        bind.lottieLoginLoading.pauseAnimation()
+        bind.lottieLoginLoading.visibility = View.INVISIBLE
+        bind.btnLogin.isEnabled = true
     }
 
     private fun onSuccess() {
