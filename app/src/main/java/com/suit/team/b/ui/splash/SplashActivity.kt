@@ -20,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
 
         viewModel.checkIsLogin()
 
-        val lottie = findViewById<LottieAnimationView>(R.id.lottie_splash)
+        val lottie = findViewById<LottieAnimationView>(R.id.lavSplash)
 
         lottie.apply {
             addAnimatorListener(object : Animator.AnimatorListener {

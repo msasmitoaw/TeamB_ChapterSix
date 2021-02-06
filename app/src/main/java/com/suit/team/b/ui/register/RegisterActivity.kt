@@ -59,8 +59,8 @@ class RegisterActivity : AppCompatActivity() {
             )
 
             it.isEnabled = false
-            bind.lottieRegisterLoading.visibility = View.VISIBLE
-            bind.lottieRegisterLoading.playAnimation()
+            bind.lavRegisterLoading.visibility = View.VISIBLE
+            bind.lavRegisterLoading.playAnimation()
             viewModel.register(registerRequest)
         }
 
@@ -93,8 +93,8 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun onAnimationFinish() {
-        bind.lottieRegisterLoading.pauseAnimation()
-        bind.lottieRegisterLoading.visibility = View.INVISIBLE
+        bind.lavRegisterLoading.pauseAnimation()
+        bind.lavRegisterLoading.visibility = View.INVISIBLE
         bind.btnRegister.isEnabled = true
     }
 }
