@@ -50,9 +50,7 @@ class ProfilePageActivity : AppCompatActivity() {
 
         btLogout.setOnClickListener {
             viewModel.logout()
-            this.startActivity(
-                Intent(this, AuthActivity::class.java)
-            )
+            startActivity(Intent(this, AuthActivity::class.java))
             finish()
         }
 
@@ -69,15 +67,15 @@ class ProfilePageActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            super.onBackPressed()
-        }
+        if (item.itemId == android.R.id.home) onBackAction()
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onBackPressed() {
+    private fun onBackAction() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
+
+    override fun onBackPressed() = onBackAction()
 
 }
