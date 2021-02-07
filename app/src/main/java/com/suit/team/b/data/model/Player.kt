@@ -1,3 +1,3 @@
 package com.suit.team.b.data.model
 
-data class Player(val bet: String)
+data class Player(val bet: Int)
