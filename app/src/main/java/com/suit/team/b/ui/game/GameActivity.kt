@@ -23,7 +23,7 @@ import com.suit.team.b.utils.string
 class GameActivity : AppCompatActivity() {
     private lateinit var playerOneName: String
     private lateinit var playerTwoName: String
-    private lateinit var gameType: GameType
+    private lateinit var gameMode: GameType
     private lateinit var bind: ActivityGameBinding
     private lateinit var viewModel: GameViewModel
 
@@ -37,9 +37,9 @@ class GameActivity : AppCompatActivity() {
 
         bind.btnHome.setOnClickListener { backToMenu() }
 
-        gameType = intent.getSerializableExtra("mode") as GameType
+        gameMode = intent.getSerializableExtra("mode") as GameType
         playerOneName = intent.getStringExtra("username").toString()
-        playerTwoName = if (gameType == GameType.Multiplayer) string(player_two) else string(CPU)
+        playerTwoName = if (gameMode == GameType.Multiplayer) string(player_two) else string(CPU)
         bind.tvPlayerOne.text = playerOneName
         bind.tvPlayerTwo.text = playerTwoName
         onPlayerOnePick()
@@ -84,7 +84,7 @@ class GameActivity : AppCompatActivity() {
                 it.onSelected(this)
                 val bet = getStringResId(it.tag.toString())
                 viewModel.setPlayerTwo(Player(bet))
-                onResult(string(viewModel.result()))
+                onResult(string(viewModel.result(gameMode)))
             }
         }
     }
@@ -98,10 +98,14 @@ class GameActivity : AppCompatActivity() {
         mutableListOf(
             bind.btnRockTwo, bind.btnScissorsTwo, bind.btnPaperTwo
         ).forEachIndexed { _, i -> if (i.tag == playerTwoBet) i.onSelected(this) }
-        onResult(string(viewModel.result()))
+        onResult(string(viewModel.result(gameMode)))
     }
 
     private fun onResult(result: String) {
+        viewModel.onErrorResponse().observe(this, {
+            setWord(this, it)
+        })
+
         bind.llPlayerOne.visibility = View.VISIBLE
 
         val gameEnd = when (result) {
