@@ -6,119 +6,118 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
-import android.widget.ImageButton
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.suit.team.b.R
 import com.suit.team.b.R.string.*
 import com.suit.team.b.data.model.Player
+import com.suit.team.b.data.remote.ApiModule
+import com.suit.team.b.databinding.ActivityGameBinding
 import com.suit.team.b.ui.main.MainActivity
+import com.suit.team.b.utils.GameType
 import com.suit.team.b.utils.onSelected
 import com.suit.team.b.utils.setWord
 import com.suit.team.b.utils.string
 
-class GameActivity : AppCompatActivity(), GameView {
-    private lateinit var presenter: GamePresenter
-    private lateinit var playerOne: String
-    private lateinit var playerTwo: String
-
-    private val llPlayerOne: LinearLayout by lazy(LazyThreadSafetyMode.NONE) { findViewById(R.id.llPlayerOne) }
-    private val llPlayerTwo: LinearLayout by lazy(LazyThreadSafetyMode.NONE) { findViewById(R.id.llPlayerTwo) }
-    private val tvPlayerOne: TextView by lazy(LazyThreadSafetyMode.NONE) { findViewById(R.id.tvPlayerOne) }
-    private val tvPlayerTwo: TextView by lazy(LazyThreadSafetyMode.NONE) { findViewById(R.id.tvPlayerTwo) }
-    private val tvPlayerOneScore: TextView by lazy(LazyThreadSafetyMode.NONE) { findViewById(R.id.tvPlayerOneScore) }
-    private val tvPlayerTwoScore: TextView by lazy(LazyThreadSafetyMode.NONE) { findViewById(R.id.tvPlayerTwoScore) }
+class GameActivity : AppCompatActivity() {
+    private lateinit var playerOneName: String
+    private lateinit var playerTwoName: String
+    private lateinit var gameType: GameType
+    private lateinit var bind: ActivityGameBinding
+    private lateinit var viewModel: GameViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_game)
-        presenter = GamePresenterImp(this)
-        mutableListOf(R.id.btnHome, R.id.btnClose).forEachIndexed { index, i ->
-            findViewById<Button>(i).setOnClickListener { if (index == 1) finish() else backToMenu() }
-        }
-        playerOne = presenter.getPlayerOneName()
-        playerTwo = intent.getStringExtra("mode").toString()
-        tvPlayerOne.text = playerOne
-        tvPlayerTwo.text = playerTwo
+        bind = ActivityGameBinding.inflate(layoutInflater)
+        setContentView(bind.root)
+
+        val factory = GameViewModel.Factory(ApiModule.service)
+        viewModel = ViewModelProvider(this, factory)[GameViewModel::class.java]
+
+        bind.btnHome.setOnClickListener { backToMenu() }
+
+        gameType = intent.getSerializableExtra("mode") as GameType
+        playerOneName = intent.getStringExtra("username").toString()
+        playerTwoName = if (gameType == GameType.Multiplayer) string(player_two) else string(CPU)
+        bind.tvPlayerOne.text = playerOneName
+        bind.tvPlayerTwo.text = playerTwoName
         onPlayerOnePick()
     }
 
-    override fun onBackPressed() {
-        backToMenu()
-    }
+    override fun onBackPressed() = backToMenu()
 
     private fun backToMenu() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 
-    override fun onPlayerOnePick() {
-        llPlayerTwo.visibility = View.GONE
+    private fun onPlayerOnePick() {
+        bind.llPlayerTwo.visibility = View.GONE
         mutableListOf(
-            R.id.btnRockOne, R.id.btnScissorsOne, R.id.btnPaperOne
+            bind.btnRockOne, bind.btnScissorsOne, bind.btnPaperOne
         ).forEachIndexed { _, i ->
-            findViewById<ImageButton>(i).setOnClickListener {
-                val btn = it as ImageButton
-                val player = Player(btn.tag.toString())
-                setWord(this, "$playerOne ${string(choose)} ${btn.tag}")
-                btn.onSelected(this)
-                presenter.setPlayer(player)
-                if (playerTwo == string(cpu)) onComputerPick() else onPlayerTwoPick()
+            i.setOnClickListener {
+                setWord(this, "$playerOneName ${string(choose)} ${it.tag}")
+                it.onSelected(this)
+                val bet = getStringResId(it.tag.toString())
+                viewModel.setPlayer(Player(bet))
+                if (playerTwoName == string(cpu)) onComputerPick() else onPlayerTwoPick()
             }
         }
     }
 
-    override fun onPlayerTwoPick() {
-        llPlayerOne.visibility = View.GONE
-        llPlayerTwo.visibility = View.VISIBLE
+    private fun getStringResId(tag: String): Int = when (tag) {
+        string(scissors_caps) -> scissors_caps
+        string(paper_caps) -> paper_caps
+        else -> rock_caps
+    }
+
+    private fun onPlayerTwoPick() {
+        bind.llPlayerOne.visibility = View.GONE
+        bind.llPlayerTwo.visibility = View.VISIBLE
         mutableListOf(
-            R.id.btnRockTwo, R.id.btnScissorsTwo, R.id.btnPaperTwo
+            bind.btnRockTwo, bind.btnScissorsTwo, bind.btnPaperTwo
         ).forEachIndexed { _, i ->
-            findViewById<ImageButton>(i).setOnClickListener {
-                val btn = it as ImageButton
-                val player = Player(btn.tag.toString())
-                setWord(this, "$playerTwo ${string(choose)} ${btn.tag}")
-                btn.onSelected(this)
-                presenter.setPlayerTwo(player)
-                presenter.result(playerTwo)
+            i.setOnClickListener {
+                setWord(this, "$playerTwoName ${string(choose)} ${it.tag}")
+                it.onSelected(this)
+                val bet = getStringResId(it.tag.toString())
+                viewModel.setPlayerTwo(Player(bet))
+                onResult(string(viewModel.result()))
             }
         }
     }
 
-    override fun onComputerPick() {
-        llPlayerOne.visibility = View.GONE
-        llPlayerTwo.visibility = View.VISIBLE
-        playerTwo = intent.getStringExtra("mode").toString()
-        presenter.setPlayerTwo()
-        val playerTwoBet = presenter.getPlayerTwo().bet
-        setWord(this, "$playerTwo ${string(choose)} $playerTwoBet")
+    private fun onComputerPick() {
+        bind.llPlayerOne.visibility = View.GONE
+        bind.llPlayerTwo.visibility = View.VISIBLE
+        viewModel.setPlayerTwo()
+        val playerTwoBet = string(viewModel.getPlayerTwo().bet)
+        setWord(this, "$playerTwoName ${string(choose)} $playerTwoBet")
         mutableListOf(
-            R.id.btnRockTwo, R.id.btnScissorsTwo, R.id.btnPaperTwo
-        ).forEachIndexed { _, i ->
-            val btn = findViewById<ImageButton>(i)
-            if (btn.tag == playerTwoBet) btn.onSelected(this)
-        }
-        presenter.result(playerTwo)
+            bind.btnRockTwo, bind.btnScissorsTwo, bind.btnPaperTwo
+        ).forEachIndexed { _, i -> if (i.tag == playerTwoBet) i.onSelected(this) }
+        onResult(string(viewModel.result()))
     }
 
-    override fun onResult(result: String) {
-        llPlayerOne.visibility = View.VISIBLE
+    private fun onResult(result: String) {
+        bind.llPlayerOne.visibility = View.VISIBLE
 
         val gameEnd = when (result) {
             string(player_one_win) -> {
-                var count = tvPlayerOneScore.text.toString().replace("#", "").toInt()
+                var count = bind.tvPlayerOneScore.text.toString().replace("#", "").toInt()
                 count++
                 val score = string(_tags) + count
-                tvPlayerOneScore.text = score
-                "$playerOne${string(wins)}"
+                bind.tvPlayerOneScore.text = score
+                "$playerOneName${string(wins)}"
             }
             string(player_two_win) -> {
-                var count = tvPlayerTwoScore.text.toString().replace("#", "").toInt()
+                var count = bind.tvPlayerTwoScore.text.toString().replace("#", "").toInt()
                 count++
                 val score = string(_tags) + count
-                tvPlayerTwoScore.text = score
-                if (playerTwo == string(cpu)) string(cpu_win)
+                bind.tvPlayerTwoScore.text = score
+                if (playerTwoName == string(cpu)) string(cpu_win)
                 else string(player_two_win)
             }
             else -> result
@@ -144,12 +143,10 @@ class GameActivity : AppCompatActivity(), GameView {
         btnReset.setOnClickListener { dialog.dismiss(); onRefresh() }
     }
 
-    override fun onRefresh() {
+    private fun onRefresh() {
         mutableListOf(
-            R.id.btnRockOne, R.id.btnRockTwo, R.id.btnPaperOne,
-            R.id.btnPaperTwo, R.id.btnScissorsOne, R.id.btnScissorsTwo,
-        ).forEachIndexed { _, i ->
-            findViewById<ImageButton>(i).background = null
-        }
+            bind.btnRockOne, bind.btnRockTwo, bind.btnPaperOne,
+            bind.btnPaperTwo, bind.btnScissorsOne, bind.btnScissorsTwo,
+        ).forEachIndexed { _, i -> i.background = null }
     }
 }

@@ -3,8 +3,8 @@ package com.suit.team.b.utils
 import android.app.Activity
 import android.content.Context
 import android.util.Log
+import android.view.View
 import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.Toast
 import android.widget.Toast.makeText
 import androidx.core.content.ContextCompat
@@ -16,9 +16,11 @@ fun setWord(context: Context, message: String) {
     Log.d(activity.localClassName, message.replace("\n", " "))
 }
 
-fun ImageButton.onSelected(context: Context) {
-    background = ContextCompat.getDrawable(context, R.drawable.item_bg)
+fun View.onSelected(context: Context) {
+    background = ContextCompat.getDrawable(
+        context,
+        R.drawable.item_bg
+    )
 }
 
 fun EditText.text(): String = text.toString()
-
