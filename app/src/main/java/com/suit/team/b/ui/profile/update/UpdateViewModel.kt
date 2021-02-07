@@ -30,7 +30,7 @@ class UpdateViewModel : ViewModel() {
 
     fun fetchUserData() {
         val disposable =
-            service.getUserData(SharedPref.token)
+            service.getUserData("Bearer " + SharedPref.token)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
@@ -51,7 +51,7 @@ class UpdateViewModel : ViewModel() {
         )
         SharedPref.token?.let { it ->
             val disposable = service.putUserPhoto(
-                it,
+                "Bearer $it",
                 username.toRequestBody("multipart/form-data".toMediaTypeOrNull()),
                 email.toRequestBody("multipart/form-data".toMediaTypeOrNull()),
                 photo
@@ -73,7 +73,7 @@ class UpdateViewModel : ViewModel() {
     fun putUser(username: String, email: String) {
         SharedPref.token?.let { it ->
             val disposable = service.putUserData(
-                it,
+                "Bearer $it",
                 username.toRequestBody("multipart/form-data".toMediaTypeOrNull()),
                 email.toRequestBody("multipart/form-data".toMediaTypeOrNull()),
             )

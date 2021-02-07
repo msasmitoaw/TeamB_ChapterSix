@@ -8,7 +8,9 @@ import android.widget.ImageButton
 import android.widget.Toast
 import android.widget.Toast.makeText
 import androidx.core.content.ContextCompat
+import com.auth0.android.jwt.JWT
 import com.suit.team.b.R
+import com.suit.team.b.data.local.SharedPref
 
 fun setWord(context: Context, message: String) {
     makeText(context, message.replace("\n", " "), Toast.LENGTH_SHORT).show()
@@ -22,3 +24,7 @@ fun ImageButton.onSelected(context: Context) {
 
 fun EditText.text(): String = text.toString()
 
+fun getFromToken(claimName: String?): String? {
+    val jwt = SharedPref.token?.let { JWT(it) }
+    return claimName?.let { jwt?.getClaim(it)?.asString() }
+}

@@ -26,7 +26,7 @@ class ScoreViewModel : ViewModel() {
     }
 
     fun fetchScoreMulti() {
-        val disposable = ApiModule.service.getBattle(SharedPref.token)
+        val disposable = ApiModule.service.getBattle("Bearer " + SharedPref.token)
             .map { br -> toScore(br.data) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -46,7 +46,7 @@ class ScoreViewModel : ViewModel() {
     }
 
     fun fetchScoreSingle() {
-        val disposable = ApiModule.service.getBattle(SharedPref.token)
+        val disposable = ApiModule.service.getBattle("Bearer " + SharedPref.token)
             .map { br -> toScore(br.data) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -85,19 +85,19 @@ class ScoreViewModel : ViewModel() {
 
         return mutableListOf(
             Score(
-                SharedPref.username,
+                getFromToken(getString(R.string.username)?.toLowerCase()),
                 PlayerType.P1,
                 winSingleCount,
                 GameType.Singleplayer,
             ),
             Score(
-                App.weakReferenceContext.get()?.getString(R.string.CPU),
-                PlayerType.P1,
+                getString(R.string.CPU),
+                PlayerType.CPU,
                 loseSingleCount,
                 GameType.Singleplayer
             ),
             Score(
-                SharedPref.username,
+                getFromToken(getString(R.string.username)?.toLowerCase()),
                 PlayerType.P1,
                 winMultiCount,
                 GameType.Multiplayer,
