@@ -71,45 +71,6 @@ object SharedPref {
             }
         }
 
-    fun scoreToPref(playerType: PlayerType, gameType: GameType) {
-        when (playerType) {
-            PlayerType.P1 -> {
-                if (gameType == GameType.VSP) {
-                    val getScoreUserVsP2 = pref?.getInt(KEY_SCORE_USER_VSP2, 0)
-                    val score = getScoreUserVsP2?.plus(1)
-                    pref?.edit()
-                        ?.putInt(KEY_SCORE_USER_VSP2, score!!)
-                        ?.apply()
-                    Log.d("SharedPref", score.toString())
-                } else {
-                    val getScoreUserVsCpu = pref?.getInt(KEY_SCORE_USER_VS_CPU, 0)
-                    val score = getScoreUserVsCpu!!.plus(1)
-                    pref?.edit()
-                        ?.putInt(KEY_SCORE_USER_VS_CPU, score)
-                        ?.apply()
-                    Log.d("SharedPref", score.toString())
-                }
-            }
-            PlayerType.P2 -> {
-                val getScoreP2 = pref?.getInt(KEY_SCORE_P2, 0)
-                val score = getScoreP2!!.plus(1)
-                pref?.edit()
-                    ?.putInt(KEY_SCORE_P2, score)
-                    ?.apply()
-                Log.d("SharedPref", score.toString())
-            }
-            PlayerType.CPU -> {
-                val getScoreCpu = pref?.getInt(KEY_SCORE_CPU, 0)
-                val score = getScoreCpu!!.plus(1)
-                pref?.edit()
-                    ?.putInt(KEY_SCORE_CPU, score)
-                    ?.apply()
-                Log.d("SharedPref", score.toString())
-            }
-        }
-    }
-
-
     fun logout() {
         pref?.edit()?.clear()?.apply()
     }
