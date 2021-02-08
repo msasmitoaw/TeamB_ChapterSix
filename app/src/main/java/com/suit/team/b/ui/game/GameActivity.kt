@@ -36,7 +36,7 @@ class GameActivity : AppCompatActivity() {
         bind.btnHome.setOnClickListener { backToMenu() }
 
         gameMode = intent.getSerializableExtra("mode") as GameType
-        playerOneName = getFromToken(getString(username).toLowerCase(Locale.ROOT))!!
+        getFromToken(getString(username).toLowerCase(Locale.ROOT)).let { playerOneName }
         playerTwoName = if (gameMode == GameType.Multiplayer) string(player_two) else string(CPU)
         bind.tvPlayerOne.text = playerOneName
         bind.tvPlayerTwo.text = playerTwoName
