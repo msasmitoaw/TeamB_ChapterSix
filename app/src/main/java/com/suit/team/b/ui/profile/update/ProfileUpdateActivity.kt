@@ -5,16 +5,24 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Patterns
 import android.view.MenuItem
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.net.toFile
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.mikhaellopez.circularimageview.CircularImageView
+import com.skydoves.balloon.ArrowOrientation
+import com.skydoves.balloon.Balloon
+import com.skydoves.balloon.BalloonAnimation
+import com.skydoves.balloon.BalloonSizeSpec
 import com.suit.team.b.R
 import com.suit.team.b.utils.string
 import com.suit.team.b.utils.text
@@ -31,11 +39,12 @@ class ProfileUpdateActivity : AppCompatActivity() {
     private lateinit var tilEmail: TextInputLayout
     private lateinit var btSave: Button
     private lateinit var btCancel: Button
-    private lateinit var ivPhoto: ImageView
+    private lateinit var civPhoto: CircularImageView
     private var filePath: File? = null
 
 
     @SuppressLint("ResourceType")
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -50,7 +59,7 @@ class ProfileUpdateActivity : AppCompatActivity() {
 
         btSave = findViewById(R.id.btSave)
         btCancel = findViewById(R.id.btCancel)
-        ivPhoto = findViewById(R.id.ivPhoto)
+        civPhoto = findViewById(R.id.civPhoto)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setTitle(R.string.profile_update_header)
@@ -59,7 +68,8 @@ class ProfileUpdateActivity : AppCompatActivity() {
         viewModel.fetchUserData()
 
         viewModel.resultRegister.observe(this) {
-            Glide.with(this).load(it.data?.photo).into(ivPhoto)
+            if (it.data?.photo != null)
+                Glide.with(this).load(it.data.photo).into(civPhoto)
             etUsername.setText(it.data?.username, TextView.BufferType.EDITABLE)
             etEmail.setText(it.data?.email, TextView.BufferType.EDITABLE)
             Toast.makeText(this, R.string.update_success, Toast.LENGTH_SHORT).show()
@@ -110,10 +120,32 @@ class ProfileUpdateActivity : AppCompatActivity() {
 
         btCancel.setOnClickListener { super.onBackPressed() }
 
-        ivPhoto.setOnClickListener {
-            CropImage.activity()
-                .setGuidelines(CropImageView.Guidelines.ON)
-                .start(this)
+        civPhoto.setOnClickListener {
+            val balloon = Balloon.Builder(this)
+                .setArrowSize(6)
+                .setArrowOrientation(ArrowOrientation.BOTTOM)
+                .setArrowPosition(0.5f)
+                .setWidth(BalloonSizeSpec.WRAP)
+                .setHeight(BalloonSizeSpec.WRAP)
+                .setPadding(5)
+                .setCornerRadius(4f)
+                .setAlpha(0.9f)
+                .setText("Add picture.")
+                .setTextSize(15f)
+                .setTextColorResource(R.color.scorecard_yellow)
+                .setTextIsHtml(true)
+                .setIconDrawable(ContextCompat.getDrawable(baseContext, R.drawable.ic_add_photo))
+                .setBackgroundColorResource(R.color.black)
+                .setOnBalloonClickListener {
+                    CropImage.activity()
+                        .setGuidelines(CropImageView.Guidelines.ON)
+                        .start(this)
+                }
+                .setBalloonAnimation(BalloonAnimation.FADE)
+                .setLifecycleOwner(this)
+                .build()
+
+            balloon.showAlignTop(civPhoto)
         }
     }
 
@@ -131,7 +163,7 @@ class ProfileUpdateActivity : AppCompatActivity() {
             if (resultCode == RESULT_OK) {
                 val resultUri: Uri = result.uri
                 filePath = resultUri.toFile()
-                Glide.with(this).load(filePath).into(ivPhoto)
+                Glide.with(this).load(filePath).into(civPhoto)
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 viewModel.errorRegister.value = this.getString(R.string.capture_image_failed)
                 result.error.printStackTrace()

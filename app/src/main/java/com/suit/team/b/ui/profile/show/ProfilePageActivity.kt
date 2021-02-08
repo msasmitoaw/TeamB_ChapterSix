@@ -7,11 +7,11 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.mikhaellopez.circularimageview.CircularImageView
 import com.suit.team.b.R
 import com.suit.team.b.ui.auth.AuthActivity
 import com.suit.team.b.ui.main.MainActivity
@@ -22,7 +22,7 @@ class ProfilePageActivity : AppCompatActivity() {
     private lateinit var viewModel: ProfileViewModel
     private lateinit var tvUsername: TextView
     private lateinit var tvEmail: TextView
-    private lateinit var ivPhoto: ImageView
+    private lateinit var civPhoto: CircularImageView
     private lateinit var btUpdate: Button
     private lateinit var btLogout: Button
 
@@ -36,7 +36,7 @@ class ProfilePageActivity : AppCompatActivity() {
 
         tvUsername = findViewById(R.id.tvUsername)
         tvEmail = findViewById(R.id.tvEmail)
-        ivPhoto = findViewById(R.id.ivPhoto)
+        civPhoto = findViewById(R.id.civPhoto)
         btUpdate = findViewById(R.id.btUpdate)
         btLogout = findViewById(R.id.btLogout)
 
@@ -55,7 +55,8 @@ class ProfilePageActivity : AppCompatActivity() {
         }
 
         viewModel.resultRegister.observe(this) {
-            Glide.with(this).load(it.data?.photo).into(ivPhoto)
+            if (it.data?.photo != null)
+                Glide.with(this).load(it.data.photo).into(civPhoto)
             tvUsername.text = it.data?.username
             tvEmail.text = it.data?.email
         }

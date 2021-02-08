@@ -12,6 +12,7 @@ import com.suit.team.b.utils.*
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import java.util.*
 
 class ScoreViewModel : ViewModel() {
 
@@ -85,7 +86,7 @@ class ScoreViewModel : ViewModel() {
 
         return mutableListOf(
             Score(
-                getFromToken(getString(R.string.username)?.toLowerCase()),
+                getFromToken(getString(R.string.username)?.toLowerCase(Locale.ROOT)),
                 PlayerType.P1,
                 winSingleCount,
                 GameType.Singleplayer,
@@ -97,7 +98,7 @@ class ScoreViewModel : ViewModel() {
                 GameType.Singleplayer
             ),
             Score(
-                getFromToken(getString(R.string.username)?.toLowerCase()),
+                getFromToken(getString(R.string.username)?.toLowerCase(Locale.ROOT)),
                 PlayerType.P1,
                 winMultiCount,
                 GameType.Multiplayer,
