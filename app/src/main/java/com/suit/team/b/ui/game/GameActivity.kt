@@ -15,10 +15,8 @@ import com.suit.team.b.data.model.Player
 import com.suit.team.b.data.remote.ApiModule
 import com.suit.team.b.databinding.ActivityGameBinding
 import com.suit.team.b.ui.main.MainActivity
-import com.suit.team.b.utils.GameType
-import com.suit.team.b.utils.onSelected
-import com.suit.team.b.utils.setWord
-import com.suit.team.b.utils.string
+import com.suit.team.b.utils.*
+import java.util.*
 
 class GameActivity : AppCompatActivity() {
     private lateinit var playerOneName: String
@@ -38,7 +36,7 @@ class GameActivity : AppCompatActivity() {
         bind.btnHome.setOnClickListener { backToMenu() }
 
         gameMode = intent.getSerializableExtra("mode") as GameType
-        playerOneName = intent.getStringExtra("username").toString()
+        playerOneName = getFromToken(getString(username).toLowerCase(Locale.ROOT))!!
         playerTwoName = if (gameMode == GameType.Multiplayer) string(player_two) else string(CPU)
         bind.tvPlayerOne.text = playerOneName
         bind.tvPlayerTwo.text = playerTwoName

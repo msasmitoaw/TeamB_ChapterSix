@@ -27,14 +27,12 @@ class MainActivity : AppCompatActivity() {
                     0 -> {
                         val intent = Intent(this, GameActivity::class.java)
                         intent.putExtra("mode", GameType.Multiplayer)
-                        intent.putExtra("username", "putut76")
                         startActivity(intent)
                         finish()
                     }
                     1 -> {
                         val intent = Intent(this, GameActivity::class.java)
                         intent.putExtra("mode", GameType.Singleplayer)
-                        intent.putExtra("username", "putut76")
                         startActivity(intent)
                         finish()
                     }
