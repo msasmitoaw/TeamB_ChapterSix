@@ -21,7 +21,7 @@ class ProfileViewModel : ViewModel() {
     }
 
     fun fetchUserData() {
-        disposable = service.getUserData(SharedPref.token)
+        disposable = service.getUserData("Bearer " + SharedPref.token)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

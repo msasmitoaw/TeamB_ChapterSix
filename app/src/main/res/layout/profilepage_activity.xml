@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".ui.profile.show.ProfilePageActivity">
 
     <androidx.constraintlayout.widget.Guideline
@@ -11,25 +12,37 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="300dp" />
+        app:layout_constraintGuide_begin="400dp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginRight="20dp"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_card"
-            android:padding="20dp">
+            android:layout_height="wrap_content"
+            android:background="@color/profcard_blue"
+            android:padding="32dp">
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/civPhoto"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:contentDescription="@string/profile_header"
+                android:src="@drawable/ic_profile"
+                app:civ_border_color="@android:color/white"
+                app:civ_border_width="6dp"
+                app:civ_shadow="true"
+                app:civ_shadow_color="@color/black"
+                app:civ_shadow_radius="6dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guide2"
@@ -43,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginLeft="4dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginBottom="20dp"
                 android:fontFamily="@font/comic_sans_ms"
                 android:gravity="start"
                 android:text="@string/email"
@@ -51,15 +64,13 @@
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvUsername"
-                tools:layout_editor_absoluteY="115dp" />
+                app:layout_constraintTop_toTopOf="@id/tvEmail" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginLeft="4dp"
-                android:layout_marginTop="50dp"
                 android:fontFamily="@font/comic_sans_ms"
                 android:gravity="start"
                 android:text="@string/username"
@@ -67,11 +78,11 @@
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@id/tvUsername" />
 
             <TextView
                 android:id="@+id/tvEmail"
-                android:layout_width="250dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/comic_sans_ms"
@@ -85,43 +96,37 @@
 
             <TextView
                 android:id="@+id/tvUsername"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="32dp"
                 android:fontFamily="@font/comic_sans_ms"
                 android:gravity="start"
                 android:textAlignment="viewStart"
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@id/guide2"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/civPhoto"
                 tools:text="@tools:sample/last_names" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-    <ImageView
-        android:id="@+id/ivPhoto"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:baseline="60dp"
-        android:contentDescription="@string/profile_header"
-        android:elevation="10dp"
-        android:src="@drawable/ic_profile"
-        app:layout_constraintBaseline_toBaselineOf="@+id/cardView"
+
+    <!--android:adjustViewBounds="true"
+            android:baseline="90dp"
+            android:contentDescription="@string/profile_header"
+            android:elevation="10dp"-->
+    <!-- app:layout_constraintBaseline_toBaselineOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:targetApi="lollipop" />
-
+        tools:targetApi="lollipop"-->
     <Button
         android:id="@+id/btUpdate"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="64dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="64dp"
         android:background="@drawable/ic_white_button"
         android:text="@string/profile_btEdit"
         android:textAllCaps="false"
@@ -135,9 +140,9 @@
         android:id="@+id/btLogout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="64dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="64dp"
         android:background="@drawable/ic_white_button"
         android:text="@string/profile_btLogout"
         android:textAllCaps="false"
