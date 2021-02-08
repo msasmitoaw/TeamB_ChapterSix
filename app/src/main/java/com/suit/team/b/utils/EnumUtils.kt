@@ -1,6 +1,7 @@
 package com.suit.team.b.utils
 
 enum class PlayerType {
+    CPU,
     P1,
     P2,
 }
