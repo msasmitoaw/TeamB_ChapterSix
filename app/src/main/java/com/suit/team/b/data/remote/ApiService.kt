@@ -36,6 +36,9 @@ interface ApiService {
     @GET("api/v1/auth/me")
     fun me(@Header("Authorization") authorization: String): Single<MeResponse>
 
+    @POST("api/v1/battle")
+    fun battle(@Header("Authorization") authorization: String?, @Body battleRequest: BattleRequest): Single<PostBattleResponse>
+
     @GET("api/v1/battle")
     fun getBattle(@Header("Authorization") authorization: String?): Single<BattleResponse>
 }
