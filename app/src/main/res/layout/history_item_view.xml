@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_gravity="center_vertical"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="16dp"
+    app:cardCornerRadius="15dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/scorecard_yellow"
+        android:orientation="horizontal">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lavWinner"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="6dp"
+            android:contentDescription="@string/wins"
+            android:visibility="invisible"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/trophy" />
+
+        <TextView
+            android:id="@+id/tvScoreHead"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvHistoryScore"
+            android:layout_margin="10dp"
+            android:layout_toEndOf="@id/lavWinner"
+            android:layout_toRightOf="@id/lavWinner"
+            android:fontFamily="@font/comic_sans_ms"
+            android:gravity="center"
+            android:text="@string/score"
+            android:textAlignment="viewStart"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            tools:ignore="RtlCompat" />
+
+        <TextView
+            android:id="@+id/tvHistoryScore"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/tvScoreHead"
+            android:layout_margin="10dp"
+            android:layout_toEndOf="@id/tvScoreHead"
+            android:layout_toRightOf="@id/tvScoreHead"
+            android:fontFamily="@font/comic_sans_ms"
+            android:gravity="start"
+            android:textAlignment="viewStart"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            tools:text="@tools:sample/last_names" />
+
+        <TextView
+            android:id="@+id/tvBookmark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/lavWinner"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_toEndOf="@id/lavWinner"
+            android:layout_toRightOf="@id/lavWinner"
+            android:fontFamily="@font/comic_sans_ms"
+            android:gravity="start"
+            android:textAlignment="viewStart"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            tools:text="@tools:sample/first_names" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

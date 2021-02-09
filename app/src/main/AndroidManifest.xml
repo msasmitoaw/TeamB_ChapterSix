@@ -38,6 +38,9 @@
             android:name=".ui.score.ScoreActivity"
             android:theme="@style/WithActionBar" />
         <activity
+            android:name=".ui.history.HistoryActivity"
+            android:theme="@style/WithActionBar" />
+        <activity
             android:name=".ui.profile.show.ProfilePageActivity"
             android:theme="@style/WithActionBar" />
         <activity

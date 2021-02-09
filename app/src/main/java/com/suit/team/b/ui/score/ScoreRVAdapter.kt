@@ -23,7 +23,6 @@ class ScoreRVAdapter(private val score: MutableList<Score>?) :
         if (model != null) {
             holder.bind(model)
         }
-
         val ivWinner = holder.itemView.findViewById<ImageView>(R.id.lavWinner)
         if (pos == 0 && (score?.get(0)?.scoreValue != score?.get(1)?.scoreValue)) {
             ivWinner.visibility = VISIBLE

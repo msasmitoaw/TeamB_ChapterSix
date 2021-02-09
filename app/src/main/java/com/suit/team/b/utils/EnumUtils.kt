@@ -13,9 +13,15 @@ enum class GameType {
     Singleplayer
 }
 
+enum class ScoreType{
+    HISTORY,
+    BOOKMARK
+}
+
 enum class Winner(private var winner: String) {
     Player("Player Win"),
-    Opponent("Opponent Win");
+    Opponent("Opponent Win"),
+    Draw("Draw");
 
     fun getWinner(): String {
         return this.winner

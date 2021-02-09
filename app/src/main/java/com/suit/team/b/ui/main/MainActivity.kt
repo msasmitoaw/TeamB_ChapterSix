@@ -4,8 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.suit.team.b.R
 import com.suit.team.b.ui.game.GameActivity
+import com.suit.team.b.ui.history.HistoryActivity
 import com.suit.team.b.ui.menu_about.MenuAboutActivity
 import com.suit.team.b.ui.profile.show.ProfilePageActivity
 import com.suit.team.b.ui.score.ScoreActivity
@@ -15,10 +17,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val factory = MainViewModel.Factory()
+        val viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
+
+        viewModel.checkIsLogin()
+
         mutableListOf(
             R.id.ivPlayerVsPlayer,
             R.id.ivPlayerVsComputer,
             R.id.ivScore,
+            R.id.ivHistory,
             R.id.ivSetting,
             R.id.ivAbout2,
         ).forEachIndexed { index, i ->
@@ -37,11 +46,12 @@ class MainActivity : AppCompatActivity() {
                         finish()
                     }
                     2 -> startActivity(Intent(this, ScoreActivity::class.java))
-                    3 -> {
+                    3 -> startActivity(Intent(this, HistoryActivity::class.java))
+                    4 -> {
                         startActivity(Intent(this, ProfilePageActivity::class.java))
                         finish()
                     }
-                    4 -> startActivity(Intent(this, MenuAboutActivity::class.java))
+                    5 -> startActivity(Intent(this, MenuAboutActivity::class.java))
                     else -> finish()
                 }
             }

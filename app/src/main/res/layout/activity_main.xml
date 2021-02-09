@@ -36,6 +36,15 @@
             android:src="@drawable/score" />
 
         <ImageView
+            android:id="@+id/ivHistory"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
+            android:contentDescription="@string/history_game"
+            android:src="@drawable/history" />
+
+        <ImageView
             android:id="@+id/ivSetting"
             android:layout_width="200dp"
             android:layout_height="200dp"

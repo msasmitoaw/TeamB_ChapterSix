@@ -36,6 +36,9 @@
     <string name="score_header">Ranking</string>
     <string name="vs_Player">vs Player</string>
     <string name="vs_CPU">vs CPU</string>
+    <string name="history_games">History Games</string>
+    <string name="history">History</string>
+    <string name="bookmark">Bookmark</string>
     <string name="player2">Player 2</string>
     <string name="CPU">CPU</string>
 
@@ -100,4 +103,6 @@
     <string name="capture_image_failed">Tidak dapat menangkap gambar!</string>
     <string name="wrong_password">Password anda salah!</string>
     <string name="wrong_email">Email anda tidak terdaftar!</string>
+    <string name="history_game">History</string>
+
 </resources>
