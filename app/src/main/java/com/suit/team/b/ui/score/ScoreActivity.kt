@@ -48,6 +48,8 @@ class ScoreActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onBackPressed() = onBackAction()
+
     private fun onBackAction() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
