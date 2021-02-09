@@ -43,6 +43,9 @@
     <string name="bookmark_save_err">Gagal menyimpan bookmark!</string>
     <string name="get_bookmark_err">Gagal mengambil bookmark!</string>
     <string name="bookmark_del_err">Gagal menghapus bookmark!</string>
+    <string name="time">Waktu</string>
+    <string name="mode">Mode</string>
+    <string name="message">Pesan</string>
 
     <string name="content_about">
         <b>\t\tBatu gunting kertas</b> adalah aplikasi permainan suit dalam bentuk aplikasi mobile.

@@ -10,8 +10,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.suit.team.b.R
+import com.suit.team.b.utils.string
 
-class HistoryFragment : Fragment() {
+class HistoryFragment(private val page: String) : Fragment() {
 
     private var viewModel: ScoreViewModel? = null
     private var recyclerView: RecyclerView? = null
@@ -28,10 +29,21 @@ class HistoryFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(ScoreViewModel::class.java)
         recyclerView = view.findViewById(R.id.rvHistory)
         recyclerView?.layoutManager = LinearLayoutManager(this.context)
-        viewModel?.fetchResult()
 
-        viewModel?.battleHistory?.observe(viewLifecycleOwner) {
-            recyclerView?.adapter = viewModel?.let { vm -> HistoryRVAdapter(it, vm) }
+        if (page == this.context?.string(R.string.history)) {
+            viewModel?.fetchBattleHistory()
+            viewModel?.battleHistory?.observe(viewLifecycleOwner) {
+                recyclerView?.adapter =
+                    viewModel?.let { vm -> HistoryRVAdapter(bookmark = false, it, vm) }
+            }
+        }
+
+        if (page == this.context?.string(R.string.bookmark)) {
+            viewModel?.fetchBookmark()
+            viewModel?.bmHistory?.observe(viewLifecycleOwner) {
+                recyclerView?.adapter =
+                    viewModel?.let { vm -> HistoryRVAdapter(bookmark = true, it, vm) }
+            }
         }
 
         viewModel?.errorRegister?.observe(viewLifecycleOwner) {
