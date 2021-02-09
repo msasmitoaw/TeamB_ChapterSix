@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.airbnb.lottie.LottieAnimationView
 import com.suit.team.b.R
 import com.suit.team.b.R.string.*
 import com.suit.team.b.data.model.Player
@@ -24,6 +25,7 @@ class GameActivity : AppCompatActivity() {
     private lateinit var gameMode: GameType
     private lateinit var bind: ActivityGameBinding
     private lateinit var viewModel: GameViewModel
+    private lateinit var sound: SoundEffect
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,10 +35,12 @@ class GameActivity : AppCompatActivity() {
         val factory = GameViewModel.Factory(ApiModule.service)
         viewModel = ViewModelProvider(this, factory)[GameViewModel::class.java]
 
+        sound = SoundEffect(this)
+
         bind.btnHome.setOnClickListener { backToMenu() }
 
         gameMode = intent.getSerializableExtra("mode") as GameType
-        getFromToken(getString(username).toLowerCase(Locale.ROOT)).let { playerOneName }
+        playerOneName = getFromToken(getString(username).toLowerCase(Locale.ROOT)).toString()
         playerTwoName = if (gameMode == GameType.Multiplayer) string(player_two) else string(CPU)
         bind.tvPlayerOne.text = playerOneName
         bind.tvPlayerTwo.text = playerTwoName
@@ -134,6 +138,10 @@ class GameActivity : AppCompatActivity() {
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
         dialog.setCanceledOnTouchOutside(false)
         dialog.show()
+
+        val lavWining = view.findViewById<LottieAnimationView>(R.id.lavWining)
+        lavWining.playAnimation()
+        sound.gameOverSound()
 
         val tvDialogResult: TextView = view.findViewById(R.id.tvDialogResult)
         tvDialogResult.text = gameEnd
