@@ -5,5 +5,5 @@ import androidx.room.RoomDatabase
 
 @Database(entities = [ResultEntity::class], version = 1)
 abstract class AppDb : RoomDatabase() {
-    abstract fun bookmarkResult(): BookmarkDao
+    abstract fun bookmark(): BookmarkDao
 }

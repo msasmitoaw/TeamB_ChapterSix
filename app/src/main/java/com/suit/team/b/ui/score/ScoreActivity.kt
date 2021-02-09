@@ -32,8 +32,12 @@ class ScoreActivity : AppCompatActivity() {
         viewPager2.setPageTransformer(FlipHorizontalPageTransformer())
 
         val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
-        val tabTitle = arrayOf(R.string.vs_Player, R.string.vs_CPU)
-        val tabIcon = arrayOf(R.drawable.ic_tabscore_vp, R.drawable.ic_tabscore_vcpu)
+        val tabTitle = arrayOf(R.string.vs_Player, R.string.vs_CPU, R.string.history)
+        val tabIcon = arrayOf(
+            R.drawable.ic_tabscore_vp,
+            R.drawable.ic_tabscore_vcpu,
+            R.drawable.ic_tabscore_history
+        )
 
         TabLayoutMediator(tabLayout, viewPager2) { tab, pos ->
             tab.text = resources.getString(tabTitle[pos])

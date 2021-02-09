@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.suit.team.b.App
 import com.suit.team.b.R
+import com.suit.team.b.data.db.ResultEntity
 import com.suit.team.b.data.local.SharedPref
 import com.suit.team.b.data.model.BattleResponse
 import com.suit.team.b.data.model.Score
@@ -12,16 +13,21 @@ import com.suit.team.b.utils.*
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.util.*
 
 class ScoreViewModel : ViewModel() {
 
+    private val appDb = App.appDb
     private var compositeDis: CompositeDisposable? = null
     val scoreMulti = MutableLiveData<MutableList<Score>>()
     val scoreSingle = MutableLiveData<MutableList<Score>>()
     val errorRegister: MutableLiveData<String>? = null
+    val battleHistory = MutableLiveData<MutableList<BattleResponse.Data>>()
+    var bmHistory = MutableLiveData<MutableList<BattleResponse.Data>>()
 
-    val battleResult = MutableLiveData<MutableList<BattleResponse.Data>>()
 
     override fun onCleared() {
         super.onCleared()
@@ -115,18 +121,78 @@ class ScoreViewModel : ViewModel() {
     }
 
     fun fetchResult() {
-        val disposable = ApiModule.service.getBattle("Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDFmYzBlOTcyN2E4YzAwMTc4Zjk2MmQiLCJ1c2VybmFtZSI6InNhbG1hbiIsImVtYWlsIjoic2FsbWFuQHlhaG9vLmNvbSIsImlhdCI6MTYxMjg0ODc2NywiZXhwIjoxNjEyODU1OTY3fQ.SLzcFGEBtgwiU7VArd3RwLIu0Z07Fi1U4NWj3pLtwHQ")
+        val disposable = ApiModule.service.getBattle("Bearer " + SharedPref.token)
             .map { br -> br.data }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
-                    battleResult.value = it.toMutableList()
+                    battleHistory.value = it.toMutableList()
                 }, {
                     errorRegister?.value =
                         getErrorMessage(it.getServiceErrorMsg(), it.getErrorThrowableCode())
                     it.printStackTrace()
                 })
         compositeDis?.add(disposable)
+    }
+
+    fun insertBookmark(data: BattleResponse.Data) {
+        val result = ResultEntity(
+            createdAt = data.createdAt,
+            id = data.id,
+            mode = data.mode,
+            message = data.message,
+            result = data.result,
+            updatedAt = data.updatedAt
+        )
+
+        GlobalScope.launch(Dispatchers.IO) {
+            try {
+                appDb?.bookmark()?.insertBookmark(result)
+            } catch (e: Throwable) {
+                launch(Dispatchers.Main) {
+                    errorRegister?.value = getString(R.string.bookmark_save_err)
+                    e.printStackTrace()
+                }
+            }
+        }
+    }
+
+    fun deleteBookmark(id: String) {
+        GlobalScope.launch(Dispatchers.IO) {
+            try {
+                appDb?.bookmark()?.delBookmark(id)
+            } catch (e: Throwable) {
+                launch(Dispatchers.Main) {
+                    errorRegister?.value = getString(R.string.bookmark_del_err)
+                    e.printStackTrace()
+                }
+            }
+        }
+    }
+
+    fun fetchBookmark() {
+        GlobalScope.launch(Dispatchers.IO) {
+            try {
+                val result = appDb?.bookmark()?.fetchBookmark()?.map {
+                    BattleResponse.Data(
+                        it.createdAt,
+                        it.id,
+                        it.message,
+                        it.mode,
+                        it.result,
+                        it.updatedAt
+                    )
+                }?.toMutableList()
+                launch(Dispatchers.Main) {
+                    bmHistory.value = result
+                }
+            } catch (e: Throwable) {
+                launch(Dispatchers.Main) {
+                    errorRegister?.value = getString(R.string.get_bookmark_err)
+                    e.printStackTrace()
+                }
+            }
+        }
     }
 }

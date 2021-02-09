@@ -11,7 +11,8 @@ class ScoreFragmentStateAdapter(
 
     private val dataFragment = mutableListOf(
         ScoreFragment(GameType.Multiplayer),
-        ScoreFragment(GameType.Singleplayer)
+        ScoreFragment(GameType.Singleplayer),
+        HistoryFragment()
     )
 
     override fun getItemCount(): Int = dataFragment.size
