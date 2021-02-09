@@ -1,4 +1,4 @@
-# TeamB CodeChallenge6
+# TeamB CodeChallenge
 ![asciicast](https://img.shields.io/badge/Android-Studio-green)
 ![asciicast](https://img.shields.io/badge/Kotlin-Language-yellow)
 

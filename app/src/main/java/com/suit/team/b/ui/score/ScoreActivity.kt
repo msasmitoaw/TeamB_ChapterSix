@@ -1,6 +1,7 @@
 package com.suit.team.b.ui.score
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -11,6 +12,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.suit.team.b.R
+import com.suit.team.b.ui.main.MainActivity
 import kotlin.math.abs
 
 private const val MIN_SCALE = 0.75f
@@ -42,11 +44,15 @@ class ScoreActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            super.onBackPressed()
-        }
-
+        if (item.itemId == android.R.id.home) onBackAction()
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() = onBackAction()
+
+    private fun onBackAction() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     class FlipHorizontalPageTransformer : ViewPager2.PageTransformer {
