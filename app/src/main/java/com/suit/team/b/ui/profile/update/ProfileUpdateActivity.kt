@@ -72,7 +72,8 @@ class ProfileUpdateActivity : AppCompatActivity() {
                 Glide.with(this).load(it.data.photo).into(civPhoto)
             etUsername.setText(it.data?.username, TextView.BufferType.EDITABLE)
             etEmail.setText(it.data?.email, TextView.BufferType.EDITABLE)
-            Toast.makeText(this, R.string.update_success, Toast.LENGTH_SHORT).show()
+            if (it.data?.username?.length != 0)
+                Toast.makeText(this, R.string.update_success, Toast.LENGTH_SHORT).show()
         }
 
         viewModel.errorRegister.observe(this) {

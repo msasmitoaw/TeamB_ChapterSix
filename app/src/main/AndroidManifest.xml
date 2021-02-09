@@ -14,12 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppStyle">
-
         <service
             android:name=".utils.SoundBackground"
             android:enabled="true" />
-
-        <activity android:name="com.suit.team.b.ui.splash.SplashActivity">
+        <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

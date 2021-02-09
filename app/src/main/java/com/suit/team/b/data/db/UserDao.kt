@@ -7,11 +7,12 @@ import androidx.room.Query
 
 @Dao
 interface BookmarkDao {
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun markedResult(resultEntity: ResultEntity)
+    fun insertBookmark(resultEntity: ResultEntity)
 
     @Query("SELECT * FROM Result")
-    fun fetchMarkedResult(): ResultEntity
+    fun fetchBookmark(): MutableList<ResultEntity>
 
+    @Query("DELETE FROM Result WHERE _id = :id")
+    fun delBookmark(id: String): Int
 }
