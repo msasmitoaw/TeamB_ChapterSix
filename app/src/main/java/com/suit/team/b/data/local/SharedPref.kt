@@ -8,6 +8,7 @@ object SharedPref {
     private const val KEY_IS_LOGIN = "KEY_IS_LOGIN"
     private const val KEY_ID = "KEY_ID"
     private const val KEY_USERNAME = "KEY_USERNAME"
+    private const val KEY_PASSWORD = "KEY_PASSWORD"
     private const val KEY_TOKEN = "KEY_TOKEN"
 
     private val pref =
@@ -49,6 +50,16 @@ object SharedPref {
             username?.let {
                 pref?.edit()
                     ?.putString(KEY_USERNAME, it)
+                    ?.apply()
+            }
+        }
+
+    var password: String?
+        get() = pref?.getString(KEY_PASSWORD, "")
+        set(value) {
+            value?.let {
+                pref?.edit()
+                    ?.putString(KEY_PASSWORD, it)
                     ?.apply()
             }
         }

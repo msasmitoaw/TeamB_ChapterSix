@@ -2,9 +2,15 @@ package com.suit.team.b.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import com.auth0.android.jwt.JWT
 import com.suit.team.b.R
+import com.suit.team.b.data.local.SharedPref
+import com.suit.team.b.data.remote.ApiModule
+import com.suit.team.b.ui.auth.AuthActivity
 import com.suit.team.b.ui.game.GameActivity
 import com.suit.team.b.ui.menu_about.MenuAboutActivity
 import com.suit.team.b.ui.profile.show.ProfilePageActivity
@@ -13,9 +19,14 @@ import com.suit.team.b.utils.GameType
 import com.suit.team.b.utils.SoundBackground
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var viewModel: MainViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val factory = MainViewModel.Factory(ApiModule.service)
+        viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
 
         startService(Intent(this, SoundBackground::class.java))
         mutableListOf(
@@ -39,7 +50,10 @@ class MainActivity : AppCompatActivity() {
                         startActivity(intent)
                         finish()
                     }
-                    2 -> startActivity(Intent(this, ScoreActivity::class.java))
+                    2 -> {
+                        startActivity(Intent(this, ScoreActivity::class.java))
+                        finish()
+                    }
                     3 -> {
                         startActivity(Intent(this, ProfilePageActivity::class.java))
                         finish()
@@ -50,6 +64,13 @@ class MainActivity : AppCompatActivity() {
                 stopSound()
             }
         }
+
+        viewModel.startRenewToken()
+        viewModel.onErrorResponse().observe(this, {
+            startActivity(Intent(this, AuthActivity::class.java))
+            viewModel.logout()
+            finish()
+        })
     }
 
     override fun onBackPressed() {
@@ -58,11 +79,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun stopSound() {
-        stopService(
-            Intent(
-                this,
-                SoundBackground::class.java
-            )
-        )
+        stopService(Intent(this, SoundBackground::class.java))
     }
 }
