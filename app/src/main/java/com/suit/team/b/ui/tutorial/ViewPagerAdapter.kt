@@ -1,3 +1,5 @@
+@file:Suppress("Annotator")
+
 package com.suit.team.b.ui.tutorial
 
 import android.content.Context

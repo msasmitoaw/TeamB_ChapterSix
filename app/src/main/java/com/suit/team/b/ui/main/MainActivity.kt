@@ -2,13 +2,10 @@ package com.suit.team.b.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.auth0.android.jwt.JWT
 import com.suit.team.b.R
-import com.suit.team.b.data.local.SharedPref
 import com.suit.team.b.data.remote.ApiModule
 import com.suit.team.b.ui.auth.AuthActivity
 import com.suit.team.b.ui.game.GameActivity
