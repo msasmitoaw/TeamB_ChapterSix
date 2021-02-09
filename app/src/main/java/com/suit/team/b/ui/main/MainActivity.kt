@@ -10,11 +10,14 @@ import com.suit.team.b.ui.menu_about.MenuAboutActivity
 import com.suit.team.b.ui.profile.show.ProfilePageActivity
 import com.suit.team.b.ui.score.ScoreActivity
 import com.suit.team.b.utils.GameType
+import com.suit.team.b.utils.SoundBackground
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        startService(Intent(this, SoundBackground::class.java))
         mutableListOf(
             R.id.ivPlayerVsPlayer,
             R.id.ivPlayerVsComputer,
@@ -44,7 +47,22 @@ class MainActivity : AppCompatActivity() {
                     4 -> startActivity(Intent(this, MenuAboutActivity::class.java))
                     else -> finish()
                 }
+                stopSound()
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        stopSound()
+    }
+
+    private fun stopSound() {
+        stopService(
+            Intent(
+                this,
+                SoundBackground::class.java
+            )
+        )
     }
 }
