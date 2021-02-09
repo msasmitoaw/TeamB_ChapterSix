@@ -9,6 +9,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.MODE_SCROLLABLE
 import com.google.android.material.tabs.TabLayoutMediator
 import com.suit.team.b.R
 import kotlin.math.abs
@@ -32,11 +33,14 @@ class ScoreActivity : AppCompatActivity() {
         viewPager2.setPageTransformer(FlipHorizontalPageTransformer())
 
         val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
-        val tabTitle = arrayOf(R.string.vs_Player, R.string.vs_CPU, R.string.history)
+        tabLayout.tabMode = MODE_SCROLLABLE
+        val tabTitle = arrayOf(R.string.vs_Player, R.string.vs_CPU, R.string.history, R.string.bookmark)
         val tabIcon = arrayOf(
             R.drawable.ic_tabscore_vp,
             R.drawable.ic_tabscore_vcpu,
-            R.drawable.ic_tabscore_history
+            R.drawable.ic_tabscore_history,
+            R.drawable.ic_tabscore_bookmark
+
         )
 
         TabLayoutMediator(tabLayout, viewPager2) { tab, pos ->

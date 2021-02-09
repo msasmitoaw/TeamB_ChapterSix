@@ -6,6 +6,7 @@ import com.suit.team.b.App
 import com.suit.team.b.R
 import com.suit.team.b.data.db.ResultEntity
 import com.suit.team.b.data.local.SharedPref
+import com.suit.team.b.data.model.Battle
 import com.suit.team.b.data.model.BattleResponse
 import com.suit.team.b.data.model.Score
 import com.suit.team.b.data.remote.ApiModule
@@ -120,7 +121,7 @@ class ScoreViewModel : ViewModel() {
         )
     }
 
-    fun fetchResult() {
+    fun fetchBattleHistory() {
         val disposable = ApiModule.service.getBattle("Bearer " + SharedPref.token)
             .map { br -> br.data }
             .subscribeOn(Schedulers.io())
@@ -174,25 +175,26 @@ class ScoreViewModel : ViewModel() {
     fun fetchBookmark() {
         GlobalScope.launch(Dispatchers.IO) {
             try {
-                val result = appDb?.bookmark()?.fetchBookmark()?.map {
+                val bmData = appDb?.bookmark()?.fetchBookmark()?.map {
                     BattleResponse.Data(
-                        it.createdAt,
-                        it.id,
-                        it.message,
-                        it.mode,
-                        it.result,
-                        it.updatedAt
+                        createdAt = it.createdAt,
+                        id = it.id,
+                        mode = it.mode,
+                        result = it.result,
+                        updatedAt = it.updatedAt,
+                        message = it.message
                     )
                 }?.toMutableList()
                 launch(Dispatchers.Main) {
-                    bmHistory.value = result
+                    bmHistory.value = bmData
                 }
             } catch (e: Throwable) {
                 launch(Dispatchers.Main) {
-                    errorRegister?.value = getString(R.string.get_bookmark_err)
+                    errorRegister?.value = getString(R.string.bookmark_del_err)
                     e.printStackTrace()
                 }
             }
         }
     }
+
 }

@@ -1,8 +1,10 @@
 package com.suit.team.b.ui.score
 
+import android.opengl.Visibility
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -14,6 +16,7 @@ import com.suit.team.b.utils.getDateFromIso
 import java.time.format.FormatStyle
 
 class HistoryRVAdapter(
+    private val bookmark: Boolean,
     private val data: MutableList<BattleResponse.Data>,
     private val viewModel: ScoreViewModel
 ) :
@@ -44,6 +47,10 @@ class HistoryRVAdapter(
             tvMessage.text = data.message
             tvMode.text = data.mode
             tvResult.text = data.result
+            if(bookmark) {
+                lavMark.visibility = INVISIBLE
+                lavMark.isClickable = false
+            }
 
             lavMark.setOnClickListener {
                 if (!mark) {
