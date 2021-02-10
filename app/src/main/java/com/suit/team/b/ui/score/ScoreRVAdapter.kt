@@ -24,17 +24,17 @@ class ScoreRVAdapter(private val score: MutableList<Score>?) :
             holder.bind(model)
         }
 
-        val ivWinner = holder.itemView.findViewById<ImageView>(R.id.lavWinner)
+        val lavWinner = holder.itemView.findViewById<ImageView>(R.id.lavWinner)
         if (pos == 0 && (score?.get(0)?.scoreValue != score?.get(1)?.scoreValue)) {
-            ivWinner.visibility = VISIBLE
-        } else ivWinner.visibility = INVISIBLE
+            lavWinner.visibility = VISIBLE
+        } else lavWinner.visibility = INVISIBLE
     }
 
     override fun getItemCount(): Int = 2
 
     class ScoreViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        private var tvScore = v.findViewById<TextView>(R.id.tvScore)
-        private var tvPlayer = v.findViewById<TextView>(R.id.tvPlayer)
+        private var tvScore = v.findViewById<TextView>(R.id.tvResult)
+        private var tvPlayer = v.findViewById<TextView>(R.id.tvCreated)
 
         fun bind(model: Score) {
             tvScore.text = model.scoreValue.toString()
