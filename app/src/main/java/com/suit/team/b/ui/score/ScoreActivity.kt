@@ -36,7 +36,8 @@ class ScoreActivity : AppCompatActivity() {
 
         val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
         tabLayout.tabMode = MODE_SCROLLABLE
-        val tabTitle = arrayOf(R.string.vs_Player, R.string.vs_CPU, R.string.history, R.string.bookmark)
+        val tabTitle =
+            arrayOf(R.string.vs_Player, R.string.vs_CPU, R.string.history, R.string.bookmark)
         val tabIcon = arrayOf(
             R.drawable.ic_tabscore_vp,
             R.drawable.ic_tabscore_vcpu,

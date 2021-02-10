@@ -6,7 +6,7 @@ import com.suit.team.b.App
 import com.suit.team.b.R
 import com.suit.team.b.data.db.ResultEntity
 import com.suit.team.b.data.local.SharedPref
-import com.suit.team.b.data.model.Battle
+import com.suit.team.b.data.model.BattleBookmark
 import com.suit.team.b.data.model.BattleResponse
 import com.suit.team.b.data.model.Score
 import com.suit.team.b.data.remote.ApiModule
@@ -16,6 +16,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.util.*
 
@@ -27,7 +28,8 @@ class ScoreViewModel : ViewModel() {
     val scoreSingle = MutableLiveData<MutableList<Score>>()
     val errorRegister: MutableLiveData<String>? = null
     val battleHistory = MutableLiveData<MutableList<BattleResponse.Data>>()
-    var bmHistory = MutableLiveData<MutableList<BattleResponse.Data>>()
+    val battleBookmark = MutableLiveData<MutableList<BattleBookmark>>()
+    var bmHistory = MutableLiveData<MutableList<BattleBookmark>>()
 
 
     override fun onCleared() {
@@ -128,7 +130,9 @@ class ScoreViewModel : ViewModel() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
+                    //GlobalScope.launch(Dispatchers.Main) {
                     battleHistory.value = it.toMutableList()
+                    //}
                 }, {
                     errorRegister?.value =
                         getErrorMessage(it.getServiceErrorMsg(), it.getErrorThrowableCode())
@@ -137,7 +141,43 @@ class ScoreViewModel : ViewModel() {
         compositeDis?.add(disposable)
     }
 
-    fun insertBookmark(data: BattleResponse.Data) {
+    fun toBattleBm(data: List<BattleResponse.Data>) {
+        GlobalScope.launch(Dispatchers.Main) {
+            val ids = GlobalScope.async(Dispatchers.IO) { appDb?.bookmark()?.fetchId() }
+            val booked =
+                data.filter { ids.await()?.contains(it.id) == true }
+                    .map() {
+                        BattleBookmark(
+                            createdAt = it.createdAt,
+                            id = it.id,
+                            mode = it.mode,
+                            message = it.message,
+                            result = it.result,
+                            updatedAt = it.updatedAt,
+                            booked = true
+                        )
+                    }.toMutableList()
+
+            val unBooked =
+                data.filter { ids.await()?.contains(it.id) == false }
+                    .map() {
+                        BattleBookmark(
+                            createdAt = it.createdAt,
+                            id = it.id,
+                            mode = it.mode,
+                            message = it.message,
+                            result = it.result,
+                            updatedAt = it.updatedAt,
+                            booked = false
+                        )
+                    }.toMutableList()
+
+            booked.addAll(unBooked)
+            battleBookmark.value = booked
+        }
+    }
+
+    fun insertBookmark(data: BattleBookmark) {
         val result = ResultEntity(
             createdAt = data.createdAt,
             id = data.id,
@@ -176,13 +216,14 @@ class ScoreViewModel : ViewModel() {
         GlobalScope.launch(Dispatchers.IO) {
             try {
                 val bmData = appDb?.bookmark()?.fetchBookmark()?.map {
-                    BattleResponse.Data(
+                    BattleBookmark(
                         createdAt = it.createdAt,
                         id = it.id,
                         mode = it.mode,
                         result = it.result,
                         updatedAt = it.updatedAt,
-                        message = it.message
+                        message = it.message,
+                        booked = true
                     )
                 }?.toMutableList()
                 launch(Dispatchers.Main) {
@@ -190,11 +231,10 @@ class ScoreViewModel : ViewModel() {
                 }
             } catch (e: Throwable) {
                 launch(Dispatchers.Main) {
-                    errorRegister?.value = getString(R.string.bookmark_del_err)
+                    errorRegister?.value = getString(R.string.get_bookmark_err)
                     e.printStackTrace()
                 }
             }
         }
     }
-
 }

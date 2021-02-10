@@ -7,20 +7,18 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import com.airbnb.lottie.LottieAnimationView
 import com.suit.team.b.R
 import com.suit.team.b.data.model.BattleBookmark
 import com.suit.team.b.utils.getDateFromIso
 import java.time.format.FormatStyle
 
-class HistoryRVAdapter(
+class BookmarkRVAdapter(
     private val data: MutableList<BattleBookmark>,
-    private val viewModel: ScoreViewModel
 ) :
-    RecyclerView.Adapter<HistoryRVAdapter.HistoryViewHolder>() {
+    RecyclerView.Adapter<BookmarkRVAdapter.HistoryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = HistoryViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.history_item, parent, false)
+        LayoutInflater.from(parent.context).inflate(R.layout.bookmark_item, parent, false)
     )
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -35,8 +33,6 @@ class HistoryRVAdapter(
         private val tvMessage = v.findViewById<TextView>(R.id.tvMessage)
         private val tvMode = v.findViewById<TextView>(R.id.tvMode)
         private val tvResult = v.findViewById<TextView>(R.id.tvResult)
-        private val lavMark = v.findViewById<LottieAnimationView>(R.id.lavMark)
-        private var mark: Boolean = false
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun bind(data: BattleBookmark) {
@@ -44,25 +40,7 @@ class HistoryRVAdapter(
             tvMessage.text = data.message
             tvMode.text = data.mode
             tvResult.text = data.result
-            lavMark.setMinAndMaxFrame(0, 100)
-            if (data.booked) {
-                lavMark.frame = 100
-                mark = true
-            }
 
-            lavMark.setOnClickListener {
-                if (!mark) {
-                    lavMark.speed = 2.0f
-                    lavMark.playAnimation()
-                    viewModel.insertBookmark(data)
-                    mark = true
-                } else if (mark) {
-                    lavMark.speed = -2.0f
-                    lavMark.playAnimation()
-                    viewModel.deleteBookmark(data.id)
-                    mark = false
-                }
-            }
         }
     }
 }

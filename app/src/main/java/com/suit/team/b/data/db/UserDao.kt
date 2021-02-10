@@ -15,4 +15,7 @@ interface BookmarkDao {
 
     @Query("DELETE FROM Result WHERE _id = :id")
     fun delBookmark(id: String): Int
+
+    @Query("SELECT _id FROM Result")
+    fun fetchId(): List<String>
 }

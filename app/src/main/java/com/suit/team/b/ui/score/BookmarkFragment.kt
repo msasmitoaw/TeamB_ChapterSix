@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.suit.team.b.R
 
-class HistoryFragment() : Fragment() {
+class BookmarkFragment() : Fragment() {
 
     private var viewModel: ScoreViewModel? = null
     private var recyclerView: RecyclerView? = null
@@ -20,7 +20,7 @@ class HistoryFragment() : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? = inflater.inflate(R.layout.history_fragment, container, false)
+    ): View? = inflater.inflate(R.layout.bookmark_fragment, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -29,13 +29,8 @@ class HistoryFragment() : Fragment() {
         recyclerView = view.findViewById(R.id.rvHistory)
         recyclerView?.layoutManager = LinearLayoutManager(this.context)
 
-        viewModel?.battleHistory?.observe(viewLifecycleOwner) {
-                viewModel?.toBattleBm(it)
-        }
-
-        viewModel?.battleBookmark?.observe(viewLifecycleOwner) {
-            recyclerView?.adapter =
-                viewModel?.let { vm -> HistoryRVAdapter(it, vm) }
+        viewModel?.bmHistory?.observe(viewLifecycleOwner) {
+            recyclerView?.adapter = BookmarkRVAdapter(it)
         }
 
         viewModel?.errorRegister?.observe(viewLifecycleOwner) {
@@ -45,6 +40,7 @@ class HistoryFragment() : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        viewModel?.fetchBattleHistory()
+        super.onStart()
+        viewModel?.fetchBookmark()
     }
 }
