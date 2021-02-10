@@ -26,7 +26,7 @@ class ScoreViewModel : ViewModel() {
     private var compositeDis: CompositeDisposable? = null
     val scoreMulti = MutableLiveData<MutableList<Score>>()
     val scoreSingle = MutableLiveData<MutableList<Score>>()
-    val errorRegister: MutableLiveData<String>? = null
+    val errorResponse: MutableLiveData<String>? = null
     val battleHistory = MutableLiveData<MutableList<BattleResponse.Data>>()
     val battleBookmark = MutableLiveData<MutableList<BattleBookmark>>()
     var bmHistory = MutableLiveData<MutableList<BattleBookmark>>()
@@ -49,7 +49,7 @@ class ScoreViewModel : ViewModel() {
                             .sortedByDescending { it2 -> it2.scoreValue }
                             .toMutableList()
                 }, {
-                    errorRegister?.value =
+                    errorResponse?.value =
                         getErrorMessage(it.getServiceErrorMsg(), it.getErrorThrowableCode())
                     it.printStackTrace()
                 }
@@ -69,7 +69,7 @@ class ScoreViewModel : ViewModel() {
                             .sortedByDescending { it2 -> it2.scoreValue }
                             .toMutableList()
                 }, {
-                    errorRegister?.value =
+                    errorResponse?.value =
                         getErrorMessage(it.getServiceErrorMsg(), it.getErrorThrowableCode())
                     it.printStackTrace()
                 })
@@ -130,11 +130,9 @@ class ScoreViewModel : ViewModel() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
-                    //GlobalScope.launch(Dispatchers.Main) {
                     battleHistory.value = it.toMutableList()
-                    //}
                 }, {
-                    errorRegister?.value =
+                    errorResponse?.value =
                         getErrorMessage(it.getServiceErrorMsg(), it.getErrorThrowableCode())
                     it.printStackTrace()
                 })
@@ -192,7 +190,7 @@ class ScoreViewModel : ViewModel() {
                 appDb?.bookmark()?.insertBookmark(result)
             } catch (e: Throwable) {
                 launch(Dispatchers.Main) {
-                    errorRegister?.value = getString(R.string.bookmark_save_err)
+                    errorResponse?.value = getString(R.string.bookmark_save_err)
                     e.printStackTrace()
                 }
             }
@@ -205,7 +203,7 @@ class ScoreViewModel : ViewModel() {
                 appDb?.bookmark()?.delBookmark(id)
             } catch (e: Throwable) {
                 launch(Dispatchers.Main) {
-                    errorRegister?.value = getString(R.string.bookmark_del_err)
+                    errorResponse?.value = getString(R.string.bookmark_del_err)
                     e.printStackTrace()
                 }
             }
@@ -231,7 +229,7 @@ class ScoreViewModel : ViewModel() {
                 }
             } catch (e: Throwable) {
                 launch(Dispatchers.Main) {
-                    errorRegister?.value = getString(R.string.get_bookmark_err)
+                    errorResponse?.value = getString(R.string.get_bookmark_err)
                     e.printStackTrace()
                 }
             }

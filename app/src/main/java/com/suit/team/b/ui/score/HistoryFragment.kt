@@ -38,7 +38,7 @@ class HistoryFragment() : Fragment() {
                 viewModel?.let { vm -> HistoryRVAdapter(it, vm) }
         }
 
-        viewModel?.errorRegister?.observe(viewLifecycleOwner) {
+        viewModel?.errorResponse?.observe(viewLifecycleOwner) {
             Toast.makeText(this.context, it, Toast.LENGTH_SHORT).show()
         }
     }

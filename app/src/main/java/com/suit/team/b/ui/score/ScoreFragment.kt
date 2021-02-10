@@ -47,7 +47,7 @@ class ScoreFragment(private val gameType: GameType) : Fragment() {
             }
         }
 
-        viewModel?.errorRegister?.observe(viewLifecycleOwner) {
+        viewModel?.errorResponse?.observe(viewLifecycleOwner) {
             Toast.makeText(this.context, it, Toast.LENGTH_SHORT).show()
         }
     }
