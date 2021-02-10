@@ -1,7 +1,6 @@
 package com.suit.team.b.ui.score
 
 import android.os.Build
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
