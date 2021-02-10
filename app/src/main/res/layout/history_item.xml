@@ -164,8 +164,7 @@
             android:contentDescription="@string/bookmark"
             app:lottie_autoPlay="false"
             app:lottie_loop="false"
-            app:lottie_rawRes="@raw/bookmark"
-            />
+            app:lottie_rawRes="@raw/bookmark" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

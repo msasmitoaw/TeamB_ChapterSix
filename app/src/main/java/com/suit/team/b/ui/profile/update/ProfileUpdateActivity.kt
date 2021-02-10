@@ -41,6 +41,7 @@ class ProfileUpdateActivity : AppCompatActivity() {
     private lateinit var btCancel: Button
     private lateinit var civPhoto: CircularImageView
     private var filePath: File? = null
+    private var firstOpen: Boolean = true
 
 
     @SuppressLint("ResourceType")
@@ -72,7 +73,10 @@ class ProfileUpdateActivity : AppCompatActivity() {
                 Glide.with(this).load(it.data.photo).into(civPhoto)
             etUsername.setText(it.data?.username, TextView.BufferType.EDITABLE)
             etEmail.setText(it.data?.email, TextView.BufferType.EDITABLE)
-            Toast.makeText(this, R.string.update_success, Toast.LENGTH_SHORT).show()
+            if (!firstOpen) {
+                Toast.makeText(this, R.string.update_success, Toast.LENGTH_SHORT).show()
+                it?.data?.email?.let { it1 -> viewModel.updateToken(it1) }
+            }
         }
 
         viewModel.errorRegister.observe(this) {
@@ -91,6 +95,7 @@ class ProfileUpdateActivity : AppCompatActivity() {
         btSave.setOnClickListener {
             tilEmail.error = null
             tilUsername.error = null
+            firstOpen = false
 
             if (etUsername.text?.isBlank() == true) {
                 tilUsername.error = string(R.string.username_validation)

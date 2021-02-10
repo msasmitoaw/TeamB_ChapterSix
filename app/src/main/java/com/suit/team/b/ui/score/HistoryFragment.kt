@@ -30,7 +30,7 @@ class HistoryFragment() : Fragment() {
         recyclerView?.layoutManager = LinearLayoutManager(this.context)
 
         viewModel?.battleHistory?.observe(viewLifecycleOwner) {
-                viewModel?.toBattleBm(it)
+            viewModel?.toBattleBm(it)
         }
 
         viewModel?.battleBookmark?.observe(viewLifecycleOwner) {
