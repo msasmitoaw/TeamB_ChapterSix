@@ -1,3 +1,5 @@
+@file:Suppress("Annotator")
+
 package com.suit.team.b.ui.tutorial
 
 import android.content.Context
@@ -14,39 +16,14 @@ class ViewPagerAdapter(
     private val dataFragments = mutableListOf(
         TutorialFragment.newInstance(
             context.getString(R.string.tutorial_pvp),
-            R.drawable.ic_pvplayer,
-            listener
-        ),
-        TutorialFragment.newInstance(
-            context.getString(R.string.tutorial_pvp_one),
-            R.drawable.ic_menupvp,
-            listener
-        ),
-        TutorialFragment.newInstance(
-            context.getString(R.string.tutorial_pvp_two),
-            R.drawable.ic_menupvp2,
-            listener
-        ),
-        TutorialFragment.newInstance(
-            context.getString(R.string.tutorial_pvp_three),
-            R.drawable.ic_menupvp3,
+            R.raw.turialpvsp,
             listener
         ),
         TutorialFragment.newInstance(
             context.getString(R.string.tutorial_pvc),
-            R.drawable.ic_pvcomputer,
+            R.raw.tutorialpvcom,
             listener
-        ),
-        TutorialFragment.newInstance(
-            context.getString(R.string.tutorial_pvc_one),
-            R.drawable.ic_pvcom1,
-            listener
-        ),
-        TutorialFragment.newInstance(
-            context.getString(R.string.tutorial_pvc_two),
-            R.drawable.ic_pvcom2,
-            listener
-        ),
+        )
     )
 
     override fun getItemCount(): Int = dataFragments.size

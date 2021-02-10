@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.suit.team.b.R
 import com.suit.team.b.data.model.Score
 
-class ScoreRVAdapter(private val data: MutableList<Score>) :
+class ScoreRVAdapter(private val score: MutableList<Score>?) :
     RecyclerView.Adapter<ScoreRVAdapter.ScoreViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ScoreViewHolder(
@@ -19,20 +19,22 @@ class ScoreRVAdapter(private val data: MutableList<Score>) :
     )
 
     override fun onBindViewHolder(holder: ScoreViewHolder, pos: Int) {
-        val model = data[pos]
-        holder.bind(model)
+        val model = score?.get(pos)
+        if (model != null) {
+            holder.bind(model)
+        }
 
-        val ivWinner = holder.itemView.findViewById<ImageView>(R.id.ivWinner)
-        if (pos == 0 && (data[0].scoreValue != data[1].scoreValue)) {
-            ivWinner.visibility = VISIBLE
-        } else ivWinner.visibility = INVISIBLE
+        val lavWinner = holder.itemView.findViewById<ImageView>(R.id.lavWinner)
+        if (pos == 0 && (score?.get(0)?.scoreValue != score?.get(1)?.scoreValue)) {
+            lavWinner.visibility = VISIBLE
+        } else lavWinner.visibility = INVISIBLE
     }
 
-    override fun getItemCount() = data.size
+    override fun getItemCount(): Int = 2
 
     class ScoreViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        private var tvScore = v.findViewById<TextView>(R.id.tvScore)
-        private var tvPlayer = v.findViewById<TextView>(R.id.tvPlayer)
+        private var tvScore = v.findViewById<TextView>(R.id.tvResult)
+        private var tvPlayer = v.findViewById<TextView>(R.id.tvCreated)
 
         fun bind(model: Score) {
             tvScore.text = model.scoreValue.toString()

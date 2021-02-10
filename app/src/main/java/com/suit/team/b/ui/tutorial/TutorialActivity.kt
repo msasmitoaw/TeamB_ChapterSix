@@ -33,13 +33,17 @@ class TutorialActivity : AppCompatActivity() {
         dotsIndicator.setViewPager2(viewPager2)
 
         btnNext.setOnClickListener {
-            if (viewPager2.currentItem < 6) {
+            if (viewPager2.currentItem < 1) {
                 viewPager2.currentItem = viewPager2.currentItem.plus(1)
-            } else if (name != "") {
-                btnNext.text = getString(R.string.finish)
+            } else {
                 startActivity(Intent(this, MenuAboutActivity::class.java))
                 finish()
             }
         }
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this, MenuAboutActivity::class.java))
+        finish()
     }
 }

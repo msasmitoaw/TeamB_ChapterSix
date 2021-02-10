@@ -8,23 +8,23 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
+import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
+import com.mikhaellopez.circularimageview.CircularImageView
 import com.suit.team.b.R
-import com.suit.team.b.data.model.Users
 import com.suit.team.b.ui.auth.AuthActivity
+import com.suit.team.b.ui.main.MainActivity
 import com.suit.team.b.ui.profile.update.ProfileUpdateActivity
 
-class ProfilePageActivity : AppCompatActivity(), ProfileView {
+class ProfilePageActivity : AppCompatActivity() {
 
-    private var presenter: ProfilePresenter? = null
-    private var tvName: TextView? = null
-    private var tvUsername: TextView? = null
-    private var tvEmail: TextView? = null
-    private var btUpdate: Button? = null
-    private var btLogout: Button? = null
-    private var btDelete: Button? = null
+    private lateinit var viewModel: ProfileViewModel
+    private lateinit var tvUsername: TextView
+    private lateinit var tvEmail: TextView
+    private lateinit var civPhoto: CircularImageView
+    private lateinit var btUpdate: Button
+    private lateinit var btLogout: Button
 
     @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,72 +32,51 @@ class ProfilePageActivity : AppCompatActivity(), ProfileView {
 
         setContentView(R.layout.profilepage_activity)
 
-        presenter = ProfilePresenterImp(this)
+        viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
 
-        tvName = findViewById(R.id.tvName)
         tvUsername = findViewById(R.id.tvUsername)
         tvEmail = findViewById(R.id.tvEmail)
+        civPhoto = findViewById(R.id.civPhoto)
         btUpdate = findViewById(R.id.btUpdate)
         btLogout = findViewById(R.id.btLogout)
-        btDelete = findViewById(R.id.btDelete)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setTitle(R.string.profile_header)
         supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor(getString(R.color.app_bg))))
 
-        btUpdate?.setOnClickListener {
+        btUpdate.setOnClickListener {
             startActivity(Intent(this, ProfileUpdateActivity::class.java))
         }
 
-        btLogout?.setOnClickListener {
-            presenter?.logout()
-            this.startActivity(
-                Intent(this, AuthActivity::class.java)
-            )
+        btLogout.setOnClickListener {
+            viewModel.logout()
+            startActivity(Intent(this, AuthActivity::class.java))
             finish()
         }
 
-        btDelete?.setOnClickListener {
-            val deleteDialog = DialogFragmentDelete(this)
-            deleteDialog.show(supportFragmentManager, null)
+        viewModel.resultRegister.observe(this) {
+            if (it.data?.photo != null)
+                Glide.with(this).load(it.data.photo).into(civPhoto)
+            tvUsername.text = it.data?.username
+            tvEmail.text = it.data?.email
         }
-
     }
 
     override fun onStart() {
         super.onStart()
-        presenter?.showProfile()
+        viewModel.fetchUserData()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            super.onBackPressed()
-        }
+        if (item.itemId == android.R.id.home) onBackAction()
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onShowSuccess(user: Users) {
-        tvName?.text = user.name
-        tvEmail?.text = user.email
-        tvUsername?.text = user.username
-    }
-
-    override fun onShowFailed(toastString: String) {
-        tvName?.text = ""
-        tvEmail?.text = ""
-        tvUsername?.text = ""
-        Toast.makeText(this, toastString, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onDeleteSuccess(toastString: String) {
-        this.startActivity(
-            Intent(this, AuthActivity::class.java),
-            bundleOf(getString(R.string.del_message) to toastString)
-        )
+    private fun onBackAction() {
+        startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 
-    override fun onDeleteFailed(toastString: String) {
-        Toast.makeText(this, toastString, Toast.LENGTH_SHORT).show()
-    }
+    override fun onBackPressed() = onBackAction()
+
 }

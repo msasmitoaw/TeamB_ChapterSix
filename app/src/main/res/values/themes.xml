@@ -1,13 +1,26 @@
 <resources>
 
-    <style name="Style1" parent="Theme.MaterialComponents.Light">
+    <style name="WithActionBar" parent="Theme.MaterialComponents.Light">
         <item name="android:windowBackground">@color/app_bg</item>
         <item name="android:windowFullscreen">true</item>
+        <item name="colorPrimary">@android:color/holo_blue_light</item>
     </style>
 
     <style name="AppStyle" parent="Theme.Design.NoActionBar">
         <item name="android:windowBackground">@color/app_bg</item>
         <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="MaterialStyle" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@color/app_bg</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="colorPrimary">@android:color/holo_blue_light</item>
+    </style>
+
+    <style name="EditTextThemeOverlay" parent="ThemeOverlay.AppCompat">
+        <item name="colorPrimary">@android:color/holo_blue_dark</item>
+        <item name="colorAccent">@android:color/holo_blue_light</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
 </resources>

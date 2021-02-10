@@ -1,131 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <TextView
-        android:id="@+id/tvName"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:fontFamily="@font/comic_sans_ms"
-        android:gravity="start"
-        android:text="@string/name"
-        android:textAlignment="viewStart"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="@id/etName"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="32dp">
 
-    <EditText
-        android:id="@+id/etName"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:autofillHints=""
-        android:background="@drawable/rounded_border"
-        android:gravity="start"
-        android:hint="@string/name"
-        android:inputType="textPersonName"
-        android:padding="5dp"
-        android:textAlignment="viewStart"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvName" />
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/civPhoto"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:contentDescription="@string/content"
+            android:focusable="true"
+            android:src="@drawable/ic_profile"
+            app:civ_border_width="6dp"
+            app:civ_shadow="true"
+            app:civ_shadow_color="@color/black"
+            app:civ_shadow_radius="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/comic_sans_ms"
-        android:gravity="start"
-        android:text="@string/username"
-        android:textAlignment="viewStart"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="@id/etUsername"
-        app:layout_constraintTop_toBottomOf="@id/etName" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilUsername"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="32dp"
+            android:hint="@string/username"
+            android:textColorHighlight="@color/pb_blue"
+            android:theme="@style/EditTextThemeOverlay"
+            app:layout_constraintTop_toBottomOf="@id/civPhoto">
 
-    <EditText
-        android:id="@+id/etUsername"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:autofillHints=""
-        android:background="@drawable/rounded_border"
-        android:gravity="start"
-        android:hint="@string/username"
-        android:inputType="textPersonName"
-        android:padding="5dp"
-        android:textAlignment="viewStart"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvUsername" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHighlight="@color/pb_blue"
+                android:textSize="20sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/tvEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/comic_sans_ms"
-        android:gravity="start"
-        android:text="@string/email"
-        android:textAlignment="viewStart"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="@id/etEmail"
-        app:layout_constraintTop_toBottomOf="@id/etUsername" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilEmail"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="32dp"
+            android:hint="@string/email"
+            android:textColorHighlight="@color/pb_blue"
+            android:theme="@style/EditTextThemeOverlay"
+            app:layout_constraintTop_toBottomOf="@id/tilUsername">
 
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:autofillHints=""
-        android:background="@drawable/rounded_border"
-        android:gravity="start"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        android:padding="5dp"
-        android:textAlignment="viewStart"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvEmail" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHighlight="@color/pb_blue"
+                android:textSize="20sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/btSave"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="80dp"
-        android:backgroundTint="@color/blue_btn"
-        android:text="@string/save"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@id/btCancel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etEmail" />
+        <Button
+            android:id="@+id/btSave"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/ic_white_button"
+            android:text="@string/save"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tilEmail" />
 
-    <Button
-        android:id="@+id/btCancel"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:backgroundTint="@color/red_btn"
-        android:text="@string/cancel"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@id/btSave"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btSave"
-        app:layout_constraintTop_toBottomOf="@id/etEmail" />
+        <Button
+            android:id="@+id/btCancel"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/ic_white_button"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btSave" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
