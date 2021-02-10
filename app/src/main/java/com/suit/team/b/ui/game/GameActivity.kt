@@ -55,7 +55,7 @@ class GameActivity : AppCompatActivity() {
     }
 
     private fun onPlayerOnePick() {
-        bind.llPlayerTwo.visibility = View.GONE
+        bind.llPlayerTwo.visibility = View.INVISIBLE
         mutableListOf(
             bind.btnRockOne, bind.btnScissorsOne, bind.btnPaperOne
         ).forEachIndexed { _, i ->
@@ -76,7 +76,7 @@ class GameActivity : AppCompatActivity() {
     }
 
     private fun onPlayerTwoPick() {
-        bind.llPlayerOne.visibility = View.GONE
+        bind.llPlayerOne.visibility = View.INVISIBLE
         bind.llPlayerTwo.visibility = View.VISIBLE
         mutableListOf(
             bind.btnRockTwo, bind.btnScissorsTwo, bind.btnPaperTwo
@@ -92,7 +92,7 @@ class GameActivity : AppCompatActivity() {
     }
 
     private fun onComputerPick() {
-        bind.llPlayerOne.visibility = View.GONE
+        bind.llPlayerOne.visibility = View.INVISIBLE
         bind.llPlayerTwo.visibility = View.VISIBLE
         viewModel.setPlayerTwo()
         val playerTwoBet = string(viewModel.getPlayerTwo().bet)
@@ -158,6 +158,6 @@ class GameActivity : AppCompatActivity() {
             bind.btnRockOne, bind.btnRockTwo, bind.btnPaperOne,
             bind.btnPaperTwo, bind.btnScissorsOne, bind.btnScissorsTwo,
         ).forEachIndexed { _, i -> i.background = null }
-        bind.llPlayerTwo.visibility = View.GONE
+        bind.llPlayerTwo.visibility = View.INVISIBLE
     }
 }
