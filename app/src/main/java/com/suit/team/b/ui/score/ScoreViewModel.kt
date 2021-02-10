@@ -21,6 +21,8 @@ class ScoreViewModel : ViewModel() {
     val scoreSingle = MutableLiveData<MutableList<Score>>()
     val errorRegister: MutableLiveData<String>? = null
 
+    val battleResult = MutableLiveData<MutableList<BattleResponse.Data>>()
+
     override fun onCleared() {
         super.onCleared()
         compositeDis?.dispose()
@@ -110,5 +112,21 @@ class ScoreViewModel : ViewModel() {
                 GameType.Multiplayer
             )
         )
+    }
+
+    fun fetchResult() {
+        val disposable = ApiModule.service.getBattle("Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDFmYzBlOTcyN2E4YzAwMTc4Zjk2MmQiLCJ1c2VybmFtZSI6InNhbG1hbiIsImVtYWlsIjoic2FsbWFuQHlhaG9vLmNvbSIsImlhdCI6MTYxMjg0ODc2NywiZXhwIjoxNjEyODU1OTY3fQ.SLzcFGEBtgwiU7VArd3RwLIu0Z07Fi1U4NWj3pLtwHQ")
+            .map { br -> br.data }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    battleResult.value = it.toMutableList()
+                }, {
+                    errorRegister?.value =
+                        getErrorMessage(it.getServiceErrorMsg(), it.getErrorThrowableCode())
+                    it.printStackTrace()
+                })
+        compositeDis?.add(disposable)
     }
 }

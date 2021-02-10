@@ -33,8 +33,8 @@ class ScoreRVAdapter(private val score: MutableList<Score>?) :
     override fun getItemCount(): Int = 2
 
     class ScoreViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        private var tvScore = v.findViewById<TextView>(R.id.tvScore)
-        private var tvPlayer = v.findViewById<TextView>(R.id.tvPlayer)
+        private var tvScore = v.findViewById<TextView>(R.id.tvResult)
+        private var tvPlayer = v.findViewById<TextView>(R.id.tvCreated)
 
         fun bind(model: Score) {
             tvScore.text = model.scoreValue.toString()
