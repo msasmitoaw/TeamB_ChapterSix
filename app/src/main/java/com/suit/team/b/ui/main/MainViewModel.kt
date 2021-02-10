@@ -35,7 +35,7 @@ class MainViewModel(private val service: ApiService) : ViewModel() {
 
     private fun updateToken() {
         val loginRequest = LoginRequest(
-            SharedPref.username.toString(),
+            SharedPref.email.toString(),
             SharedPref.password.toString()
         )
         disposable = service.login(loginRequest = loginRequest)

@@ -6,7 +6,6 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.suit.team.b.R
-import com.suit.team.b.ui.main.MainActivity
 import com.suit.team.b.ui.menu_about.MenuAboutActivity
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 

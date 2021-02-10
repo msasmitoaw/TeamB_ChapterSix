@@ -10,45 +10,37 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.suit.team.b.R
-import com.suit.team.b.data.model.Score
-import com.suit.team.b.utils.GameType
 
+class BookmarkFragment() : Fragment() {
 
-class ScoreFragment(private val gameType: GameType) : Fragment() {
-
-    private var recyclerView: RecyclerView? = null
     private var viewModel: ScoreViewModel? = null
-    private var score: MutableList<Score>? = null
+    private var recyclerView: RecyclerView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? = inflater.inflate(R.layout.score_fragment, container, false)
+    ): View? = inflater.inflate(R.layout.bookmark_fragment, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView = view.findViewById(R.id.recyclerView)
+        viewModel = ViewModelProvider(this).get(ScoreViewModel::class.java)
+        recyclerView = view.findViewById(R.id.rvHistory)
         recyclerView?.layoutManager = LinearLayoutManager(this.context)
 
-        viewModel = ViewModelProvider(this).get(ScoreViewModel::class.java)
-        recyclerView?.adapter = ScoreRVAdapter(score)
-
-        if (gameType == GameType.Multiplayer) {
-            viewModel?.fetchScoreMulti()
-            viewModel?.scoreMulti?.observe(viewLifecycleOwner) {
-                recyclerView?.adapter = ScoreRVAdapter(it)
-            }
-        } else {
-            viewModel?.fetchScoreSingle()
-            viewModel?.scoreSingle?.observe(viewLifecycleOwner) {
-                recyclerView?.adapter = ScoreRVAdapter(it)
-            }
+        viewModel?.bmHistory?.observe(viewLifecycleOwner) {
+            recyclerView?.adapter = BookmarkRVAdapter(it)
         }
 
         viewModel?.errorResponse?.observe(viewLifecycleOwner) {
             Toast.makeText(this.context, it, Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        super.onStart()
+        viewModel?.fetchBookmark()
     }
 }

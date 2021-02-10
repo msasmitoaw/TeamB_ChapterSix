@@ -35,6 +35,7 @@ class AuthViewModel(private val service: ApiService, private val pref: SharedPre
                 pref.token = it.data.token
                 pref.isLogin = true
                 pref.username = it.data.username
+                pref.email = it.data.email
                 pref.password = loginRequest.password
                 resultLogin.value = it
             }) {

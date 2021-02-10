@@ -158,5 +158,6 @@ class GameActivity : AppCompatActivity() {
             bind.btnRockOne, bind.btnRockTwo, bind.btnPaperOne,
             bind.btnPaperTwo, bind.btnScissorsOne, bind.btnScissorsTwo,
         ).forEachIndexed { _, i -> i.background = null }
+        bind.llPlayerTwo.visibility = View.GONE
     }
 }

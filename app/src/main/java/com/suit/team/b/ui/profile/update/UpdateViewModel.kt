@@ -3,6 +3,7 @@ package com.suit.team.b.ui.profile.update
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.suit.team.b.data.local.SharedPref
+import com.suit.team.b.data.model.LoginRequest
 import com.suit.team.b.data.model.UsersResponse
 import com.suit.team.b.data.remote.ApiModule.service
 import com.suit.team.b.utils.getErrorMessage
@@ -69,7 +70,6 @@ class UpdateViewModel : ViewModel() {
         }
     }
 
-
     fun putUser(username: String, email: String) {
         SharedPref.token?.let { it ->
             val disposable = service.putUserData(
@@ -88,5 +88,23 @@ class UpdateViewModel : ViewModel() {
                 })
             compositeDis?.add(disposable)
         }
+    }
+
+    fun updateToken(email: String) {
+        val loginRequest = LoginRequest(email, SharedPref.password.toString())
+
+        val disposable = service.login(loginRequest = loginRequest)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                SharedPref.token = it.data.token
+                SharedPref.username = it.data.username
+                SharedPref.email = it.data.email
+            }, {
+                errorRegister.value = it.getServiceErrorMsg()
+                it.printStackTrace()
+            })
+
+        compositeDis?.add(disposable)
     }
 }
