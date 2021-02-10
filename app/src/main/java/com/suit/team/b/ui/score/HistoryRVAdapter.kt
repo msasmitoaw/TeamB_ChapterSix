@@ -36,15 +36,16 @@ class HistoryRVAdapter(
         private val tvMode = v.findViewById<TextView>(R.id.tvMode)
         private val tvResult = v.findViewById<TextView>(R.id.tvResult)
         private val lavMark = v.findViewById<LottieAnimationView>(R.id.lavMark)
-        private var mark: Boolean = false
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun bind(data: BattleBookmark) {
+            var mark = false
             tvCreated.text = getDateFromIso(data.createdAt, FormatStyle.MEDIUM)
             tvMessage.text = data.message
             tvMode.text = data.mode
             tvResult.text = data.result
             lavMark.setMinAndMaxFrame(0, 100)
+            lavMark.frame = 0
             if (data.booked) {
                 lavMark.frame = 100
                 mark = true
