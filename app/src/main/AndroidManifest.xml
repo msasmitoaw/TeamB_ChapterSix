@@ -17,6 +17,7 @@
         <service
             android:name=".utils.SoundBackground"
             android:enabled="true" />
+
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
